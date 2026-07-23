@@ -1,1 +1,889 @@
-Hello World!
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0x6.ai | Works</title>
+  <meta name="description" content="0x6.ai 的作品展示。先收錄 LINE 貼圖與表情貼作品集。">
+  <meta property="og:title" content="0x6.ai | Works">
+  <meta property="og:description" content="0x6.ai 的作品展示，包含 LINE 貼圖與表情貼。">
+  <meta property="og:type" content="website">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #08090f;
+      --bg-soft: #11131e;
+      --panel: rgba(21, 24, 36, 0.86);
+      --panel-strong: rgba(15, 17, 26, 0.94);
+      --line: rgba(133, 232, 190, 0.25);
+      --line-strong: rgba(133, 232, 190, 0.58);
+      --mint: #85e8be;
+      --mint-deep: #17b978;
+      --ink: #f4f7ee;
+      --muted: #a9b4aa;
+      --quiet: #66726c;
+      --warm: #f0b15a;
+      --pink: #f082ac;
+      --blue: #80b8ff;
+      --shadow: rgba(0, 0, 0, 0.32);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background:
+        radial-gradient(circle at 16% 18%, rgba(23, 185, 120, 0.18), transparent 26%),
+        radial-gradient(circle at 78% 10%, rgba(128, 184, 255, 0.16), transparent 28%),
+        linear-gradient(145deg, #08090f 0%, #11131e 52%, #071411 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(133, 232, 190, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(133, 232, 190, 0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 78%);
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .particle {
+      position: fixed;
+      width: var(--size);
+      height: var(--size);
+      border-radius: 999px;
+      background: var(--color);
+      box-shadow: 0 0 18px var(--color);
+      pointer-events: none;
+      opacity: 0;
+      z-index: 1;
+      animation: float-up var(--speed) linear infinite;
+      animation-delay: var(--delay);
+    }
+
+    @keyframes float-up {
+      0% {
+        transform: translate3d(var(--x), 104vh, 0) scale(0.65);
+        opacity: 0;
+      }
+      8% {
+        opacity: 0.72;
+      }
+      82% {
+        opacity: 0.36;
+      }
+      100% {
+        transform: translate3d(calc(var(--x) + var(--drift)), -10vh, 0) scale(1);
+        opacity: 0;
+      }
+    }
+
+    .status-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 48px;
+      padding: 10px clamp(16px, 4vw, 42px);
+      border-bottom: 1px solid rgba(133, 232, 190, 0.18);
+      background: rgba(8, 9, 15, 0.82);
+      backdrop-filter: blur(18px);
+    }
+
+    .status-left,
+    .status-right {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .status-left {
+      gap: 9px;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--mint);
+      box-shadow: 0 0 16px var(--mint);
+      animation: pulse 1.8s ease-in-out infinite;
+      flex: 0 0 auto;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.38;
+        transform: scale(0.8);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.26);
+      }
+    }
+
+    .status-text {
+      color: var(--mint);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      letter-spacing: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 12px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      transition: 160ms ease;
+    }
+
+    .nav-links a:hover {
+      border-color: rgba(133, 232, 190, 0.28);
+      color: var(--ink);
+      background: rgba(133, 232, 190, 0.07);
+    }
+
+    .page {
+      position: relative;
+      z-index: 2;
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 92px 0 36px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 92px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.88fr);
+      align-items: center;
+      gap: clamp(28px, 5vw, 70px);
+      padding-bottom: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 34px;
+      padding: 0 13px;
+      border: 1px solid rgba(133, 232, 190, 0.24);
+      border-radius: 999px;
+      background: rgba(133, 232, 190, 0.07);
+      color: var(--mint);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .eyebrow::before {
+      content: "0x";
+      color: var(--warm);
+    }
+
+    h1 {
+      margin-top: 22px;
+      font-size: clamp(58px, 11vw, 148px);
+      line-height: 0.9;
+      letter-spacing: 0;
+      font-weight: 850;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 18px;
+      border: 1px solid rgba(133, 232, 190, 0.24);
+      border-radius: 8px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 15px;
+      font-weight: 700;
+      transition: 180ms ease;
+    }
+
+    .button.primary {
+      border-color: rgba(133, 232, 190, 0.54);
+      background: linear-gradient(135deg, #19bd79, #85e8be);
+      color: #071411;
+      box-shadow: 0 16px 36px rgba(23, 185, 120, 0.28);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+      box-shadow: 0 18px 36px var(--shadow);
+    }
+
+    .button:focus-visible,
+    .work-card:focus-visible {
+      outline: 3px solid rgba(133, 232, 190, 0.38);
+      outline-offset: 4px;
+    }
+
+    .console {
+      display: grid;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid rgba(133, 232, 190, 0.22);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.055), transparent),
+        var(--panel);
+      box-shadow: 0 24px 90px rgba(0, 0, 0, 0.36);
+    }
+
+    .console-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--quiet);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--quiet);
+    }
+
+    .dots span:nth-child(1) {
+      background: var(--pink);
+    }
+
+    .dots span:nth-child(2) {
+      background: var(--warm);
+    }
+
+    .dots span:nth-child(3) {
+      background: var(--mint);
+    }
+
+    .preview-stage {
+      position: relative;
+      min-height: 410px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 34% 30%, rgba(133, 232, 190, 0.18), transparent 26%),
+        radial-gradient(circle at 82% 70%, rgba(240, 177, 90, 0.15), transparent 30%),
+        #0d1018;
+    }
+
+    .sticker-stack {
+      position: absolute;
+      inset: 22px;
+    }
+
+    .sticker {
+      position: absolute;
+      width: 154px;
+      min-height: 172px;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      background: rgba(244, 247, 238, 0.92);
+      box-shadow: 0 20px 34px rgba(0, 0, 0, 0.24);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    .sticker:hover {
+      transform: translateY(-6px) rotate(var(--rotate-hover));
+      box-shadow: 0 28px 48px rgba(0, 0, 0, 0.32);
+    }
+
+    .sticker img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+    }
+
+    .sticker span {
+      display: block;
+      margin-top: 8px;
+      color: #171b22;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .sticker:nth-child(1) {
+      top: 18px;
+      left: 16px;
+      transform: rotate(-8deg);
+      --rotate-hover: -3deg;
+    }
+
+    .sticker:nth-child(2) {
+      top: 72px;
+      right: 24px;
+      transform: rotate(7deg);
+      --rotate-hover: 3deg;
+    }
+
+    .sticker:nth-child(3) {
+      left: 104px;
+      bottom: 34px;
+      transform: rotate(4deg);
+      --rotate-hover: 0deg;
+    }
+
+    .signal-card {
+      position: absolute;
+      right: 22px;
+      bottom: 22px;
+      width: min(250px, calc(100% - 44px));
+      padding: 16px;
+      border: 1px solid rgba(133, 232, 190, 0.28);
+      border-radius: 8px;
+      background: rgba(8, 9, 15, 0.82);
+      backdrop-filter: blur(14px);
+    }
+
+    .signal-card b {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--mint);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .signal-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .loading-panel {
+      display: grid;
+      place-items: center;
+      min-height: 100%;
+      padding: 24px;
+      color: var(--mint);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .loading-panel::before {
+      content: "";
+      width: 36px;
+      height: 36px;
+      margin-bottom: 14px;
+      border: 2px solid rgba(133, 232, 190, 0.18);
+      border-top-color: var(--mint);
+      border-radius: 999px;
+      animation: spin 900ms linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+
+    .section {
+      padding: 44px 0 24px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .section h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: 0;
+    }
+
+    .work-card {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+      gap: clamp(18px, 4vw, 42px);
+      align-items: center;
+      padding: clamp(16px, 3vw, 30px);
+      border: 1px solid rgba(133, 232, 190, 0.22);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(133, 232, 190, 0.1), transparent 42%),
+        var(--panel-strong);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+      transition: 180ms ease;
+    }
+
+    .work-card:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-3px);
+    }
+
+    .work-visual {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .work-visual img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .work-visual img:first-child {
+      grid-row: span 2;
+      align-self: stretch;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border: 1px solid rgba(133, 232, 190, 0.22);
+      border-radius: 999px;
+      color: var(--mint);
+      background: rgba(133, 232, 190, 0.07);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .work-content h3 {
+      font-size: clamp(26px, 3.6vw, 42px);
+      line-height: 1.16;
+      letter-spacing: 0;
+      margin-bottom: 14px;
+    }
+
+    .work-content p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 24px 0;
+    }
+
+    .metric {
+      min-height: 78px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--quiet);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 52px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(133, 232, 190, 0.14);
+      color: var(--quiet);
+      font-size: 13px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      z-index: 40;
+      transform: translateX(-50%) translateY(18px);
+      padding: 11px 14px;
+      border: 1px solid rgba(133, 232, 190, 0.4);
+      border-radius: 8px;
+      color: var(--mint);
+      background: rgba(8, 9, 15, 0.9);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+      opacity: 0;
+      transition: 180ms ease;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 860px) {
+      .status-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .page {
+        padding-top: 122px;
+      }
+
+      .hero,
+      .work-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .console {
+        order: -1;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        width: min(100% - 24px, 1160px);
+      }
+
+      .nav-links a {
+        padding: 0 8px;
+      }
+
+      h1 {
+        font-size: 64px;
+      }
+
+      .actions,
+      .button {
+        width: 100%;
+      }
+
+      .preview-stage {
+        min-height: 344px;
+      }
+
+      .sticker {
+        width: 126px;
+        min-height: 144px;
+      }
+
+      .sticker:nth-child(2) {
+        right: 4px;
+      }
+
+      .sticker:nth-child(3) {
+        left: 54px;
+        bottom: 68px;
+      }
+
+      .signal-card {
+        right: 12px;
+        bottom: 12px;
+        width: calc(100% - 24px);
+      }
+
+      .work-visual {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .work-visual img:first-child {
+        grid-row: auto;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="status-bar" role="banner">
+    <div class="status-left">
+      <span class="pulse" aria-hidden="true"></span>
+      <span class="status-text" id="statusText">[gallery boot | 0x6.ai | loading works]</span>
+    </div>
+    <nav class="status-right" aria-label="主要導覽">
+      <ul class="nav-links">
+        <li><a href="#works">作品</a></li>
+        <li><a href="https://store.line.me/stickershop/author/5344394/zh-Hant" target="_blank" rel="noopener">LINE STORE</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main class="page">
+    <section class="hero" aria-labelledby="site-title">
+      <div>
+        <div class="eyebrow">作品展示 / playful intelligence</div>
+        <h1 id="site-title">0x6.ai</h1>
+        <div class="actions">
+          <a class="button primary" href="#works">查看作品</a>
+          <a class="button" href="https://store.line.me/stickershop/author/5344394/zh-Hant" target="_blank" rel="noopener">前往 LINE 貼圖頁</a>
+        </div>
+      </div>
+
+      <aside class="console" aria-label="作品預覽">
+        <div class="console-top">
+          <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <span>preview://line-stickers</span>
+        </div>
+        <div class="preview-stage">
+          <div class="sticker-stack" id="heroStickers" aria-hidden="true"></div>
+          <div class="loading-panel" id="heroLoading">loading works...</div>
+          <div class="signal-card">
+            <b id="signalTitle">STATUS: LOADING</b>
+            <p id="signalText">正在整理目前公開的貼圖與表情貼作品。</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="works" aria-labelledby="works-title">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">WORK 001</div>
+          <h2 id="works-title">LINE 貼圖＆表情貼</h2>
+        </div>
+      </div>
+
+      <a class="work-card" href="https://store.line.me/stickershop/author/5344394/zh-Hant" target="_blank" rel="noopener" aria-label="開啟 0x6.ai 的 LINE STORE 作者頁">
+        <div class="work-visual" id="featuredVisual" aria-hidden="true"></div>
+        <div class="work-content">
+          <div class="tag-row" aria-hidden="true">
+            <span class="tag">LINE STORE</span>
+            <span class="tag">貼圖</span>
+            <span class="tag">表情貼</span>
+          </div>
+          <h3>0x6.ai 的 LINE 貼圖＆表情貼</h3>
+          <p id="workSummary">用貼圖把一句話變成一個表情，收錄日常情緒、角色小劇場與可愛生活片段。</p>
+          <div class="metrics" aria-hidden="true">
+            <div class="metric"><strong id="workCount">...</strong><span>公開作品</span></div>
+            <div class="metric"><strong>TW</strong><span>繁體中文商店頁</span></div>
+            <div class="metric"><strong>↗</strong><span>外部連結</span></div>
+          </div>
+          <span class="button primary">打開 LINE STORE</span>
+        </div>
+      </a>
+    </section>
+
+    <footer class="footer">
+      <span>0x6.ai</span>
+      <span>Works gallery, version 001</span>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const STICKERS_DATA_URL = "stickers.json";
+    const colors = ["#85e8be", "#f0b15a", "#80b8ff", "#f082ac"];
+    const particleCount = window.matchMedia("(max-width: 640px)").matches ? 20 : 34;
+
+    for (let i = 0; i < particleCount; i += 1) {
+      const particle = document.createElement("span");
+      particle.className = "particle";
+      particle.style.setProperty("--x", `${Math.random() * 100}vw`);
+      particle.style.setProperty("--drift", `${(Math.random() - 0.5) * 120}px`);
+      particle.style.setProperty("--size", `${2 + Math.random() * 4}px`);
+      particle.style.setProperty("--speed", `${7 + Math.random() * 10}s`);
+      particle.style.setProperty("--delay", `${-Math.random() * 12}s`);
+      particle.style.setProperty("--color", colors[i % colors.length]);
+      document.body.appendChild(particle);
+    }
+
+    const statusText = document.getElementById("statusText");
+    const toast = document.getElementById("toast");
+    const heroStickers = document.getElementById("heroStickers");
+    const heroLoading = document.getElementById("heroLoading");
+    const signalTitle = document.getElementById("signalTitle");
+    const signalText = document.getElementById("signalText");
+    const featuredVisual = document.getElementById("featuredVisual");
+    const workSummary = document.getElementById("workSummary");
+    const workCount = document.getElementById("workCount");
+    let toastTimer = 0;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 1900);
+    }
+
+    function attachWorkLinkEvents(root = document) {
+      root.querySelectorAll(".work-card").forEach((link) => {
+        if (link.dataset.bound === "true") return;
+        link.dataset.bound = "true";
+        link.addEventListener("mouseenter", () => {
+          statusText.textContent = "[gallery hover | destination: LINE STORE | target: _blank]";
+        });
+        link.addEventListener("mouseleave", () => {
+          statusText.textContent = "[gallery ready | 0x6.ai | works loaded]";
+        });
+        link.addEventListener("click", () => {
+          showToast("正在開啟 LINE STORE");
+        });
+      });
+    }
+
+    function createImage(src, alt) {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = alt;
+      img.loading = "lazy";
+      img.decoding = "async";
+      return img;
+    }
+
+    function renderHero(items) {
+      heroLoading.remove();
+      heroStickers.innerHTML = "";
+
+      items.slice(0, 3).forEach((item) => {
+        const card = document.createElement("div");
+        card.className = "sticker";
+        card.append(createImage(item.image, ""));
+
+        const title = document.createElement("span");
+        title.textContent = item.title;
+        card.append(title);
+
+        heroStickers.append(card);
+      });
+    }
+
+    function renderFeatured(items) {
+      featuredVisual.innerHTML = "";
+      items.slice(0, 3).forEach((item) => {
+        featuredVisual.append(createImage(item.image, ""));
+      });
+    }
+
+    function renderWorks(items) {
+      renderHero(items);
+      renderFeatured(items);
+
+      workCount.textContent = String(items.length);
+      workSummary.textContent = "用貼圖把一句話變成一個表情，收錄日常情緒、角色小劇場與可愛生活片段。";
+      signalTitle.textContent = "STATUS: LIVE";
+      signalText.textContent = "點選作品卡可以開啟 0x6.ai 的 LINE STORE 作者頁。";
+      statusText.textContent = "[gallery ready | 0x6.ai | works loaded]";
+    }
+
+    function renderError() {
+      heroLoading.textContent = "works unavailable";
+      signalTitle.textContent = "STATUS: RETRY LATER";
+      signalText.textContent = "暫時無法顯示作品預覽；仍可直接開啟作者頁。";
+      workCount.textContent = "-";
+      workSummary.textContent = "作品預覽恢復後會自動出現。";
+      statusText.textContent = "[gallery error | works unavailable]";
+    }
+
+    async function loadLineStoreWorks() {
+      try {
+        const response = await fetch(`${STICKERS_DATA_URL}?t=${Date.now()}`, { cache: "no-store" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        const items = Array.isArray(data.items) ? data.items : [];
+        if (!items.length) throw new Error("No sticker data found");
+        renderWorks(items);
+      } catch {
+        renderError();
+      }
+    }
+
+    attachWorkLinkEvents();
+    loadLineStoreWorks();
+  </script>
+</body>
+</html>
