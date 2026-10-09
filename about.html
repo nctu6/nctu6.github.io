@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>關於 | 0x6.ai</title>
+  <meta name="description" data-i18n-attr="content:metaDesc" content="關於 0x6.ai：六子棋工程師的個人工作室，作品包括 X 動態新聞與 LINE 貼圖。">
+  <link rel="canonical" href="https://0x6.ai/about.html">
+  <meta property="og:site_name" content="0x6.ai">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://0x6.ai/about.html">
+  <meta property="og:title" content="About | 0x6.ai">
+  <meta property="og:description" content="關於 0x6.ai：六子棋工程師的個人工作室，作品包括 X 動態新聞與 LINE 貼圖。">
+  <meta property="og:image" content="https://0x6.ai/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="0x6.ai Works">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About | 0x6.ai">
+  <meta name="twitter:description" content="關於 0x6.ai：六子棋工程師的個人工作室，作品包括 X 動態新聞與 LINE 貼圖。">
+  <meta name="twitter:image" content="https://0x6.ai/og-image.png">
+  <meta name="theme-color" content="#08090f">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "關於 | 0x6.ai",
+  "url": "https://0x6.ai/about.html",
+  "inLanguage": [
+    "zh-Hant",
+    "en"
+  ],
+  "mainEntity": {
+    "@type": "Organization",
+    "@id": "https://0x6.ai/#org",
+    "name": "0x6.ai",
+    "url": "https://0x6.ai/",
+    "logo": "https://0x6.ai/icon-512.png",
+    "email": "mailto:nctu6.tw@gmail.com",
+    "sameAs": [
+      "https://x.0x6.ai/",
+      "https://store.line.me/stickershop/author/5344394/zh-Hant"
+    ],
+    "description": "六子棋工程師的個人工作室 / Personal studio of a Connect6 engineer"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://0x6.ai/",
+    "name": "0x6.ai"
+  }
+}
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #08090f;
+      --panel-strong: rgba(15, 17, 26, 0.94);
+      --line: rgba(133, 232, 190, 0.25);
+      --line-strong: rgba(133, 232, 190, 0.58);
+      --mint: #85e8be;
+      --ink: #f4f7ee;
+      --muted: #a9b4aa;
+      --quiet: #66726c;
+      --warm: #f0b15a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background:
+        radial-gradient(circle at 16% 18%, rgba(23, 185, 120, 0.18), transparent 26%),
+        radial-gradient(circle at 78% 10%, rgba(128, 184, 255, 0.16), transparent 28%),
+        linear-gradient(145deg, #08090f 0%, #11131e 52%, #071411 100%);
+      background-attachment: fixed;
+      line-height: 1.75;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(133, 232, 190, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(133, 232, 190, 0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 78%);
+      z-index: 0;
+    }
+
+    a { color: var(--mint); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
+
+    .status-bar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 48px;
+      padding: 10px clamp(16px, 4vw, 42px);
+      border-bottom: 1px solid rgba(133, 232, 190, 0.18);
+      background: rgba(8, 9, 15, 0.82);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--mint);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .brand::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--mint);
+      box-shadow: 0 0 16px var(--mint);
+    }
+
+    .nav { display: flex; align-items: center; gap: 8px; }
+
+    .nav > a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 12px;
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav > a:hover { color: var(--ink); text-decoration: none; background: rgba(133, 232, 190, 0.07); }
+
+    .lang-switch {
+      display: inline-flex;
+      gap: 2px;
+      padding: 2px;
+      border: 1px solid rgba(133, 232, 190, 0.22);
+      border-radius: 8px;
+    }
+
+    .lang-switch button {
+      min-height: 26px;
+      padding: 0 9px;
+      border: 0;
+      border-radius: 6px;
+      color: var(--muted);
+      background: transparent;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .lang-switch button[aria-pressed="true"] { color: #08090f; background: var(--mint); }
+
+    .page {
+      position: relative;
+      z-index: 2;
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0 40px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 30px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--mint);
+      background: rgba(133, 232, 190, 0.06);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .eyebrow::before { content: "0x"; color: var(--warm); }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(40px, 7vw, 76px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead { max-width: 720px; color: var(--muted); font-size: 18px; }
+
+    .updated {
+      margin-top: 14px;
+      color: var(--quiet);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 34px 0 40px;
+    }
+
+    .summary div {
+      padding: 18px;
+      border: 1px solid rgba(133, 232, 190, 0.22);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(133, 232, 190, 0.1), transparent 52%),
+        var(--panel-strong);
+    }
+
+    .summary strong { display: block; font-size: 22px; line-height: 1.2; }
+    .summary span { display: block; margin-top: 6px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr);
+      gap: clamp(20px, 4vw, 48px);
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 72px;
+      display: grid;
+      gap: 2px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 13px;
+    }
+
+    .toc a { display: flex; gap: 8px; padding: 5px 6px; border-radius: 6px; color: var(--muted); }
+    .toc a:hover { color: var(--ink); text-decoration: none; background: rgba(133, 232, 190, 0.07); }
+    .toc a span { color: var(--quiet); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+
+    .sections { display: grid; gap: 14px; }
+
+    .card {
+      scroll-margin-top: 72px;
+      padding: clamp(18px, 3vw, 28px);
+      border: 1px solid rgba(133, 232, 190, 0.18);
+      border-radius: 8px;
+      background: var(--panel-strong);
+    }
+
+    .card .num {
+      color: var(--mint);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+    }
+
+    .card h2 { margin: 4px 0 10px; font-size: 22px; letter-spacing: 0; }
+    .card p, .card li { color: var(--muted); font-size: 16px; }
+    .card p + p, .card p + ul, .card ul + p { margin-top: 10px; }
+    .card ul { padding-left: 1.2em; }
+    .card li + li { margin-top: 6px; }
+    .card b { color: var(--ink); }
+
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 48px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(133, 232, 190, 0.14);
+      color: var(--quiet);
+      font-size: 13px;
+    }
+
+    .footer a { color: var(--muted); }
+    .footer a:hover { color: var(--mint); }
+
+    .layout.single { grid-template-columns: minmax(0, 1fr); max-width: 820px; }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .summary { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      .toc { grid-template-columns: 1fr; }
+      .nav > a { padding: 0 8px; }
+    }
+  </style>
+</head>
+<body data-page="about">
+  <header class="status-bar">
+    <a class="brand" href="/">0x6.ai</a>
+    <nav class="nav" aria-label="主要導覽" data-i18n-attr="aria-label:navLabel">
+      <a href="/#works" data-i18n="navWorks">作品</a>
+      <a href="/about.html" data-i18n="navAbout" aria-current="page">關於</a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="zh-Hant" aria-pressed="true">繁中</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="eyebrow" data-i18n="eyebrow">關於 / about</div>
+    <h1 data-i18n="title">六子棋工程師</h1>
+    <p class="lead" data-i18n="lead">0x6.ai 是我的個人工作室，用來放我做的東西：從整理資訊的小工具，到 LINE 貼圖與表情貼。</p>
+
+    <div class="layout single" style="margin-top: 40px;">
+      <div class="sections">
+        <section class="card" id="me">
+          <div class="num">01</div>
+          <h2 data-i18n="h1">關於我</h2>
+          <p data-i18n-html="p1">我是六子棋工程師，學位論文的研究題目是六子棋（Connect6）。論文收錄在國立陽明交通大學的學位論文系統：<a href="https://thesis.lib.nycu.edu.tw/items/fed2efdc-f3f9-4a75-89d6-8c2f3216bf62" target="_blank" rel="noopener">閱讀論文</a>。</p>
+        </section>
+
+        <section class="card" id="works">
+          <div class="num">02</div>
+          <h2 data-i18n="h2">作品</h2>
+          <p data-i18n="p2">目前公開的作品：</p>
+          <ul>
+            <li data-i18n-html="w1"><a href="https://x.0x6.ai/" target="_blank" rel="noopener">X 動態新聞</a>：把關注的 X 帳號依主題分頁，一頁看完最新貼文。</li>
+            <li data-i18n-html="w2"><a href="https://store.line.me/stickershop/author/5344394/zh-Hant" target="_blank" rel="noopener">LINE 貼圖＆表情貼</a>：在 LINE STORE 販售的原創貼圖。</li>
+          </ul>
+          <p data-i18n-html="p2b">完整介紹請看<a href="/#works">作品頁</a>。</p>
+        </section>
+
+        <section class="card" id="contact">
+          <div class="num">03</div>
+          <h2 data-i18n="h3">聯絡</h2>
+          <p data-i18n-html="p3">合作、問題或建議，歡迎寄信到 <a href="mailto:nctu6.tw@gmail.com">nctu6.tw@gmail.com</a>。</p>
+        </section>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <span>Copyright © 0x6.ai</span>
+      <span class="footer-links"><a href="/about.html" data-i18n="navAbout">關於</a> · <a href="/terms.html" data-i18n="navTerms">服務條款</a> · <a href="/privacy.html" data-i18n="navPrivacy">隱私權政策</a> · <a href="mailto:nctu6.tw@gmail.com">nctu6.tw@gmail.com</a></span>
+    </footer>
+  </main>
+
+  <script src="/i18n.js"></script>
+  <script>
+    function buildToc() {
+      const toc = document.getElementById("toc");
+      if (!toc) return;
+      toc.innerHTML = "";
+      document.querySelectorAll(".card").forEach((card) => {
+        const a = document.createElement("a");
+        a.href = `#${card.id}`;
+        const num = document.createElement("span");
+        num.textContent = card.querySelector(".num").textContent;
+        a.append(num, document.createTextNode(card.querySelector("h2").textContent));
+        toc.append(a);
+      });
+    }
+    buildToc();
+    I18n.onApply(buildToc);
+  </script>
+</body>
+</html>

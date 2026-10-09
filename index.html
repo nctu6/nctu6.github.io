@@ -3,11 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>0x6.ai | Works</title>
+  <title>0x6.ai | 作品集</title>
   <meta name="description" data-i18n-attr="content:metaDesc" content="0x6.ai 的作品展示，收錄 LINE 貼圖與表情貼，以及 X 動態新聞。">
+  <link rel="canonical" href="https://0x6.ai/">
+  <meta property="og:site_name" content="0x6.ai">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://0x6.ai/">
   <meta property="og:title" content="0x6.ai | Works">
   <meta property="og:description" data-i18n-attr="content:ogDesc" content="0x6.ai 的作品展示，包含 LINE 貼圖與表情貼，以及 X 動態新聞。">
-  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://0x6.ai/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="0x6.ai Works">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="0x6.ai | Works">
+  <meta name="twitter:description" content="0x6.ai 的作品展示，收錄 LINE 貼圖與表情貼，以及 X 動態新聞。">
+  <meta name="twitter:image" content="https://0x6.ai/og-image.png">
+  <meta name="theme-color" content="#08090f">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://0x6.ai/#website",
+      "name": "0x6.ai",
+      "url": "https://0x6.ai/",
+      "inLanguage": [
+        "zh-Hant",
+        "en"
+      ],
+      "publisher": {
+        "@id": "https://0x6.ai/#org"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://0x6.ai/#org",
+      "name": "0x6.ai",
+      "url": "https://0x6.ai/",
+      "logo": "https://0x6.ai/icon-512.png",
+      "email": "mailto:nctu6.tw@gmail.com",
+      "sameAs": [
+        "https://x.0x6.ai/",
+        "https://store.line.me/stickershop/author/5344394/zh-Hant"
+      ]
+    }
+  ]
+}
+  </script>
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -664,6 +713,7 @@
 
     .footer {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       gap: 18px;
       margin-top: 52px;
@@ -671,6 +721,14 @@
       border-top: 1px solid rgba(133, 232, 190, 0.14);
       color: var(--quiet);
       font-size: 13px;
+    }
+
+    .footer a {
+      color: var(--muted);
+    }
+
+    .footer a:hover {
+      color: var(--mint);
     }
 
     .toast {
@@ -786,7 +844,7 @@
     }
   </style>
 </head>
-<body>
+<body data-page="index">
   <div class="status-bar" role="banner">
     <div class="status-left">
       <span class="pulse" aria-hidden="true"></span>
@@ -795,6 +853,7 @@
     <nav class="status-right" aria-label="主要導覽" data-i18n-attr="aria-label:navLabel">
       <ul class="nav-links">
         <li><a href="#works" data-i18n="navWorks">作品</a></li>
+        <li><a href="/about.html" data-i18n="navAbout">關於</a></li>
         <li><a href="https://store.line.me/stickershop/author/5344394/zh-Hant" data-line-store target="_blank" rel="noopener">LINE STORE</a></li>
         <li><a href="https://x.0x6.ai/" target="_blank" rel="noopener">X</a></li>
         <li>
@@ -895,103 +954,18 @@
     </section>
 
     <footer class="footer">
-      <span>0x6.ai</span>
-      <span>Works gallery, version 002</span>
+      <span>Copyright © 0x6.ai</span>
+      <span class="footer-links"><a href="/about.html" data-i18n="navAbout">關於</a> · <a href="/terms.html" data-i18n="navTerms">服務條款</a> · <a href="/privacy.html" data-i18n="navPrivacy">隱私權政策</a> · <a href="mailto:nctu6.tw@gmail.com">nctu6.tw@gmail.com</a></span>
     </footer>
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script src="/i18n.js"></script>
   <script>
     const STICKERS_DATA_URL = "stickers.json";
-    const LINE_STORE_BASE = "https://store.line.me/stickershop/author/5344394/";
-    const LANG_KEY = "0x6-lang";
-    const I18N = {
-      "zh-Hant": {
-        metaDesc: "0x6.ai 的作品展示，收錄 LINE 貼圖與表情貼，以及 X 動態新聞。",
-        ogDesc: "0x6.ai 的作品展示，包含 LINE 貼圖與表情貼，以及 X 動態新聞。",
-        navLabel: "主要導覽",
-        navWorks: "作品",
-        heroEyebrow: "作品展示 / playful intelligence",
-        heroWorks: "查看作品",
-        heroLine: "前往 LINE 貼圖頁",
-        previewLabel: "作品預覽",
-        signalLoading: "正在整理目前公開的貼圖與表情貼作品。",
-        signalLive: "點選作品卡可以開啟 0x6.ai 的 LINE STORE 作者頁。",
-        signalError: "暫時無法顯示作品預覽；仍可直接開啟作者頁。",
-        xTitle: "X 動態新聞",
-        xAria: "開啟 x.0x6.ai",
-        xTag: "動態整理",
-        xDesc: "把關注的 X 帳號依主題分頁，一頁看完 News、AI、Space 的最新貼文。打開分頁時才更新，每個帳號每六小時最多抓一次。",
-        xTabs: "主題分頁",
-        xInterval: "更新間隔",
-        xOpen: "打開 x.0x6.ai",
-        external: "外部連結",
-        lineTitle: "LINE 貼圖＆表情貼",
-        lineAria: "開啟 0x6.ai 的 LINE STORE 作者頁",
-        lineTagStickers: "貼圖",
-        lineTagEmoji: "表情貼",
-        lineHeading: "0x6.ai 的 LINE 貼圖＆表情貼",
-        lineSummary: "用貼圖把一句話變成一個表情，收錄日常情緒、角色小劇場與可愛生活片段。",
-        lineSummaryError: "作品預覽恢復後會自動出現。",
-        linePublished: "公開作品",
-        lineStoreCode: "TW",
-        lineStoreLang: "繁體中文商店頁",
-        lineOpen: "打開 LINE STORE",
-        opening: "正在開啟"
-      },
-      en: {
-        metaDesc: "Works by 0x6.ai: LINE stickers and emoji, plus an X news feed.",
-        ogDesc: "Works by 0x6.ai, including LINE stickers and emoji, plus an X news feed.",
-        navLabel: "Main navigation",
-        navWorks: "Works",
-        heroEyebrow: "Works / playful intelligence",
-        heroWorks: "View works",
-        heroLine: "LINE sticker page",
-        previewLabel: "Works preview",
-        signalLoading: "Gathering the published stickers and emoji.",
-        signalLive: "Click a work card to open the 0x6.ai LINE STORE author page.",
-        signalError: "The preview is unavailable right now; you can still open the author page.",
-        xTitle: "X News Feed",
-        xAria: "Open x.0x6.ai",
-        xTag: "Feed",
-        xDesc: "Followed X accounts grouped into topic tabs, so you can catch up on the latest News, AI, and Space posts on one page. It updates only when a tab is opened, at most once every six hours per account.",
-        xTabs: "Topic tabs",
-        xInterval: "Update interval",
-        xOpen: "Open x.0x6.ai",
-        external: "External link",
-        lineTitle: "LINE Stickers & Emoji",
-        lineAria: "Open the 0x6.ai LINE STORE author page",
-        lineTagStickers: "Stickers",
-        lineTagEmoji: "Emoji",
-        lineHeading: "LINE stickers & emoji by 0x6.ai",
-        lineSummary: "Stickers that turn a phrase into an expression: everyday moods, little character skits, and cute slices of life.",
-        lineSummaryError: "The preview will appear again once it is back.",
-        linePublished: "Published",
-        lineStoreCode: "EN",
-        lineStoreLang: "English store page",
-        lineOpen: "Open LINE STORE",
-        opening: "Opening"
-      }
-    };
-
-    function detectLang() {
-      try {
-        const saved = localStorage.getItem(LANG_KEY);
-        if (saved && I18N[saved]) return saved;
-      } catch {}
-      const prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
-      for (const pref of prefs) {
-        const tag = String(pref).toLowerCase();
-        if (tag.startsWith("zh")) return "zh-Hant";
-        if (tag.startsWith("en")) return "en";
-      }
-      return "en";
-    }
-
-    let lang = detectLang();
     let workState = "loading";
-    const t = (key) => I18N[lang][key] ?? I18N["zh-Hant"][key] ?? key;
+    const t = (key) => I18n.t(key);
     const colors = ["#85e8be", "#f0b15a", "#80b8ff", "#f082ac"];
     const particleCount = window.matchMedia("(max-width: 640px)").matches ? 20 : 34;
 
@@ -1026,6 +1000,7 @@
     }
 
     function applyStateText() {
+      if (!I18n.ready) return;
       if (workState === "live") {
         signalText.textContent = t("signalLive");
         workSummary.textContent = t("lineSummary");
@@ -1038,36 +1013,6 @@
       }
     }
 
-    function applyLang(next) {
-      lang = I18N[next] ? next : "zh-Hant";
-      document.documentElement.lang = lang;
-      document.querySelectorAll("[data-i18n]").forEach((el) => {
-        el.textContent = t(el.dataset.i18n);
-      });
-      document.querySelectorAll("[data-i18n-attr]").forEach((el) => {
-        el.dataset.i18nAttr.split(";").forEach((pair) => {
-          const [attrName, key] = pair.split(":");
-          if (attrName && key) el.setAttribute(attrName.trim(), t(key.trim()));
-        });
-      });
-      const storeLang = lang === "en" ? "en" : "zh-Hant";
-      document.querySelectorAll("[data-line-store]").forEach((el) => {
-        el.href = LINE_STORE_BASE + storeLang;
-      });
-      document.querySelectorAll(".lang-switch button").forEach((btn) => {
-        btn.setAttribute("aria-pressed", String(btn.dataset.lang === lang));
-      });
-      applyStateText();
-    }
-
-    document.querySelectorAll(".lang-switch button").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        try {
-          localStorage.setItem(LANG_KEY, btn.dataset.lang);
-        } catch {}
-        applyLang(btn.dataset.lang);
-      });
-    });
 
     function attachWorkLinkEvents(root = document) {
       root.querySelectorAll(".work-card").forEach((link) => {
@@ -1081,7 +1026,7 @@
           statusText.textContent = "[gallery ready | 0x6.ai | works loaded]";
         });
         link.addEventListener("click", () => {
-          showToast(`${t("opening")} ${destination}`);
+          showToast(`${t("opening") || "Opening"} ${destination}`);
         });
       });
     }
@@ -1152,7 +1097,7 @@
       }
     }
 
-    applyLang(lang);
+    I18n.onApply(applyStateText);
     attachWorkLinkEvents();
     loadLineStoreWorks();
   </script>

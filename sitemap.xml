@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://0x6.ai/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://0x6.ai/about.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://0x6.ai/terms.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://0x6.ai/privacy.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <priority>0.5</priority>
+  </url>
+</urlset>
