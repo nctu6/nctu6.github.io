@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>0x6.ai | Works</title>
-  <meta name="description" content="0x6.ai 的作品展示。先收錄 LINE 貼圖與表情貼作品集。">
+  <meta name="description" content="0x6.ai 的作品展示，收錄 LINE 貼圖與表情貼，以及 X 動態新聞。">
   <meta property="og:title" content="0x6.ai | Works">
-  <meta property="og:description" content="0x6.ai 的作品展示，包含 LINE 貼圖與表情貼。">
+  <meta property="og:description" content="0x6.ai 的作品展示，包含 LINE 貼圖與表情貼，以及 X 動態新聞。">
   <meta property="og:type" content="website">
   <style>
     *, *::before, *::after {
@@ -501,6 +501,73 @@
       align-self: stretch;
     }
 
+    .works-gap {
+      margin-top: 28px;
+    }
+
+    .x-visual {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 8px;
+      background: #f6f4ef;
+      color: #1c1915;
+    }
+
+    .x-tabs {
+      display: flex;
+      gap: 4px;
+      border-bottom: 1px solid #e4dfd6;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .x-tabs span {
+      padding: 6px 10px;
+      color: #6b645b;
+    }
+
+    .x-tabs span:first-child {
+      color: #1c1915;
+      box-shadow: inset 0 -2px 0 #b8421a;
+    }
+
+    .x-post {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 4px 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #e4dfd6;
+    }
+
+    .x-post:last-child {
+      border-bottom: 0;
+    }
+
+    .x-avatar {
+      grid-row: span 2;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #e4dfd6;
+    }
+
+    .x-line {
+      height: 9px;
+      border-radius: 999px;
+      background: #e4dfd6;
+    }
+
+    .x-line.name {
+      width: 42%;
+      background: #b8421a;
+      opacity: 0.55;
+    }
+
+    .x-line.short {
+      width: 72%;
+    }
+
     .tag-row {
       display: flex;
       flex-wrap: wrap;
@@ -698,6 +765,7 @@
       <ul class="nav-links">
         <li><a href="#works">作品</a></li>
         <li><a href="https://store.line.me/stickershop/author/5344394/zh-Hant" target="_blank" rel="noopener">LINE STORE</a></li>
+        <li><a href="https://x.0x6.ai/" target="_blank" rel="noopener">X</a></li>
       </ul>
     </nav>
   </div>
@@ -757,9 +825,41 @@
       </a>
     </section>
 
+    <section class="section" id="x-wire" aria-labelledby="x-title">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">WORK 002</div>
+          <h2 id="x-title">X 動態新聞</h2>
+        </div>
+      </div>
+
+      <a class="work-card" href="https://x.0x6.ai/" target="_blank" rel="noopener" data-destination="x.0x6.ai" aria-label="開啟 x.0x6.ai">
+        <div class="x-visual" aria-hidden="true">
+          <div class="x-tabs"><span>News</span><span>AI</span><span>Space</span></div>
+          <div class="x-post"><span class="x-avatar"></span><span class="x-line name"></span><span class="x-line"></span></div>
+          <div class="x-post"><span class="x-avatar"></span><span class="x-line name"></span><span class="x-line short"></span></div>
+          <div class="x-post"><span class="x-avatar"></span><span class="x-line name"></span><span class="x-line"></span></div>
+        </div>
+        <div class="work-content">
+          <div class="tag-row" aria-hidden="true">
+            <span class="tag">X</span>
+            <span class="tag">動態整理</span>
+          </div>
+          <h3>x.0x6.ai</h3>
+          <p>把關注的 X 帳號依主題分頁，一頁看完 News、AI、Space 的最新貼文。打開分頁時才更新，每個帳號每六小時最多抓一次。</p>
+          <div class="metrics" aria-hidden="true">
+            <div class="metric"><strong>3</strong><span>主題分頁</span></div>
+            <div class="metric"><strong>6h</strong><span>更新間隔</span></div>
+            <div class="metric"><strong>↗</strong><span>外部連結</span></div>
+          </div>
+          <span class="button primary">打開 x.0x6.ai</span>
+        </div>
+      </a>
+    </section>
+
     <footer class="footer">
       <span>0x6.ai</span>
-      <span>Works gallery, version 001</span>
+      <span>Works gallery, version 002</span>
     </footer>
   </main>
 
@@ -804,14 +904,15 @@
       root.querySelectorAll(".work-card").forEach((link) => {
         if (link.dataset.bound === "true") return;
         link.dataset.bound = "true";
+        const destination = link.dataset.destination || "LINE STORE";
         link.addEventListener("mouseenter", () => {
-          statusText.textContent = "[gallery hover | destination: LINE STORE | target: _blank]";
+          statusText.textContent = `[gallery hover | destination: ${destination} | target: _blank]`;
         });
         link.addEventListener("mouseleave", () => {
           statusText.textContent = "[gallery ready | 0x6.ai | works loaded]";
         });
         link.addEventListener("click", () => {
-          showToast("正在開啟 LINE STORE");
+          showToast(`正在開啟 ${destination}`);
         });
       });
     }
