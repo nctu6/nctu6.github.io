@@ -304,6 +304,8 @@
       .toc { grid-template-columns: 1fr; }
       .nav > a { padding: 0 8px; }
     }
+    .coffee-button { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 8px; color: #08090f !important; background: var(--mint); font-weight: 800; }
+    .coffee-button:hover { text-decoration: none; filter: brightness(1.08); }
   </style>
 </head>
 <body data-page="about">
@@ -353,12 +355,19 @@
           <h2 data-i18n="h3">聯絡</h2>
           <p data-i18n-html="p3">合作、問題或建議，歡迎寄信到 <a href="mailto:nctu6.tw@gmail.com">nctu6.tw@gmail.com</a>。</p>
         </section>
+
+        <section class="card" id="support">
+          <div class="num">04</div>
+          <h2 data-i18n="h4">支持</h2>
+          <p data-i18n="p4">如果這些作品對你有幫助，歡迎請我喝杯咖啡，支持我繼續做下去。</p>
+          <p><a class="coffee-button" href="https://www.paypal.com/paypalme/0x9527" target="_blank" rel="noopener" data-i18n="coffee">☕ 請我喝杯咖啡</a></p>
+        </section>
       </div>
     </div>
 
     <footer class="footer">
       <span>Copyright © 0x6.ai</span>
-      <span class="footer-links"><a href="/about.html" data-i18n="navAbout">關於</a> · <a href="/terms.html" data-i18n="navTerms">服務條款</a> · <a href="/privacy.html" data-i18n="navPrivacy">隱私權政策</a> · <a href="mailto:nctu6.tw@gmail.com">nctu6.tw@gmail.com</a></span>
+      <span class="footer-links"><a href="/about.html" data-i18n="navAbout">關於</a> · <a href="/terms.html" data-i18n="navTerms">服務條款</a> · <a href="/privacy.html" data-i18n="navPrivacy">隱私權政策</a> · <a href="mailto:nctu6.tw@gmail.com">nctu6.tw@gmail.com</a> · <a href="https://www.paypal.com/paypalme/0x9527" target="_blank" rel="noopener" data-i18n="coffee">☕ 請我喝杯咖啡</a></span>
     </footer>
   </main>
 

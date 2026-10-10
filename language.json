@@ -8,7 +8,8 @@
       "navPrivacy": "隱私權政策",
       "tocLabel": "目錄",
       "back": "← 回到作品",
-      "contactLabel": "聯絡"
+      "contactLabel": "聯絡",
+      "coffee": "☕ 請我喝杯咖啡"
     },
     "index": {
       "metaDesc": "0x6.ai 的作品展示：美國運通台灣優惠地圖、X 動態新聞，以及 LINE 貼圖與表情貼。",
@@ -59,7 +60,9 @@
       "w2": "<a href=\"{LINE}\" target=\"_blank\" rel=\"noopener\">LINE 貼圖＆表情貼</a>：在 LINE STORE 販售的原創貼圖。",
       "p2b": "完整介紹請看<a href=\"/#works\">作品頁</a>。",
       "h3": "聯絡",
-      "p3": "合作、問題或建議，歡迎寄信到 <a href=\"mailto:nctu6.tw@gmail.com\">nctu6.tw@gmail.com</a>。"
+      "p3": "合作、問題或建議，歡迎寄信到 <a href=\"mailto:nctu6.tw@gmail.com\">nctu6.tw@gmail.com</a>。",
+      "h4": "支持",
+      "p4": "如果這些作品對你有幫助，歡迎請我喝杯咖啡，支持我繼續做下去。"
     },
     "terms": {
       "docTitle": "服務條款 | 0x6.ai",
@@ -163,7 +166,8 @@
       "navPrivacy": "Privacy",
       "tocLabel": "Contents",
       "back": "← Back to works",
-      "contactLabel": "Contact"
+      "contactLabel": "Contact",
+      "coffee": "☕ Buy me a coffee"
     },
     "index": {
       "metaDesc": "Works by 0x6.ai: the AMEX Taiwan Offers Map, an X news feed, and LINE stickers and emoji.",
@@ -214,7 +218,9 @@
       "w2": "<a href=\"{LINE}\" target=\"_blank\" rel=\"noopener\">LINE Stickers & Emoji</a>: original stickers sold on the LINE STORE.",
       "p2b": "See the <a href=\"/#works\">works page</a> for details.",
       "h3": "Contact",
-      "p3": "For collaboration, questions, or feedback, email <a href=\"mailto:nctu6.tw@gmail.com\">nctu6.tw@gmail.com</a>."
+      "p3": "For collaboration, questions, or feedback, email <a href=\"mailto:nctu6.tw@gmail.com\">nctu6.tw@gmail.com</a>.",
+      "h4": "Support",
+      "p4": "If these works help you, you're welcome to buy me a coffee and support what I make next."
     },
     "terms": {
       "docTitle": "Terms of Service | 0x6.ai",
