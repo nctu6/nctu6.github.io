@@ -211,8 +211,8 @@
         ]
       },
       "description": {
-        "zh-Hant": "把關注的 X 帳號依主題分頁，一頁看完 News、AI、Space 的最新貼文。打開分頁時才更新，每個帳號每六小時最多抓一次。",
-        "en": "Followed X accounts grouped into topic tabs, so you can catch up on the latest News, AI, and Space posts on one page. It updates only when a tab is opened, at most once every six hours per account."
+        "zh-Hant": "把關注的 X 帳號依主題分頁（如 News、AI、Space、People），一頁看完最新貼文。打開分頁時才更新，每個帳號每六小時最多抓一次。",
+        "en": "Followed X accounts grouped into topic tabs (e.g. News, AI, Space, People), so you can catch up on the latest posts on one page. It updates only when a tab is opened, at most once every six hours per account."
       },
       "metrics": [
         {
@@ -244,11 +244,11 @@
       "data": {
         "zh-Hant": [
           "不需要登入，不蒐集個人資料。",
-          "顯示 X 上的公開貼文；頭像與圖片可能由 X 的伺服器提供。"
+          "顯示 X 上的公開貼文；貼文圖片會先下載，再由 x.0x6.ai 自己提供，只有下載失敗時才改用 X 的原始圖片網址；帳號頭像則直接從 X 的伺服器載入。"
         ],
         "en": [
           "No sign-in and no personal data collected.",
-          "Shows public posts from X; avatars and images may be served by X's servers."
+          "Shows public posts from X. Post images are downloaded and served from x.0x6.ai itself; the original X image URL is used only if a download fails. Account avatars load directly from X's servers."
         ]
       },
       "services": [
