@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>0x6.ai | 作品集</title>
-  <meta name="description" data-i18n-attr="content:metaDesc" content="0x6.ai 的作品展示，收錄 LINE 貼圖與表情貼，以及 X 動態新聞。">
+  <meta name="description" data-i18n-attr="content:metaDesc" content="0x6.ai 的作品展示：美國運通台灣優惠地圖、X 動態新聞，以及 LINE 貼圖與表情貼。">
   <link rel="canonical" href="https://0x6.ai/">
   <meta property="og:site_name" content="0x6.ai">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://0x6.ai/">
   <meta property="og:title" content="0x6.ai | Works">
-  <meta property="og:description" data-i18n-attr="content:ogDesc" content="0x6.ai 的作品展示，包含 LINE 貼圖與表情貼，以及 X 動態新聞。">
+  <meta property="og:description" data-i18n-attr="content:ogDesc" content="0x6.ai 的作品展示：美國運通台灣優惠地圖、X 動態新聞，以及 LINE 貼圖與表情貼。">
   <meta property="og:image" content="https://0x6.ai/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -19,7 +19,7 @@
   <meta property="og:locale:alternate" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="0x6.ai | Works">
-  <meta name="twitter:description" content="0x6.ai 的作品展示，收錄 LINE 貼圖與表情貼，以及 X 動態新聞。">
+  <meta name="twitter:description" content="0x6.ai 的作品展示：美國運通台灣優惠地圖、X 動態新聞，以及 LINE 貼圖與表情貼。">
   <meta name="twitter:image" content="https://0x6.ai/og-image.png">
   <meta name="theme-color" content="#08090f">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -648,6 +648,61 @@
       width: 72%;
     }
 
+    .map-visual {
+      position: relative;
+      min-height: 230px;
+      border-radius: 8px;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px) 0 0 / 28px 28px,
+        linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px) 0 0 / 28px 28px,
+        #eef3ea;
+    }
+
+    .map-road { position: absolute; background: #fff; box-shadow: 0 0 0 1px #dbe3d6; }
+    .map-road.r1 { left: -10%; right: -10%; top: 38%; height: 14px; transform: rotate(-8deg); }
+    .map-road.r2 { top: -10%; bottom: -10%; left: 58%; width: 12px; transform: rotate(12deg); }
+    .map-road.r3 { left: -10%; right: 30%; top: 74%; height: 9px; transform: rotate(5deg); }
+
+    .map-pin {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50% 50% 50% 0;
+      background: #006fcf;
+      transform: rotate(-45deg);
+      box-shadow: 0 4px 10px rgba(0, 111, 207, 0.35);
+    }
+
+    .map-pin::after { content: ""; position: absolute; inset: 7px; border-radius: 50%; background: #fff; }
+    .map-pin.p1 { left: 22%; top: 20%; }
+    .map-pin.p2 { left: 70%; top: 28%; }
+    .map-pin.p3 { left: 40%; top: 58%; background: #f0b15a; }
+
+    .map-me {
+      position: absolute;
+      left: 52%;
+      top: 46%;
+      width: 16px;
+      height: 16px;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      background: #17b978;
+      box-shadow: 0 0 0 10px rgba(23, 185, 120, 0.18);
+    }
+
+    .generic-visual {
+      display: grid;
+      place-items: center;
+      min-height: 200px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--mint);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    div.work-card:hover { transform: none; }
+
     .tag-row {
       display: flex;
       flex-wrap: wrap;
@@ -893,7 +948,9 @@
       </aside>
     </section>
 
-    <section class="section" id="works" aria-labelledby="x-title">
+    <div id="works">
+      <div id="works-list">
+    <section class="section" id="x-feed" aria-labelledby="x-title">
       <div class="section-head">
         <div>
           <div class="eyebrow">WORK 002</div>
@@ -952,6 +1009,8 @@
         </div>
       </a>
     </section>
+      </div>
+    </div>
 
     <footer class="footer">
       <span>Copyright © 0x6.ai</span>
@@ -962,6 +1021,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="/i18n.js"></script>
+  <script src="/apps.js"></script>
   <script>
     const STICKERS_DATA_URL = "stickers.json";
     let workState = "loading";
@@ -987,9 +1047,8 @@
     const heroLoading = document.getElementById("heroLoading");
     const signalTitle = document.getElementById("signalTitle");
     const signalText = document.getElementById("signalText");
-    const featuredVisual = document.getElementById("featuredVisual");
-    const workSummary = document.getElementById("workSummary");
-    const workCount = document.getElementById("workCount");
+    const $ = (id) => document.getElementById(id) || document.createElement("div");
+    let lineItems = null;
     let toastTimer = 0;
 
     function showToast(message) {
@@ -1003,13 +1062,13 @@
       if (!I18n.ready) return;
       if (workState === "live") {
         signalText.textContent = t("signalLive");
-        workSummary.textContent = t("lineSummary");
+        $("workSummary").textContent = t("lineSummary");
       } else if (workState === "error") {
         signalText.textContent = t("signalError");
-        workSummary.textContent = t("lineSummaryError");
+        $("workSummary").textContent = t("lineSummaryError");
       } else {
         signalText.textContent = t("signalLoading");
-        workSummary.textContent = t("lineSummary");
+        $("workSummary").textContent = t("lineSummary");
       }
     }
 
@@ -1058,17 +1117,18 @@
     }
 
     function renderFeatured(items) {
-      featuredVisual.innerHTML = "";
+      $("featuredVisual").innerHTML = "";
       items.slice(0, 3).forEach((item) => {
-        featuredVisual.append(createImage(item.image, ""));
+        $("featuredVisual").append(createImage(item.image, ""));
       });
     }
 
     function renderWorks(items) {
+      lineItems = items;
       renderHero(items);
       renderFeatured(items);
 
-      workCount.textContent = String(items.length);
+      $("workCount").textContent = String(items.length);
       workState = "live";
       signalTitle.textContent = "STATUS: LIVE";
       applyStateText();
@@ -1079,7 +1139,7 @@
       heroLoading.textContent = "works unavailable";
       signalTitle.textContent = "STATUS: RETRY LATER";
       workState = "error";
-      workCount.textContent = "-";
+      $("workCount").textContent = "-";
       applyStateText();
       statusText.textContent = "[gallery error | works unavailable]";
     }
@@ -1098,6 +1158,16 @@
     }
 
     I18n.onApply(applyStateText);
+    Apps.onRender(() => {
+      if (lineItems) {
+        renderFeatured(lineItems);
+        $("workCount").textContent = String(lineItems.length);
+      } else if (workState === "error") {
+        $("workCount").textContent = "-";
+      }
+      applyStateText();
+      attachWorkLinkEvents();
+    });
     attachWorkLinkEvents();
     loadLineStoreWorks();
   </script>

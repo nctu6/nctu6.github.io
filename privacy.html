@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>隱私權政策 | 0x6.ai</title>
-  <meta name="description" data-i18n-attr="content:metaDesc" content="0x6.ai 網站與作品的個人資料處理說明。">
+  <meta name="description" data-i18n-attr="content:metaDesc" content="0x6.ai 網站、App 與作品的個人資料處理說明。">
   <link rel="canonical" href="https://0x6.ai/privacy.html">
   <meta property="og:site_name" content="0x6.ai">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://0x6.ai/privacy.html">
   <meta property="og:title" content="Privacy Policy | 0x6.ai">
-  <meta property="og:description" content="0x6.ai 網站與作品的個人資料處理說明。">
+  <meta property="og:description" content="0x6.ai 網站、App 與作品的個人資料處理說明。">
   <meta property="og:image" content="https://0x6.ai/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -19,7 +19,7 @@
   <meta property="og:locale:alternate" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Privacy Policy | 0x6.ai">
-  <meta name="twitter:description" content="0x6.ai 網站與作品的個人資料處理說明。">
+  <meta name="twitter:description" content="0x6.ai 網站、App 與作品的個人資料處理說明。">
   <meta name="twitter:image" content="https://0x6.ai/og-image.png">
   <meta name="theme-color" content="#08090f">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -294,6 +294,14 @@
       .toc { grid-template-columns: 1fr; }
       .nav > a { padding: 0 8px; }
     }
+
+    .apps-grid { display: grid; gap: 12px; margin-top: 12px; }
+    .app-entry { padding: 16px 18px; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; background: rgba(255, 255, 255, 0.03); }
+    .app-entry h3 { font-size: 18px; line-height: 1.4; }
+    .app-meta { color: var(--quiet); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; }
+    .card .app-label { margin-top: 10px; color: var(--ink); font-size: 14px; font-weight: 700; }
+    .card .app-entry ul { margin-top: 4px; }
+    .card .app-entry li { font-size: 15px; }
   </style>
 </head>
 <body data-page="privacy">
@@ -312,11 +320,11 @@
   <main class="page">
     <div class="eyebrow" data-i18n="eyebrow">法律條款 / privacy</div>
     <h1 data-i18n="title">隱私權政策</h1>
-    <p class="lead" data-i18n="lead">說明 0x6.ai 網站與各項作品如何處理你的資料。簡單說：我們不要求登入、不放廣告、不做追蹤分析，也不販售任何資料。</p>
-    <p class="updated" data-i18n="updated">最後更新：2026 年 10 月 9 日</p>
+    <p class="lead" data-i18n="lead">說明 0x6.ai 的網站、App 與各項作品如何處理你的資料。簡單說：不要求登入、不放廣告、不做追蹤分析，位置只在你同意後使用，也不販售任何資料。</p>
+    <p class="updated" data-i18n="updated">最後更新：2026 年 10 月 10 日</p>
 
     <div class="summary">
-      <div><strong data-i18n="s1t">免登入</strong><span data-i18n="s1d">瀏覽作品不需要帳號，也不會要求你填寫個人資料。</span></div>
+      <div><strong data-i18n="s1t">免登入</strong><span data-i18n="s1d">使用作品不需要帳號，也不會要求你填寫個人資料。</span></div>
       <div><strong data-i18n="s2t">無追蹤</strong><span data-i18n="s2d">不使用廣告、追蹤 Cookie 或第三方分析工具。</span></div>
       <div><strong data-i18n="s3t">不販售</strong><span data-i18n="s3d">不出售、出租或交換任何可識別你身分的資料。</span></div>
     </div>
@@ -328,80 +336,84 @@
         <section class="card" id="scope">
           <div class="num">01</div>
           <h2 data-i18n="h1">適用範圍</h2>
-          <p data-i18n-html="p1">本政策適用於 0x6.ai 經營的網站與作品，包括：</p>
-          <ul>
-            <li data-i18n-html="p1a"><a href="/">0x6.ai 作品網站</a>（本站）</li>
-            <li data-i18n-html="p1b"><a href="https://x.0x6.ai/" target="_blank" rel="noopener">x.0x6.ai</a>：X 動態新聞</li>
-            <li data-i18n-html="p1c">於 <a href="https://store.line.me/stickershop/author/5344394/zh-Hant" target="_blank" rel="noopener" data-line-store>LINE STORE</a> 販售的貼圖與表情貼</li>
-          </ul>
-          <p data-i18n="p1d">之後新增的作品若沒有另外的隱私說明，也適用本政策。</p>
+          <p data-i18n-html="p1_0">本政策適用於0x6.ai，以及 0x6.ai 發布的所有網站、App 與作品（包括 0x6.ai 的所有子網域，以及以 0x6.ai 開發者名稱上架的 App）。</p>
+          <p data-i18n-html="p1_1">每項作品實際使用哪些資料與第三方服務，列在下方的<a href="#apps">各作品說明</a>。之後新增的作品會加到那份清單，並同樣適用本政策。</p>
         </section>
 
         <section class="card" id="personal">
           <div class="num">02</div>
           <h2 data-i18n="h2">個人資料的蒐集</h2>
-          <p data-i18n="p2">我們的網站與作品都可以匿名使用，不提供註冊、登入、留言或表單功能，因此不會主動蒐集你的姓名、Email、電話等個人資料。只有在你主動寫信聯絡我們時，才會收到你提供的 Email 地址與信件內容，並且只用來回覆你。</p>
+          <p data-i18n-html="p2_0">我們的網站與 App 都可以匿名使用，不提供註冊、登入、留言或表單功能，因此不會主動蒐集你的姓名、Email、電話等個人資料。只有在你主動寫信聯絡我們時，才會收到你提供的 Email 地址與信件內容，並且只用來回覆你。</p>
         </section>
 
         <section class="card" id="technical">
           <div class="num">03</div>
           <h2 data-i18n="h3">連線與技術資料</h2>
-          <p data-i18n="p3">和所有網站一樣，你的瀏覽器在連線時會送出 IP 位址、瀏覽器類型、作業系統、請求時間與造訪的網址等技術資料。這些資料可能由下方列出的主機與網路服務商依其政策記錄，用於安全防護、除錯與維持服務運作。我們不會用這些資料辨識你的身分或建立個人檔案。</p>
+          <p data-i18n-html="p3_0">和所有網路服務一樣，你的瀏覽器或裝置在連線時會送出 IP 位址、瀏覽器或裝置類型、作業系統、請求時間與造訪的網址等技術資料。這些資料可能由我們使用的主機與網路服務商依其政策記錄，用於安全防護、除錯與維持服務運作。我們不會用這些資料辨識你的身分或建立個人檔案。</p>
+        </section>
+
+        <section class="card" id="location">
+          <div class="num">04</div>
+          <h2 data-i18n="h4">位置資訊</h2>
+          <p data-i18n-html="p4_0">部分作品（例如地圖類作品）提供「附近」功能，需要用到你的位置。只有在你透過瀏覽器或裝置的權限提示同意後，我們才會取得位置；不同意也能使用其他功能。</p>
+          <p data-i18n-html="p4_1">位置只用來計算或顯示你附近的結果。需要傳到我們的伺服器計算時，只用於該次請求，不會保存，也不會和其他資料連結。你可以隨時在瀏覽器或裝置設定中撤回定位權限。各作品如何使用位置，請見下方各作品說明。</p>
         </section>
 
         <section class="card" id="storage">
-          <div class="num">04</div>
-          <h2 data-i18n="h4">Cookie 與本機儲存</h2>
-          <p data-i18n="p4">本站不設定 Cookie。我們只用瀏覽器的 localStorage 記住你選擇的介面語言（EN 或繁中），這筆設定只存在你的裝置上，不會傳回伺服器。你可以隨時從瀏覽器設定清除。</p>
+          <div class="num">05</div>
+          <h2 data-i18n="h5">Cookie 與本機儲存</h2>
+          <p data-i18n-html="p5_0">我們不使用廣告或追蹤用的 Cookie。部分作品會用瀏覽器的 localStorage 或 App 的本機儲存空間記住你的偏好設定（例如介面語言），這些資料只存在你的裝置上，不會傳回伺服器，你可以隨時清除。我們使用的網路服務商可能為了安全防護設定必要的 Cookie。</p>
         </section>
 
         <section class="card" id="thirdparty">
-          <div class="num">05</div>
-          <h2 data-i18n="h5">第三方服務</h2>
-          <p data-i18n="p5">為了提供網站內容，你的瀏覽器會直接連線到以下服務，它們會依各自的隱私權政策處理連線資料：</p>
-          <ul>
-            <li data-i18n-html="p5a"><b>GitHub Pages</b>：本站的主機服務。</li>
-            <li data-i18n-html="p5b"><b>LINE</b>：作品預覽圖由 LINE 的圖片伺服器提供；點擊作品卡會前往 LINE STORE。</li>
-            <li data-i18n-html="p5c"><b>Cloudflare</b>：x.0x6.ai 的網路與安全服務。</li>
-            <li data-i18n-html="p5d"><b>X</b>：x.0x6.ai 顯示的頭像與圖片可能由 X 的伺服器提供；點擊貼文會前往 X。</li>
-          </ul>
-          <p data-i18n="p5e">離開本站前往第三方網站後，請以該網站的隱私權政策為準。在 LINE STORE 購買貼圖時，付款與帳號資料由 LINE 處理，我們不會取得。</p>
+          <div class="num">06</div>
+          <h2 data-i18n="h6">第三方服務</h2>
+          <p data-i18n-html="p6_0">為了提供服務，你的瀏覽器或裝置可能會直接連線到以下類別的第三方服務，它們會依各自的隱私權政策處理資料：</p>
+          <ul id="services-list"></ul>
+          <p data-i18n-html="p6_2">使用地圖功能時，地圖由 Google 提供，適用 Google 的隱私權政策與服務條款。離開本站前往第三方網站，或在第三方平台（例如 LINE STORE、App Store）購買或下載時，付款與帳號資料由該平台處理，我們不會取得，並以該平台的政策為準。</p>
+        </section>
+
+        <section class="card" id="apps">
+          <div class="num">07</div>
+          <h2 data-i18n="h7">各作品說明</h2>
+          <p data-i18n-html="p7_0">以下列出本政策目前涵蓋的作品，以及各自使用的資料與第三方服務：</p>
+          <div class="apps-grid" id="apps-coverage"></div>
         </section>
 
         <section class="card" id="use">
-          <div class="num">06</div>
-          <h2 data-i18n="h6">資料的使用與分享</h2>
-          <p data-i18n="p6">我們只為了提供、維護與改善網站和作品，或回覆你的來信而使用資料。我們不會出售、出租或交換任何可識別你身分的資料給其他個人、企業或機關，除非依法律要求必須提供。</p>
+          <div class="num">08</div>
+          <h2 data-i18n="h8">資料的使用與分享</h2>
+          <p data-i18n-html="p8_0">我們只為了提供、維護與改善網站、App 和作品，或回覆你的來信而使用資料。我們不會出售、出租或交換任何可識別你身分的資料給其他個人、企業或機關，除非依法律要求必須提供。</p>
         </section>
 
         <section class="card" id="security">
-          <div class="num">07</div>
-          <h2 data-i18n="h7">資料保護</h2>
-          <p data-i18n="p7">本站全程使用 HTTPS 加密連線。因為我們幾乎不保存個人資料，可能受影響的範圍也很小；來信會保存在受保護的信箱帳號中，不再需要時即刪除。</p>
+          <div class="num">09</div>
+          <h2 data-i18n="h9">資料保護</h2>
+          <p data-i18n-html="p9_0">我們的網站全程使用 HTTPS 加密連線。因為我們幾乎不保存個人資料，可能受影響的範圍也很小；來信會保存在受保護的信箱帳號中，不再需要時即刪除。</p>
         </section>
 
         <section class="card" id="children">
-          <div class="num">08</div>
-          <h2 data-i18n="h8">兒童隱私</h2>
-          <p data-i18n="p8">我們的服務不是專為兒童設計，也不會在知情的情況下蒐集兒童的個人資料。如果你認為孩子曾提供個人資料給我們，請聯絡我們刪除。</p>
+          <div class="num">10</div>
+          <h2 data-i18n="h10">兒童隱私</h2>
+          <p data-i18n-html="p10_0">我們的服務不是專為兒童設計，也不會在知情的情況下蒐集兒童的個人資料。如果你認為孩子曾提供個人資料給我們，請聯絡我們刪除。</p>
         </section>
 
         <section class="card" id="rights">
-          <div class="num">09</div>
-          <h2 data-i18n="h9">你的權利</h2>
-          <p data-i18n="p9">依中華民國《個人資料保護法》及你所在地區的相關法規，你可以要求查詢、閱覽、更正或刪除我們持有的你的個人資料，或撤回先前的同意。請透過下方聯絡方式來信，我們會盡快處理。</p>
+          <div class="num">11</div>
+          <h2 data-i18n="h11">你的權利</h2>
+          <p data-i18n-html="p11_0">依中華民國《個人資料保護法》及你所在地區的相關法規，你可以要求查詢、閱覽、更正或刪除我們持有的你的個人資料，或撤回先前的同意。請透過下方聯絡方式來信，我們會盡快處理。</p>
         </section>
 
         <section class="card" id="changes">
-          <div class="num">10</div>
-          <h2 data-i18n="h10">政策的修正</h2>
-          <p data-i18n="p10">本政策可能因服務內容或法規調整而修正，修正後會公布在本頁並更新上方的最後更新日期。重大變更時，我們會在網站上另外標示。</p>
+          <div class="num">12</div>
+          <h2 data-i18n="h12">政策的修正</h2>
+          <p data-i18n-html="p12_0">本政策可能因服務內容或法規調整而修正，修正後會公布在本頁並更新上方的最後更新日期。重大變更時，我們會在網站上另外標示。新增作品只會更新各作品說明，不影響本政策的一般條款。</p>
         </section>
 
         <section class="card" id="contact">
-          <div class="num">11</div>
-          <h2 data-i18n="h11">聯絡我們</h2>
-          <p data-i18n-html="p11">對本政策有任何問題，或想行使上述權利，請寄信至 <a href="mailto:nctu6.tw@gmail.com">nctu6.tw@gmail.com</a>。</p>
+          <div class="num">13</div>
+          <h2 data-i18n="h13">聯絡我們</h2>
+          <p data-i18n-html="p13_0">對本政策有任何問題，或想行使上述權利，請寄信至 <a href="mailto:nctu6.tw@gmail.com">nctu6.tw@gmail.com</a>。</p>
         </section>
       </div>
     </div>
@@ -413,6 +425,7 @@
   </main>
 
   <script src="/i18n.js"></script>
+  <script src="/apps.js"></script>
   <script>
     function buildToc() {
       const toc = document.getElementById("toc");

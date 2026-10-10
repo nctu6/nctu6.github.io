@@ -1,0 +1,372 @@
+{
+  "_comment": "Single source of truth for 0x6.ai works and apps. Add one entry to `apps` to publish a new work: it appears on the works page (when listed is true), the about page, the privacy policy's per-app section, and the terms' list. Order = newest first. Text fields are { \"zh-Hant\": ..., \"en\": ... }.",
+  "services": {
+    "github-pages": {
+      "name": "GitHub Pages",
+      "category": "hosting",
+      "privacy": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement"
+    },
+    "cloudflare": {
+      "name": "Cloudflare",
+      "category": "network",
+      "privacy": "https://www.cloudflare.com/privacypolicy/"
+    },
+    "google-maps": {
+      "name": "Google Maps",
+      "category": "maps",
+      "privacy": "https://policies.google.com/privacy",
+      "terms": "https://maps.google.com/help/terms_maps/"
+    },
+    "google-maps-ios": {
+      "name": "Google Maps SDK for iOS",
+      "category": "maps",
+      "privacy": "https://policies.google.com/privacy",
+      "terms": "https://maps.google.com/help/terms_maps/"
+    },
+    "line": {
+      "name": "LINE",
+      "category": "platform",
+      "privacy": "https://line.me/en/terms/policy/"
+    },
+    "x": {
+      "name": "X",
+      "category": "platform",
+      "privacy": "https://x.com/privacy"
+    },
+    "app-store": {
+      "name": "Apple App Store",
+      "category": "distribution",
+      "privacy": "https://www.apple.com/legal/privacy/"
+    }
+  },
+  "categories": {
+    "hosting": {
+      "zh-Hant": "主機",
+      "en": "Hosting"
+    },
+    "network": {
+      "zh-Hant": "網路與安全",
+      "en": "Network & security"
+    },
+    "maps": {
+      "zh-Hant": "地圖",
+      "en": "Maps"
+    },
+    "platform": {
+      "zh-Hant": "內容與販售平台",
+      "en": "Content & store platform"
+    },
+    "distribution": {
+      "zh-Hant": "App 發行",
+      "en": "App distribution"
+    }
+  },
+  "apps": [
+    {
+      "id": "amex-web",
+      "work": "003",
+      "listed": true,
+      "kind": "web",
+      "visual": "map",
+      "url": "https://amex.0x6.ai/",
+      "domain": "amex.0x6.ai",
+      "name": {
+        "zh-Hant": "美國運通台灣優惠地圖",
+        "en": "AMEX Taiwan Offers Map"
+      },
+      "tags": {
+        "zh-Hant": [
+          "地圖",
+          "信用卡優惠",
+          "非官方"
+        ],
+        "en": [
+          "Map",
+          "Card offers",
+          "Unofficial"
+        ]
+      },
+      "description": {
+        "zh-Hant": "在地圖上找你附近的美國運通台灣卡友優惠。允許定位後，會依你的位置列出附近可用的優惠。",
+        "en": "Find American Express Taiwan card offers near you on a map. Allow location access and it lists the offers available nearby."
+      },
+      "metrics": [
+        {
+          "value": "📍",
+          "label": {
+            "zh-Hant": "附近優惠",
+            "en": "Nearby offers"
+          }
+        },
+        {
+          "value": "GPS",
+          "label": {
+            "zh-Hant": "允許定位後使用",
+            "en": "With location permission"
+          }
+        },
+        {
+          "value": "↗",
+          "label": {
+            "zh-Hant": "外部連結",
+            "en": "External link"
+          }
+        }
+      ],
+      "open": {
+        "zh-Hant": "打開 amex.0x6.ai",
+        "en": "Open amex.0x6.ai"
+      },
+      "data": {
+        "zh-Hant": [
+          "只有在你允許瀏覽器定位後才會取得位置；座標只會傳到 amex.0x6.ai 的伺服器用來計算附近優惠，不會保存。",
+          "使用 localStorage 記住介面偏好設定，只存在你的裝置上。",
+          "不需要登入，沒有廣告，也不做追蹤分析。"
+        ],
+        "en": [
+          "Your location is read only after you allow browser geolocation. The coordinates are sent to the amex.0x6.ai server only to compute nearby offers and are not stored.",
+          "localStorage remembers your interface preferences, on your device only.",
+          "No sign-in, no ads, and no tracking analytics."
+        ]
+      },
+      "services": [
+        "google-maps",
+        "cloudflare"
+      ],
+      "disclaimer": {
+        "zh-Hant": "本服務為非官方作品，與美國運通（American Express）無關，也未獲其認可或贊助。優惠內容以美國運通及商家公告為準。",
+        "en": "This is an unofficial work, not affiliated with, endorsed, or sponsored by American Express. Offer details follow American Express and merchant announcements."
+      }
+    },
+    {
+      "id": "amex-ios",
+      "work": "004",
+      "listed": false,
+      "status": "coming",
+      "kind": "ios",
+      "visual": "map",
+      "url": null,
+      "domain": "iPhone · ai.0x6.amexbenefits",
+      "name": {
+        "zh-Hant": "美運優惠（iPhone App）",
+        "en": "美運優惠 (iPhone app)"
+      },
+      "tags": {
+        "zh-Hant": [
+          "iPhone",
+          "地圖",
+          "非官方"
+        ],
+        "en": [
+          "iPhone",
+          "Map",
+          "Unofficial"
+        ]
+      },
+      "description": {
+        "zh-Hant": "美國運通台灣優惠地圖的 iPhone 版，即將推出。",
+        "en": "The iPhone version of the AMEX Taiwan Offers Map, coming soon."
+      },
+      "data": {
+        "zh-Hant": [
+          "只有在你允許後才會使用裝置位置，用來顯示附近的優惠。",
+          "優惠資料內建在 App 中。",
+          "沒有帳號，也不做追蹤。"
+        ],
+        "en": [
+          "Uses your device location only with your permission, to show nearby offers.",
+          "Offer data is bundled with the app.",
+          "No accounts and no tracking."
+        ]
+      },
+      "services": [
+        "google-maps-ios",
+        "app-store"
+      ],
+      "disclaimer": {
+        "zh-Hant": "本 App 為非官方作品，與美國運通（American Express）無關，也未獲其認可或贊助。優惠內容以美國運通及商家公告為準。",
+        "en": "This app is an unofficial work, not affiliated with, endorsed, or sponsored by American Express. Offer details follow American Express and merchant announcements."
+      }
+    },
+    {
+      "id": "x-feed",
+      "work": "002",
+      "listed": true,
+      "kind": "web",
+      "visual": "x",
+      "url": "https://x.0x6.ai/",
+      "domain": "x.0x6.ai",
+      "name": {
+        "zh-Hant": "X 動態新聞 (停班停課最新通知)",
+        "en": "X News Feed (Latest Typhoon Day Closure Alerts)"
+      },
+      "tags": {
+        "zh-Hant": [
+          "X",
+          "動態整理"
+        ],
+        "en": [
+          "X",
+          "Feed"
+        ]
+      },
+      "description": {
+        "zh-Hant": "把關注的 X 帳號依主題分頁，一頁看完 News、AI、Space 的最新貼文。打開分頁時才更新，每個帳號每六小時最多抓一次。",
+        "en": "Followed X accounts grouped into topic tabs, so you can catch up on the latest News, AI, and Space posts on one page. It updates only when a tab is opened, at most once every six hours per account."
+      },
+      "metrics": [
+        {
+          "value": "3",
+          "label": {
+            "zh-Hant": "主題分頁",
+            "en": "Topic tabs"
+          }
+        },
+        {
+          "value": "6h",
+          "label": {
+            "zh-Hant": "更新間隔",
+            "en": "Update interval"
+          }
+        },
+        {
+          "value": "↗",
+          "label": {
+            "zh-Hant": "外部連結",
+            "en": "External link"
+          }
+        }
+      ],
+      "open": {
+        "zh-Hant": "打開 x.0x6.ai",
+        "en": "Open x.0x6.ai"
+      },
+      "data": {
+        "zh-Hant": [
+          "不需要登入，不蒐集個人資料。",
+          "顯示 X 上的公開貼文；頭像與圖片可能由 X 的伺服器提供。"
+        ],
+        "en": [
+          "No sign-in and no personal data collected.",
+          "Shows public posts from X; avatars and images may be served by X's servers."
+        ]
+      },
+      "services": [
+        "cloudflare",
+        "x"
+      ],
+      "disclaimer": {
+        "zh-Hant": "貼文內容、圖片與帳號名稱的權利屬於原作者與 X，不代表 0x6.ai 的立場；內容會延遲更新，請以 X 上的原文為準。",
+        "en": "Rights in posts, images, and account names belong to their authors and X, and do not reflect the views of 0x6.ai. Content is updated with a delay, so rely on the original post on X."
+      }
+    },
+    {
+      "id": "line-stickers",
+      "work": "001",
+      "listed": true,
+      "kind": "store",
+      "visual": "line",
+      "url": "{LINE}",
+      "domain": "LINE STORE",
+      "name": {
+        "zh-Hant": "LINE 貼圖＆表情貼",
+        "en": "LINE Stickers & Emoji"
+      },
+      "heading": {
+        "zh-Hant": "0x6.ai 的 LINE 貼圖＆表情貼",
+        "en": "LINE stickers & emoji by 0x6.ai"
+      },
+      "tags": {
+        "zh-Hant": [
+          "LINE STORE",
+          "貼圖",
+          "表情貼"
+        ],
+        "en": [
+          "LINE STORE",
+          "Stickers",
+          "Emoji"
+        ]
+      },
+      "description": {
+        "zh-Hant": "用貼圖把一句話變成一個表情，收錄日常情緒、角色小劇場與可愛生活片段。",
+        "en": "Stickers that turn a phrase into an expression: everyday moods, little character skits, and cute slices of life."
+      },
+      "metrics": [
+        {
+          "value": "{COUNT}",
+          "label": {
+            "zh-Hant": "公開作品",
+            "en": "Published"
+          }
+        },
+        {
+          "value": {
+            "zh-Hant": "TW",
+            "en": "EN"
+          },
+          "label": {
+            "zh-Hant": "繁體中文商店頁",
+            "en": "English store page"
+          }
+        },
+        {
+          "value": "↗",
+          "label": {
+            "zh-Hant": "外部連結",
+            "en": "External link"
+          }
+        }
+      ],
+      "open": {
+        "zh-Hant": "打開 LINE STORE",
+        "en": "Open LINE STORE"
+      },
+      "data": {
+        "zh-Hant": [
+          "作品頁不蒐集個人資料；預覽圖由 LINE 的圖片伺服器提供。",
+          "在 LINE STORE 購買時，付款與帳號資料由 LINE 處理，我們不會取得。"
+        ],
+        "en": [
+          "The works page collects no personal data; preview images are served by LINE's image servers.",
+          "When you buy on the LINE STORE, LINE handles payment and account details; we never receive them."
+        ]
+      },
+      "services": [
+        "line"
+      ],
+      "disclaimer": {
+        "zh-Hant": "購買、付款、退款與使用方式依 LINE 的服務條款辦理；購買取得的是在 LINE 內使用的權利，不含著作權或商業授權。",
+        "en": "Purchases, payments, refunds, and use follow LINE's terms. A purchase grants use within LINE only, not copyright or a commercial license."
+      }
+    },
+    {
+      "id": "site",
+      "work": "000",
+      "listed": false,
+      "kind": "web",
+      "url": "https://0x6.ai/",
+      "domain": "0x6.ai",
+      "name": {
+        "zh-Hant": "0x6.ai 作品網站",
+        "en": "0x6.ai works website"
+      },
+      "description": {
+        "zh-Hant": "本站。",
+        "en": "This site."
+      },
+      "data": {
+        "zh-Hant": [
+          "不設定 Cookie；只用 localStorage 記住你選擇的介面語言。"
+        ],
+        "en": [
+          "Sets no cookies; localStorage only remembers your interface language."
+        ]
+      },
+      "services": [
+        "github-pages",
+        "line"
+      ]
+    }
+  ]
+}
