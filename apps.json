@@ -11,6 +11,11 @@
       "category": "network",
       "privacy": "https://www.cloudflare.com/privacypolicy/"
     },
+    "cloudflare-turnstile": {
+      "name": "Cloudflare Turnstile",
+      "category": "network",
+      "privacy": "https://www.cloudflare.com/turnstile-privacy-policy/"
+    },
     "google-maps": {
       "name": "Google Maps",
       "category": "maps",
@@ -121,17 +126,20 @@
         "zh-Hant": [
           "只有在你允許瀏覽器定位後才會取得位置；座標只會傳到 amex.0x6.ai 的伺服器用來計算附近優惠，不會保存。",
           "使用 localStorage 記住介面偏好設定，只存在你的裝置上。",
+          "為防止濫用，網站使用 Cloudflare 的機器人防護（Bot Fight Mode）與 Turnstile 驗證，並以短時效的頁面工作階段權杖保護請求；這些只用於安全防護，不用來追蹤你。",
           "不需要登入，沒有廣告，也不做追蹤分析。"
         ],
         "en": [
           "Your location is read only after you allow browser geolocation. The coordinates are sent to the amex.0x6.ai server only to compute nearby offers and are not stored.",
           "localStorage remembers your interface preferences, on your device only.",
+          "To prevent abuse, the site uses Cloudflare Bot Fight Mode and Turnstile, plus a short-lived page session token to protect requests; these are used only for security, not to track you.",
           "No sign-in, no ads, and no tracking analytics."
         ]
       },
       "services": [
         "google-maps",
-        "cloudflare"
+        "cloudflare",
+        "cloudflare-turnstile"
       ],
       "disclaimer": {
         "zh-Hant": "本服務為非官方作品，與美國運通（American Express）無關，也未獲其認可或贊助。優惠內容以美國運通及商家公告為準。",
@@ -169,18 +177,21 @@
       },
       "data": {
         "zh-Hant": [
-          "只有在你允許後才會使用裝置位置，用來顯示附近的優惠。",
-          "優惠資料內建在 App 中。",
+          "只有在你允許後才會使用裝置位置，而且只在裝置上用來顯示附近的優惠，絕不上傳。",
+          "優惠資料以加密形式內建在 App 中。App 會向 amex.0x6.ai 檢查加密的資料更新（約每天一次，或在你點「更新資料」時）；這個請求只帶有 App 簽章與時間戳記，不含任何個人資料或位置。",
+          "意見回饋與錯誤回報會透過你自己的「郵件」App 寄到 nctu6.tw@gmail.com。",
           "沒有帳號，也不做追蹤。"
         ],
         "en": [
-          "Uses your device location only with your permission, to show nearby offers.",
-          "Offer data is bundled with the app.",
+          "Uses your device location only with your permission, on the device only, to show nearby offers; it is never uploaded.",
+          "Offer data ships inside the app in encrypted form. The app checks amex.0x6.ai for an encrypted data update (about once a day, or when you tap 更新資料 / Update data); that request carries only an app signature and a timestamp, with no personal data or location.",
+          "Feedback and error reports are sent through your own Mail app to nctu6.tw@gmail.com.",
           "No accounts and no tracking."
         ]
       },
       "services": [
         "google-maps-ios",
+        "cloudflare",
         "app-store"
       ],
       "disclaimer": {
