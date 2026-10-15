@@ -83,17 +83,19 @@
         "zh-Hant": [
           "地圖",
           "信用卡優惠",
+          "iPhone",
           "非官方"
         ],
         "en": [
           "Map",
           "Card offers",
+          "iPhone",
           "Unofficial"
         ]
       },
       "description": {
-        "zh-Hant": "在地圖上找你附近的美國運通台灣卡友優惠。允許定位後，會依你的位置列出附近可用的優惠。",
-        "en": "Find American Express Taiwan card offers near you on a map. Allow location access and it lists the offers available nearby."
+        "zh-Hant": "在地圖上找你附近的美國運通台灣卡友優惠。網頁版與 iPhone App 都能使用，允許定位後，會依你的位置列出附近可用的優惠。",
+        "en": "Find American Express Taiwan card offers near you on a map, on the web or in the iPhone app. Allow location access and it lists the offers available nearby."
       },
       "metrics": [
         {
@@ -111,10 +113,10 @@
           }
         },
         {
-          "value": "↗",
+          "value": "Web · iOS",
           "label": {
-            "zh-Hant": "外部連結",
-            "en": "External link"
+            "zh-Hant": "網頁版與 iPhone App",
+            "en": "Web and iPhone app"
           }
         }
       ],
@@ -122,6 +124,15 @@
         "zh-Hant": "打開 amex.0x6.ai",
         "en": "Open amex.0x6.ai"
       },
+      "extra": [
+        {
+          "url": "https://apps.apple.com/tw/app/6821340794",
+          "label": {
+            "zh-Hant": "下載 iPhone App",
+            "en": "Get the iPhone app"
+          }
+        }
+      ],
       "data": {
         "zh-Hant": [
           "只有在你允許瀏覽器定位後才會取得位置；座標只會傳到 amex.0x6.ai 的伺服器用來計算附近優惠，不會保存。",
@@ -148,16 +159,15 @@
     },
     {
       "id": "amex-ios",
-      "work": "004",
+      "work": "003",
       "listed": false,
-      "status": "coming",
       "kind": "ios",
       "visual": "map",
-      "url": null,
+      "url": "https://apps.apple.com/tw/app/6821340794",
       "domain": "iPhone · ai.0x6.amexbenefits",
       "name": {
-        "zh-Hant": "美運優惠（iPhone App）",
-        "en": "美運優惠 (iPhone app)"
+        "zh-Hant": "美運優惠：附近刷卡優惠地圖",
+        "en": "MeiYun AE Perks: Offers Map"
       },
       "tags": {
         "zh-Hant": [
@@ -172,8 +182,8 @@
         ]
       },
       "description": {
-        "zh-Hant": "美國運通台灣優惠地圖的 iPhone 版，即將推出。",
-        "en": "The iPhone version of the AMEX Taiwan Offers Map, coming soon."
+        "zh-Hant": "美國運通台灣優惠地圖的 iPhone 版，已在 App Store 免費上架。允許定位後，會列出你附近可用的優惠。",
+        "en": "The iPhone version of the AMEX Taiwan Offers Map, now free on the App Store. Allow location access and it lists the offers available nearby."
       },
       "data": {
         "zh-Hant": [

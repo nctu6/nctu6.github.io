@@ -54,6 +54,14 @@
     return el("div", { class: "generic-visual", "aria-hidden": "true" }, el("span", { text: app.domain || "0x6.ai" }));
   }
 
+  function actions(app, href) {
+    const main = href ? (L(app.open) || `${ui("open")} ${app.domain}`) : ui("coming");
+    if (!app.extra || !app.extra.length) return el("span", { class: "button primary", text: main });
+    return el("div", { class: "work-actions" },
+      href ? el("a", { class: "button primary", href, target: "_blank", rel: "noopener", text: main }) : el("span", { class: "button primary", text: main }),
+      app.extra.map((e) => el("a", { class: "button", href: e.url, target: "_blank", rel: "noopener", text: L(e.label) })));
+  }
+
   function renderWorks(root) {
     root.innerHTML = "";
     data.apps.filter((a) => a.listed).forEach((app, i) => {
@@ -69,9 +77,9 @@
         el("h3", { text: title }),
         el("p", app.visual === "line" ? { id: "workSummary", text: L(app.description) } : { text: L(app.description) }),
         metrics.length ? el("div", { class: "metrics", "aria-hidden": "true" }, metrics) : null,
-        el("span", { class: "button primary", text: href ? (L(app.open) || `${ui("open")} ${app.domain}`) : ui("coming") }));
+        actions(app, href));
       const cardAttrs = { class: "work-card", "aria-label": `${ui("aria")} ${L(app.name)}`, "data-destination": app.domain };
-      const card = href
+      const card = href && !(app.extra && app.extra.length)
         ? el("a", Object.assign(cardAttrs, { href, target: "_blank", rel: "noopener" }, app.url === "{LINE}" ? { "data-line-store": "" } : {}), visual(app), content)
         : el("div", cardAttrs, visual(app), content);
       root.append(el("section", { class: "section", id: app.id, "aria-labelledby": `${app.id}-title` },
@@ -92,7 +100,8 @@
   function renderAbout(root) {
     root.innerHTML = "";
     data.apps.filter((a) => a.listed).forEach((app) => {
-      root.append(el("li", {}, appTitle(app), document.createTextNode(lang() === "en" ? ": " : "："), L(app.description)));
+      root.append(el("li", {}, appTitle(app), document.createTextNode(lang() === "en" ? ": " : "："), L(app.description),
+        (app.extra || []).flatMap((e) => [document.createTextNode(" "), extLink(e.url, L(e.label))])));
     });
   }
 
