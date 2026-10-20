@@ -42,6 +42,11 @@
       "name": "Apple App Store",
       "category": "distribution",
       "privacy": "https://www.apple.com/legal/privacy/"
+    },
+    "google-fonts": {
+      "name": "Google Fonts",
+      "category": "fonts",
+      "privacy": "https://developers.google.com/fonts/faq/privacy"
     }
   },
   "categories": {
@@ -64,9 +69,164 @@
     "distribution": {
       "zh-Hant": "App 發行",
       "en": "App distribution"
+    },
+    "fonts": {
+      "zh-Hant": "字型",
+      "en": "Fonts"
     }
   },
   "apps": [
+    {
+      "id": "agentusecases",
+      "work": "005",
+      "listed": true,
+      "kind": "web",
+      "visual": "generic",
+      "url": "https://agentusecases.0x6.ai/",
+      "domain": "agentusecases.0x6.ai",
+      "name": {
+        "zh-Hant": "AI 辦公桌",
+        "en": "Field Desk: Real AI Agent Use Cases"
+      },
+      "tags": {
+        "zh-Hant": [
+          "AI Agent",
+          "案例整理",
+          "每日更新"
+        ],
+        "en": [
+          "AI agents",
+          "Use cases",
+          "Daily"
+        ]
+      },
+      "description": {
+        "zh-Hant": "收集大家實際交給 AI agent 的工作，每張卡片都連到公開來源，並附上本站撰寫的摘要與可直接使用的提示詞；可依 agent、主題或來源瀏覽與搜尋。",
+        "en": "A directory of jobs people have actually given AI agents. Every card links to a public source and comes with a summary and a ready-to-use prompt written for this site; browse or search by agent, topic, or source."
+      },
+      "metrics": [
+        {
+          "value": "4",
+          "label": {
+            "zh-Hant": "資料來源",
+            "en": "Sources"
+          }
+        },
+        {
+          "value": "📅",
+          "label": {
+            "zh-Hant": "依日期整理",
+            "en": "Grouped by date"
+          }
+        },
+        {
+          "value": "↗",
+          "label": {
+            "zh-Hant": "外部連結",
+            "en": "External link"
+          }
+        }
+      ],
+      "open": {
+        "zh-Hant": "打開 agentusecases.0x6.ai",
+        "en": "Open agentusecases.0x6.ai"
+      },
+      "data": {
+        "zh-Hant": [
+          "不需要登入，沒有帳號。",
+          "「收藏」、「我想要這個」與深淺色主題只用 localStorage 存在你的瀏覽器裡，不會傳到伺服器。",
+          "不做廣告，也不做追蹤分析。"
+        ],
+        "en": [
+          "No sign-in and no accounts.",
+          "Saves, “I want this,” and the light or dark theme are kept only in your browser's localStorage and are never sent to the server.",
+          "No ads and no tracking analytics."
+        ]
+      },
+      "services": [
+        "cloudflare"
+      ],
+      "disclaimer": {
+        "zh-Hant": "案例內容的權利屬於原作者與原始來源，請以原文為準；摘要與提示詞由本站撰寫，不代表原作者立場。",
+        "en": "Rights in each use case belong to its author and original source; rely on the original. Summaries and prompts are written for this site and do not represent the original authors."
+      }
+    },
+    {
+      "id": "taiwan-last-train",
+      "work": "004",
+      "listed": true,
+      "kind": "web",
+      "visual": "map",
+      "url": "https://taiwan-last-train.0x6.ai/",
+      "domain": "taiwan-last-train.0x6.ai",
+      "name": {
+        "zh-Hant": "台灣末班車地圖",
+        "en": "Taiwan Last Train Atlas"
+      },
+      "tags": {
+        "zh-Hant": [
+          "地圖",
+          "大眾運輸",
+          "立體"
+        ],
+        "en": [
+          "Map",
+          "Transit",
+          "3D"
+        ]
+      },
+      "description": {
+        "zh-Hant": "台灣高鐵、臺鐵、捷運、輕軌、貓空纜車與阿里山林業鐵路的末班車立體路線圖。時間往前走，末班車開過的站間就暗下來。",
+        "en": "A 3D route map of the last trains on Taiwan's High Speed Rail, TRA railway, metro, light rail, Maokong Gondola, and Alishan Forest Railway. As time moves on, each segment goes dark once its last train has passed."
+      },
+      "metrics": [
+        {
+          "value": "7",
+          "label": {
+            "zh-Hant": "地區",
+            "en": "Regions"
+          }
+        },
+        {
+          "value": "15–25:40",
+          "label": {
+            "zh-Hant": "時間軸",
+            "en": "Timeline"
+          }
+        },
+        {
+          "value": "↗",
+          "label": {
+            "zh-Hant": "外部連結",
+            "en": "External link"
+          }
+        }
+      ],
+      "open": {
+        "zh-Hant": "打開 taiwan-last-train.0x6.ai",
+        "en": "Open taiwan-last-train.0x6.ai"
+      },
+      "data": {
+        "zh-Hant": [
+          "不需要登入，不蒐集個人資料。",
+          "時刻資料事先整理好放在網站裡，瀏覽時不會向其他 API 查詢。",
+          "網頁字型從 Google Fonts 載入。"
+        ],
+        "en": [
+          "No sign-in and no personal data collected.",
+          "Timetable data is prepared in advance and shipped with the site; browsing does not query any other API.",
+          "Web fonts load from Google Fonts."
+        ]
+      },
+      "services": [
+        "cloudflare",
+        "google-fonts"
+      ],
+      "disclaimer": {
+        "zh-Hant": "時刻依交通部 TDX、臺灣鐵路公司、阿里山林業鐵路等公開資料整理，車站與線形部分來自 OpenStreetMap（ODbL）；可能與實際營運不同，搭車請以各營運單位公告為準。",
+        "en": "Times are compiled from open data by MOTC TDX, Taiwan Railway, the Alishan Forest Railway, and others, with some stations and lines from OpenStreetMap (ODbL). They may differ from actual service; follow each operator's announcements when you travel."
+      }
+    },
     {
       "id": "amex-web",
       "work": "003",
