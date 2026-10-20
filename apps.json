@@ -81,7 +81,12 @@
       "work": "005",
       "listed": true,
       "kind": "web",
-      "visual": "generic",
+      "visual": "image",
+      "image": "/images/agentusecases.webp",
+      "imageAlt": {
+        "zh-Hant": "AI 辦公桌（Field Desk）首頁截圖：彩色 ASCII 終端機風格的 AI agent 使用案例目錄",
+        "en": "Screenshot of the Field Desk home page: a colorful ASCII-terminal directory of AI agent use cases"
+      },
       "url": "https://agentusecases.0x6.ai/",
       "domain": "agentusecases.0x6.ai",
       "name": {
@@ -101,8 +106,8 @@
         ]
       },
       "description": {
-        "zh-Hant": "收集大家實際交給 AI agent 的工作，每張卡片都連到公開來源，並附上本站撰寫的摘要與可直接使用的提示詞；可依 agent、主題或來源瀏覽與搜尋。",
-        "en": "A directory of jobs people have actually given AI agents. Every card links to a public source and comes with a summary and a ready-to-use prompt written for this site; browse or search by agent, topic, or source."
+        "zh-Hant": "真實 AI agent 使用案例目錄：收錄 27 個 agent 的 147 則案例，來自公開網路、X、Reddit 與 Hacker News，以彩色 ASCII 終端機風格呈現。每張卡片都連到公開來源，並附上本站撰寫的摘要與可直接使用的提示詞；可依 agent、主題或來源瀏覽與搜尋。",
+        "en": "A directory of real AI agent use cases: 147 jobs across 27 agents, pulled from the open web, X, Reddit, and Hacker News, drawn as a colorful ASCII terminal. Every card links to a public source and comes with a summary and a ready-to-use prompt written for this site; browse or search by agent, topic, or source."
       },
       "metrics": [
         {

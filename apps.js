@@ -57,6 +57,10 @@
         el("span", { class: "map-pin p1" }), el("span", { class: "map-pin p2" }), el("span", { class: "map-pin p3" }),
         el("span", { class: "map-me" }));
     }
+    if (app.visual === "image" && app.image) {
+      return el("div", { class: "cover-visual" },
+        el("img", { src: app.image, alt: L(app.imageAlt) || L(app.name), width: "1200", height: "1200", loading: "lazy", decoding: "async" }));
+    }
     return el("div", { class: "generic-visual", "aria-hidden": "true" }, el("span", { text: app.domain || "0x6.ai" }));
   }
 
