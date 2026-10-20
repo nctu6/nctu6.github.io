@@ -11,6 +11,7 @@
       privacy: "privacy policy", terms: "terms", noServices: "None", open: "Open", aria: "Open"
     }
   };
+  const METRO_SVG = `<svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 40 H140 L200 100 V210" stroke="#e3002c"/><path d="M20 120 H380" stroke="#0070bd"/><path d="M260 20 V80 L200 140 V170 L150 220" stroke="#008659"/><path d="M80 200 L140 140 H300 L360 80" stroke="#f8b61c"/><path d="M300 140 L360 200 H390" stroke="#c48c31" stroke-dasharray="2 12" opacity="0.45"/><path d="M300 140 V180" stroke="#c48c31" opacity="0.45"/></g><g fill="#fff" stroke="#1f2a24" stroke-width="2.5"><circle cx="60" cy="40" r="4.5"/><circle cx="100" cy="40" r="4.5"/><circle cx="170" cy="70" r="4.5"/><circle cx="60" cy="120" r="4.5"/><circle cx="120" cy="120" r="4.5"/><circle cx="330" cy="120" r="4.5"/><circle cx="260" cy="45" r="4.5"/><circle cx="175" cy="195" r="4.5"/><circle cx="110" cy="170" r="4.5"/><circle cx="340" cy="100" r="4.5"/><circle cx="200" cy="190" r="4.5"/></g><g fill="#fff" stroke="#1f2a24" stroke-width="3"><circle cx="200" cy="120" r="9"/><circle cx="240" cy="120" r="8"/><circle cx="200" cy="140" r="8"/><circle cx="140" cy="40" r="8"/><circle cx="300" cy="140" r="8"/></g><g font-family="ui-monospace, Menlo, monospace" font-size="11" font-weight="700"><rect x="282" y="196" width="104" height="24" rx="5" fill="#1f2a24"/><text x="292" y="212" fill="#85e8be">LAST 24:49</text></g></svg>`;
   let data = null;
   const hooks = [];
   let resolveReady;
@@ -44,6 +45,11 @@
     }
     if (app.visual === "line") {
       return el("div", { class: "work-visual", id: "featuredVisual", "aria-hidden": "true" });
+    }
+    if (app.visual === "metro") {
+      const box = el("div", { class: "map-visual metro-visual", "aria-hidden": "true" });
+      box.innerHTML = METRO_SVG;
+      return box;
     }
     if (app.visual === "map") {
       return el("div", { class: "map-visual", "aria-hidden": "true" },
