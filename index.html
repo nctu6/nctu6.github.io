@@ -832,6 +832,104 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* ---- Works browser ---- */
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .works-count { color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13px; }
+    .works-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+    .works-search { flex: 1 1 280px; position: relative; }
+    .works-search::before { content: ">"; position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--mint); font-family: ui-monospace, Menlo, monospace; font-weight: 700; pointer-events: none; }
+    .works-search input, .works-sort select {
+      width: 100%; min-height: 42px; border: 1px solid rgba(133, 232, 190, 0.24); border-radius: 8px;
+      color: var(--ink); background: rgba(8, 9, 15, 0.7); font: inherit; font-size: 14px;
+    }
+    .works-search input { padding: 0 12px 0 30px; }
+    .works-search input::placeholder { color: var(--quiet); }
+    .works-search input:focus, .works-sort select:focus { outline: none; border-color: var(--line-strong); box-shadow: 0 0 0 3px rgba(133, 232, 190, 0.16); }
+    .works-sort { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; white-space: nowrap; }
+    .works-sort select { width: auto; padding: 0 10px; cursor: pointer; }
+    .works-view { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid rgba(133, 232, 190, 0.22); border-radius: 8px; }
+    .works-view button { min-width: 36px; min-height: 36px; border: 0; border-radius: 6px; color: var(--muted); background: transparent; font-size: 16px; cursor: pointer; }
+    .works-view button[aria-pressed="true"] { color: #08090f; background: var(--mint); }
+    .works-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 11px;
+      border: 1px solid rgba(133, 232, 190, 0.2); border-radius: 999px; color: var(--muted);
+      background: rgba(255, 255, 255, 0.03); font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; transition: 140ms ease;
+    }
+    .chip:hover { color: var(--ink); border-color: var(--line-strong); }
+    .chip[aria-pressed="true"] { color: #08090f; background: var(--mint); border-color: var(--mint); }
+    .chip-n { opacity: 0.6; font-family: ui-monospace, Menlo, monospace; font-weight: 600; }
+    .chip-more { border-style: dashed; }
+
+    .works-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .work-tile {
+      position: relative; display: flex; flex-direction: column; min-width: 0; overflow: hidden;
+      border: 1px solid rgba(133, 232, 190, 0.18); border-radius: 8px;
+      background: linear-gradient(135deg, rgba(133, 232, 190, 0.07), transparent 46%), var(--panel-strong);
+      transition: 160ms ease;
+    }
+    .work-tile:hover { border-color: var(--line-strong); transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3); }
+    .work-tile:focus-within { outline: 2px solid rgba(133, 232, 190, 0.45); outline-offset: 2px; }
+    .tile-thumb { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid rgba(133, 232, 190, 0.12); }
+    .tile-thumb > * { position: absolute; inset: 0; min-height: 0; height: 100%; border-radius: 0; }
+    .tile-thumb .x-visual { padding: 8px 10px; gap: 2px; align-content: start; }
+    .tile-thumb .x-tabs { font-size: 10px; }
+    .tile-thumb .x-tabs span { padding: 3px 6px; }
+    .tile-thumb .x-post { grid-template-columns: 20px 1fr; gap: 3px 7px; padding: 5px 0; }
+    .tile-thumb .x-avatar { width: 20px; height: 20px; }
+    .tile-thumb .x-line { height: 6px; }
+    .tile-thumb .map-pin { width: 16px; height: 16px; }
+    .tile-thumb .map-pin::after { inset: 5px; }
+    .tile-thumb .metro-visual svg { min-height: 0; }
+    .tile-thumb .generic-visual { min-height: 0; font-size: 13px; padding: 10px; text-align: center; word-break: break-all; }
+    .tile-thumb .cover-visual img { aspect-ratio: auto; height: 100%; }
+    .tile-thumb .work-visual { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px; background: rgba(255, 255, 255, 0.03); }
+    .tile-thumb .work-visual img { width: auto; height: 82%; max-width: 31%; padding: 6px; }
+    .tile-thumb .work-visual img:only-child { max-width: none; }
+    .tile-body { display: flex; flex-direction: column; gap: 6px; flex: 1; padding: 12px 14px 14px; }
+    .tile-meta { display: flex; align-items: center; gap: 6px; color: var(--warm); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; }
+    .tile-badge { padding: 1px 7px; border-radius: 999px; color: #08090f; background: var(--warm); font-family: inherit; font-size: 10px; font-weight: 800; }
+    .tile-badge.pin { color: var(--warm); background: transparent; border: 1px solid rgba(240, 177, 90, 0.5); }
+    .tile-title { font-size: 16px; line-height: 1.3; letter-spacing: 0; }
+    .tile-link { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    a.tile-link:focus-visible { outline: none; }
+    a.tile-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+    .tile-domain { color: var(--mint); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .tile-desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .tile-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 4px; }
+    .tile-tags { display: flex; flex-wrap: wrap; gap: 4px; min-width: 0; }
+    .tile-tags .tag { min-height: 22px; padding: 0 8px; font-size: 11px; }
+    .tile-extra { position: relative; z-index: 2; color: var(--blue); font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .tile-extra:hover { color: var(--ink); text-decoration: underline; }
+    .work-tile.is-coming { opacity: 0.7; }
+
+    .works-grid.is-list { grid-template-columns: 1fr; gap: 8px; }
+    .works-grid.is-list .work-tile { flex-direction: row; }
+    .works-grid.is-list .tile-thumb { flex: 0 0 168px; aspect-ratio: auto; min-height: 104px; border-bottom: 0; border-right: 1px solid rgba(133, 232, 190, 0.12); }
+    .works-grid.is-list .tile-body { padding: 10px 14px; gap: 4px; }
+    .works-grid.is-list .tile-desc { -webkit-line-clamp: 1; }
+
+    .works-empty { display: grid; justify-items: center; gap: 14px; padding: 48px 16px; border: 1px dashed rgba(133, 232, 190, 0.24); border-radius: 8px; color: var(--muted); text-align: center; }
+    .works-empty[hidden], .works-more [hidden] { display: none; }
+    .works-more { display: flex; justify-content: center; margin-top: 20px; }
+
+    @media (max-width: 1020px) { .works-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 760px) { .works-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 480px) {
+      .works-grid { gap: 10px; }
+      .tile-body { padding: 10px; gap: 4px; }
+      .tile-title { font-size: 14px; }
+      .tile-domain { font-size: 11px; }
+      .tile-desc { font-size: 12px; line-height: 1.5; }
+      .tile-tags .tag:nth-child(n + 3) { display: none; }
+      .works-grid.is-list .tile-desc { display: none; }
+      .works-grid.is-list .tile-thumb { flex-basis: 112px; }
+      .works-sort { flex: 1; }
+      .works-sort select { flex: 1; }
+      .works-more .button { width: 100%; }
+    }
+    @media (max-width: 340px) { .works-grid { grid-template-columns: 1fr; } }
+
     @media (max-width: 860px) {
       .status-bar {
         align-items: flex-start;
@@ -972,69 +1070,40 @@
       </aside>
     </section>
 
-    <div id="works">
-      <div id="works-list">
-    <section class="section" id="x-feed" aria-labelledby="x-title">
+    <section class="section works-section" id="works" aria-labelledby="works-heading">
       <div class="section-head">
         <div>
-          <div class="eyebrow">WORK 002</div>
-          <h2 id="x-title" data-i18n="xTitle">X 動態新聞 (停班停課最新通知)</h2>
+          <div class="eyebrow">WORKS</div>
+          <h2 id="works-heading" data-i18n="worksTitle">作品</h2>
+        </div>
+        <p class="works-count" id="works-count" aria-live="polite"></p>
+      </div>
+      <div class="works-toolbar" role="search">
+        <label class="works-search">
+          <span class="sr-only" data-i18n="worksSearchLabel">搜尋作品</span>
+          <input id="works-q" type="search" autocomplete="off" spellcheck="false" placeholder="搜尋名稱、標籤、網域…" data-i18n-attr="placeholder:worksSearchPlaceholder">
+        </label>
+        <label class="works-sort">
+          <span data-i18n="worksSortLabel">排序</span>
+          <select id="works-sort">
+            <option value="popular" data-i18n="worksSortPopular">熱門</option>
+            <option value="newest" data-i18n="worksSortNewest">最新</option>
+            <option value="oldest" data-i18n="worksSortOldest">最舊</option>
+          </select>
+        </label>
+        <div class="works-view" role="group" aria-label="檢視方式" data-i18n-attr="aria-label:worksViewLabel">
+          <button type="button" data-view="grid" aria-pressed="true" title="格狀檢視" data-i18n-attr="aria-label:worksViewGrid;title:worksViewGrid">▦</button>
+          <button type="button" data-view="list" aria-pressed="false" title="清單檢視" data-i18n-attr="aria-label:worksViewList;title:worksViewList">☰</button>
         </div>
       </div>
-
-      <a class="work-card" href="https://x.0x6.ai/" target="_blank" rel="noopener" data-destination="x.0x6.ai" aria-label="開啟 x.0x6.ai" data-i18n-attr="aria-label:xAria">
-        <div class="x-visual" aria-hidden="true">
-          <div class="x-tabs"><span>News</span><span>AI</span><span>Space</span></div>
-          <div class="x-post"><span class="x-avatar"></span><span class="x-line name"></span><span class="x-line"></span></div>
-          <div class="x-post"><span class="x-avatar"></span><span class="x-line name"></span><span class="x-line short"></span></div>
-          <div class="x-post"><span class="x-avatar"></span><span class="x-line name"></span><span class="x-line"></span></div>
-        </div>
-        <div class="work-content">
-          <div class="tag-row" aria-hidden="true">
-            <span class="tag">X</span>
-            <span class="tag" data-i18n="xTag">動態整理</span>
-          </div>
-          <h3>x.0x6.ai</h3>
-          <p data-i18n="xDesc">把關注的 X 帳號依主題分頁（如 News、AI、Space、People），一頁看完最新貼文。打開分頁時才更新，每個帳號每六小時最多抓一次。</p>
-          <div class="metrics" aria-hidden="true">
-            <div class="metric"><strong>3</strong><span data-i18n="xTabs">主題分頁</span></div>
-            <div class="metric"><strong>6h</strong><span data-i18n="xInterval">更新間隔</span></div>
-            <div class="metric"><strong>↗</strong><span data-i18n="external">外部連結</span></div>
-          </div>
-          <span class="button primary" data-i18n="xOpen">打開 x.0x6.ai</span>
-        </div>
-      </a>
+      <div class="works-chips" id="works-chips" role="group" aria-label="依標籤篩選" data-i18n-attr="aria-label:worksTagsLabel"></div>
+      <div class="works-grid" id="works-list"></div>
+      <div class="works-empty" id="works-empty" hidden>
+        <p data-i18n="worksEmpty">沒有符合條件的作品。</p>
+        <button type="button" class="button" id="works-clear" data-i18n="worksClear">清除篩選</button>
+      </div>
+      <div class="works-more"><button type="button" class="button" id="works-more" hidden></button></div>
     </section>
-
-    <section class="section" id="line-stickers" aria-labelledby="works-title">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">WORK 001</div>
-          <h2 id="works-title" data-i18n="lineTitle">LINE 貼圖＆表情貼</h2>
-        </div>
-      </div>
-
-      <a class="work-card" href="https://store.line.me/stickershop/author/5344394/zh-Hant" data-line-store target="_blank" rel="noopener" aria-label="開啟 0x6.ai 的 LINE STORE 作者頁" data-i18n-attr="aria-label:lineAria">
-        <div class="work-visual" id="featuredVisual" aria-hidden="true"></div>
-        <div class="work-content">
-          <div class="tag-row" aria-hidden="true">
-            <span class="tag">LINE STORE</span>
-            <span class="tag" data-i18n="lineTagStickers">貼圖</span>
-            <span class="tag" data-i18n="lineTagEmoji">表情貼</span>
-          </div>
-          <h3 data-i18n="lineHeading">0x6.ai 的 LINE 貼圖＆表情貼</h3>
-          <p id="workSummary">用貼圖把一句話變成一個表情，收錄日常情緒、角色小劇場與可愛生活片段。</p>
-          <div class="metrics" aria-hidden="true">
-            <div class="metric"><strong id="workCount">...</strong><span data-i18n="linePublished">公開作品</span></div>
-            <div class="metric"><strong data-i18n="lineStoreCode">TW</strong><span data-i18n="lineStoreLang">繁體中文商店頁</span></div>
-            <div class="metric"><strong>↗</strong><span data-i18n="external">外部連結</span></div>
-          </div>
-          <span class="button primary" data-i18n="lineOpen">打開 LINE STORE</span>
-        </div>
-      </a>
-    </section>
-      </div>
-    </div>
 
     <footer class="footer">
       <span>Copyright © 0x6.ai</span>
@@ -1098,7 +1167,7 @@
 
 
     function attachWorkLinkEvents(root = document) {
-      root.querySelectorAll(".work-card").forEach((link) => {
+      root.querySelectorAll(".work-card, a.tile-link").forEach((link) => {
         if (link.dataset.bound === "true") return;
         link.dataset.bound = "true";
         const destination = link.dataset.destination || "LINE STORE";

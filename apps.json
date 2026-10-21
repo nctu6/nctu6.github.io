@@ -1,5 +1,5 @@
 {
-  "_comment": "Single source of truth for 0x6.ai works and apps. Add one entry to `apps` to publish a new work: it appears on the works page (when listed is true), the about page, the privacy policy's per-app section, and the terms' list. Order = newest first. Text fields are { \"zh-Hant\": ..., \"en\": ... }.",
+  "_comment": "Single source of truth for 0x6.ai works and apps. Add one entry to `apps` to publish a new work: it appears on the works page (when listed is true), the about page, the privacy policy's per-app section, and the terms' list. Order = newest first. `pinned: true` keeps a work first in every sort while it matches the filter. Optional `popularityApi` is a public URL returning { \"score\", \"metric\", \"updated\" }; a daily GitHub Action (scripts/update-popularity.mjs) collects the scores into /popularity.json, which drives the Popular sort (higher score first; apps without a score follow, newest first). Text fields are { \"zh-Hant\": ..., \"en\": ... }.",
   "services": {
     "github-pages": {
       "name": "GitHub Pages",
@@ -80,6 +80,7 @@
       "id": "agentusecases",
       "work": "005",
       "listed": true,
+      "popularityApi": "https://agentusecases.0x6.ai/popularity.json",
       "kind": "web",
       "visual": "image",
       "image": "/images/agentusecases.webp",
@@ -160,6 +161,7 @@
       "id": "taiwan-last-train",
       "work": "004",
       "listed": true,
+      "popularityApi": "https://taiwan-last-train.0x6.ai/popularity.json",
       "kind": "web",
       "visual": "metro",
       "url": "https://taiwan-last-train.0x6.ai/",
@@ -236,6 +238,7 @@
       "id": "amex-web",
       "work": "003",
       "listed": true,
+      "popularityApi": "https://amex.0x6.ai/popularity.json",
       "kind": "web",
       "visual": "map",
       "url": "https://amex.0x6.ai/",
@@ -378,6 +381,7 @@
       "id": "x-feed",
       "work": "002",
       "listed": true,
+      "popularityApi": "https://x.0x6.ai/popularity.json",
       "kind": "web",
       "visual": "x",
       "url": "https://x.0x6.ai/",
@@ -450,6 +454,7 @@
       "id": "line-stickers",
       "work": "001",
       "listed": true,
+      "pinned": true,
       "kind": "store",
       "visual": "line",
       "url": "{LINE}",
