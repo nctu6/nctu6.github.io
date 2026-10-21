@@ -1,7 +1,10 @@
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 
 const AUTHOR_URL = "https://store.line.me/stickershop/author/5344394/zh-Hant";
 const OUT_FILE = new URL("../stickers.json", import.meta.url);
+const MAX_PAGES = 20;
+/* Refuse to write when the scrape shrinks sharply (e.g. a region-limited or partial page). */
+const MIN_KEEP_RATIO = 0.5;
 const BROWSER_UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36";
 
@@ -109,33 +112,12 @@ function parseProductAnchors(html, items, seen) {
   }
 }
 
-/**
- * Last-resort: scrape CDN preview URLs and synthesize product links from IDs.
- * Order follows first appearance in the page.
- */
-function parseCdnPreviewImages(html, items, seen) {
-  const re =
-    /https?:\/\/stickershop\.line-scdn\.net\/stickershop\/v1\/product\/(\d+)\/[^"'\\\s>]+/gi;
-
-  let match;
-  while ((match = re.exec(html))) {
-    const id = match[1];
-    const image = match[0].replace(/&amp;/g, "&");
-    pushItem(items, seen, {
-      title: `LINE 貼圖 ${id}`,
-      href: `/stickershop/product/${id}/zh-Hant`,
-      image
-    });
-  }
-}
-
 function parseItems(html) {
   const items = [];
   const seen = new Set();
 
   parseAuthorItemBlocks(html, items, seen);
   if (!items.length) parseProductAnchors(html, items, seen);
-  if (!items.length) parseCdnPreviewImages(html, items, seen);
 
   return items;
 }
@@ -160,23 +142,77 @@ function diagnoseEmpty(html) {
   ].join(" ");
 }
 
-const response = await fetch(AUTHOR_URL, {
-  headers: {
-    accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "accept-language": "zh-TW,zh-Hant;q=0.9,en;q=0.5",
-    "user-agent": BROWSER_UA
-  }
-});
-
-if (!response.ok) {
-  throw new Error(`LINE STORE returned HTTP ${response.status}`);
+/** Total the author page declares, e.g. "<span>63 項</span>" / "63 items". */
+function declaredTotal(html) {
+  const m = html.match(/<span>\s*(\d+)\s*(?:項|items?|件)\s*<\/span>/i);
+  return m ? Number(m[1]) : null;
 }
 
-const html = await response.text();
-const items = parseItems(html);
+function pageUrl(page) {
+  return page === 1 ? AUTHOR_URL : `${AUTHOR_URL}?page=${page}`;
+}
+
+async function fetchPage(page) {
+  const response = await fetch(pageUrl(page), {
+    headers: {
+      accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "accept-language": "zh-TW,zh-Hant;q=0.9,en;q=0.5",
+      "user-agent": BROWSER_UA
+    }
+  });
+  if (page > 1 && response.status === 404) return null;
+  if (!response.ok) throw new Error(`LINE STORE returned HTTP ${response.status} for page ${page}`);
+  return response.text();
+}
+
+async function previousCount() {
+  try {
+    const old = JSON.parse(await readFile(OUT_FILE, "utf8"));
+    return Array.isArray(old.items) ? old.items.length : 0;
+  } catch {
+    return 0;
+  }
+}
+
+const firstHtml = await fetchPage(1);
+const total = declaredTotal(firstHtml);
+const items = parseItems(firstHtml);
 
 if (!items.length) {
-  throw new Error(`No LINE STORE sticker items found. ${diagnoseEmpty(html)}`);
+  throw new Error(`No LINE STORE sticker items found. ${diagnoseEmpty(firstHtml)}`);
+}
+
+/* The author page is paginated (36 per page): follow ?page=N until a page adds nothing. */
+let html = firstHtml;
+for (let page = 2; page <= MAX_PAGES && new RegExp(`[?&]page=${page}\\b`).test(html); page += 1) {
+  html = await fetchPage(page);
+  if (!html) break;
+  const before = items.length;
+  const more = parseItems(html);
+  const seen = new Set(items.map((item) => item.href || item.image));
+  for (const item of more) {
+    const key = item.href || item.image;
+    if (!seen.has(key)) {
+      seen.add(key);
+      items.push(item);
+    }
+  }
+  console.log(`Page ${page}: +${items.length - before} items.`);
+  if (items.length === before) break;
+}
+
+const prev = await previousCount();
+const allowShrink = process.env.ALLOW_STICKER_SHRINK === "1";
+const problems = [];
+if (total !== null && items.length < total) {
+  problems.push(`the page declares ${total} items but only ${items.length} were parsed`);
+}
+if (prev > 1 && (items.length <= 1 || items.length < prev * MIN_KEEP_RATIO)) {
+  problems.push(`item count dropped from ${prev} to ${items.length} (below ${MIN_KEEP_RATIO * 100}%)`);
+}
+if (problems.length && !allowShrink) {
+  console.log(`::error title=Sticker data not updated::${problems.join("; ")}. Kept the existing stickers.json. ${diagnoseEmpty(firstHtml)}`);
+  process.exit(1);
 }
 
 const data = {
@@ -186,4 +222,4 @@ const data = {
 };
 
 await writeFile(OUT_FILE, `${JSON.stringify(data, null, 2)}\n`);
-console.log(`Updated stickers.json with ${items.length} items.`);
+console.log(`Updated stickers.json with ${items.length} items${total !== null ? ` (page declares ${total})` : ""}.`);
