@@ -79,7 +79,59 @@
   const SORTS = ["popular", "newest", "oldest"];
   const state = { q: "", tag: "", sort: "popular", limit: PAGE_SIZE, view: "grid", allTags: false, bound: false };
   let scores = {}; /* from /popularity.json, collected daily by scripts/update-popularity.mjs */
-  const hay = new WeakMap();
+  let hay = new WeakMap();
+
+  /* Live counts from an app's optional statsApi (e.g. https://agentusecases.0x6.ai/stats.json).
+     The number-free `description` is rendered first; once valid counts arrive, `descriptionStats` templates
+     ({entries}, {agents}, ...) replace it in place. Only non-negative integers are accepted; a failed, slow
+     (> STATS_TIMEOUT_MS) or invalid response leaves the number-free text, so no stale numbers ever show. */
+  const STATS_TIMEOUT_MS = 5000;
+  const stats = {};
+  const isCount = (v) => Number.isSafeInteger(v) && v >= 0;
+
+  function descText(app, lng = lang()) {
+    const pick = (v) => (v && typeof v === "object" && !Array.isArray(v) ? (v[lng] ?? v["zh-Hant"]) : v);
+    const fallback = pick(app.description) || "";
+    const vars = stats[app.id];
+    const tpl = pick(app.descriptionStats);
+    if (!vars || typeof tpl !== "string") return fallback;
+    let ok = true;
+    const out = tpl.replace(/\{(\w+)\}/g, (_, k) => (isCount(vars[k]) ? String(vars[k]) : ((ok = false), "")));
+    return ok ? out : fallback;
+  }
+
+  function allDescTexts(app) {
+    const d = app.description;
+    return d && typeof d === "object" && !Array.isArray(d) ? Object.keys(d).map((k) => descText(app, k)) : descText(app);
+  }
+
+  function refreshDesc(app) {
+    const list = document.getElementById("works-list");
+    if (list && state.q.trim()) renderWorks(list); /* search results may change with the new text */
+    document.querySelectorAll("[data-desc-for]").forEach((n) => {
+      if (n.getAttribute("data-desc-for") === app.id) n.textContent = descText(app);
+    });
+  }
+
+  function loadStats() {
+    data.apps.filter((a) => typeof a.statsApi === "string" && a.descriptionStats).forEach((app) => {
+      const ctl = new AbortController();
+      const timer = setTimeout(() => ctl.abort(), STATS_TIMEOUT_MS);
+      fetch(app.statsApi, { signal: ctl.signal, credentials: "omit" })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((json) => {
+          if (!json || typeof json !== "object" || Array.isArray(json)) return;
+          if (json.id !== undefined && json.id !== app.id) return;
+          const clean = {};
+          Object.entries(json).forEach(([k, v]) => { if (isCount(v)) clean[k] = v; });
+          stats[app.id] = clean;
+          hay = new WeakMap();
+          refreshDesc(app);
+        })
+        .catch(() => {})
+        .finally(() => clearTimeout(timer));
+    });
+  }
 
   const T = (k, fb) => (window.I18n && I18n.t(k)) ?? fb ?? k;
   const fmt = (s, vars) => String(s).replace(/\{(\w+)\}/g, (_, k) => (vars[k] ?? ""));
@@ -101,7 +153,7 @@
       else if (typeof v === "object") Object.values(v).forEach(add);
       else parts.push(String(v));
     };
-    [app.name, app.heading, app.description, app.tags, app.domain, app.work].forEach(add);
+    [app.name, app.heading, allDescTexts(app), app.tags, app.domain, app.work].forEach(add);
     (app.extra || []).forEach((e) => add(e.label));
     const s = parts.join("\n").toLowerCase();
     hay.set(app, s);
@@ -156,7 +208,7 @@
           popular ? el("span", { class: "tile-badge", text: T("worksPopularBadge", "Popular") }) : null),
         el("h3", { class: "tile-title" }, title),
         el("div", { class: "tile-domain", text: app.domain || "" }),
-        el("p", Object.assign({ class: "tile-desc", text: L(app.description) }, app.visual === "line" ? { id: "workSummary" } : {})),
+        el("p", Object.assign({ class: "tile-desc", text: descText(app), "data-desc-for": app.statsApi ? app.id : null }, app.visual === "line" ? { id: "workSummary" } : {})),
         el("div", { class: "tile-foot" },
           el("div", { class: "tile-tags", "aria-hidden": "true" }, (L(app.tags) || []).slice(0, 3).map((t) => el("span", { class: "tag", text: t }))),
           (app.extra || []).map((e) => el("a", { class: "tile-extra", href: e.url, target: "_blank", rel: "noopener", text: `${L(e.label)} ↗` })))));
@@ -272,7 +324,8 @@
   function renderAbout(root) {
     root.innerHTML = "";
     data.apps.filter((a) => a.listed).forEach((app) => {
-      root.append(el("li", {}, appTitle(app), document.createTextNode(lang() === "en" ? ": " : "："), L(app.description),
+      root.append(el("li", {}, appTitle(app), document.createTextNode(lang() === "en" ? ": " : "："),
+        el("span", { text: descText(app), "data-desc-for": app.statsApi ? app.id : null }),
         (app.extra || []).flatMap((e) => [document.createTextNode(" "), extLink(e.url, L(e.label))])));
     });
   }
@@ -345,6 +398,7 @@
       render();
       if (window.I18n) I18n.onApply(render);
       resolveReady(data);
+      loadStats();
     })
     .catch(() => resolveReady(null));
 })();

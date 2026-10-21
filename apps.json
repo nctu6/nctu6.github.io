@@ -1,5 +1,5 @@
 {
-  "_comment": "Single source of truth for 0x6.ai works and apps. Add one entry to `apps` to publish a new work: it appears on the works page (when listed is true), the about page, the privacy policy's per-app section, and the terms' list. Order = newest first. `pinned: true` keeps a work first in every sort while it matches the filter. Optional `popularityApi` is a public URL returning { \"score\", \"metric\", \"updated\" }; a daily GitHub Action (scripts/update-popularity.mjs) collects the scores into /popularity.json, which drives the Popular sort (higher score first; apps without a score follow, newest first). Text fields are { \"zh-Hant\": ..., \"en\": ... }.",
+  "_comment": "Single source of truth for 0x6.ai works and apps. Add one entry to `apps` to publish a new work: it appears on the works page (when listed is true), the about page, the privacy policy's per-app section, and the terms' list. Order = newest first. `pinned: true` keeps a work first in every sort while it matches the filter. Optional `popularityApi` is a public URL returning { \"score\", \"metric\", \"updated\" }; a daily GitHub Action (scripts/update-popularity.mjs) collects the scores into /popularity.json, which drives the Popular sort (higher score first; apps without a score follow, newest first). Text fields are { \"zh-Hant\": ..., \"en\": ... }. Optional `statsApi` is a public URL returning live counts as non-negative integers (e.g. { \"entries\", \"agents\" }); when set, `descriptionStats` holds per-language templates with {placeholders} filled from it on page load. `description` must stay number-free: it is shown first and whenever the stats fetch fails, times out, or is invalid.",
   "services": {
     "github-pages": {
       "name": "GitHub Pages",
@@ -81,6 +81,7 @@
       "work": "005",
       "listed": true,
       "popularityApi": "https://agentusecases.0x6.ai/popularity.json",
+      "statsApi": "https://agentusecases.0x6.ai/stats.json",
       "kind": "web",
       "visual": "image",
       "image": "/images/agentusecases.webp",
@@ -107,8 +108,12 @@
         ]
       },
       "description": {
-        "zh-Hant": "真實 AI agent 使用案例目錄：收錄 27 個 agent 的 147 則案例，來自公開網路、X、Reddit 與 Hacker News，以彩色 ASCII 終端機風格呈現。每張卡片都連到公開來源，並附上本站撰寫的摘要與可直接使用的提示詞；可依 agent、主題或來源瀏覽與搜尋。",
-        "en": "A directory of real AI agent use cases: 147 jobs across 27 agents, pulled from the open web, X, Reddit, and Hacker News, drawn as a colorful ASCII terminal. Every card links to a public source and comes with a summary and a ready-to-use prompt written for this site; browse or search by agent, topic, or source."
+        "zh-Hant": "真實 AI agent 使用案例目錄，案例來自公開網路、X、Reddit 與 Hacker News，以彩色 ASCII 終端機風格呈現。每張卡片都連到公開來源，並附上本站撰寫的摘要與可直接使用的提示詞；可依 agent、主題或來源瀏覽與搜尋。",
+        "en": "A directory of real AI agent use cases pulled from the open web, X, Reddit, and Hacker News, drawn as a colorful ASCII terminal. Every card links to a public source and comes with a summary and a ready-to-use prompt written for this site; browse or search by agent, topic, or source."
+      },
+      "descriptionStats": {
+        "zh-Hant": "真實 AI agent 使用案例目錄：收錄 {agents} 個 agent 的 {entries} 則案例，來自公開網路、X、Reddit 與 Hacker News，以彩色 ASCII 終端機風格呈現。每張卡片都連到公開來源，並附上本站撰寫的摘要與可直接使用的提示詞；可依 agent、主題或來源瀏覽與搜尋。",
+        "en": "A directory of real AI agent use cases: {entries} cases across {agents} agents, pulled from the open web, X, Reddit, and Hacker News, drawn as a colorful ASCII terminal. Every card links to a public source and comes with a summary and a ready-to-use prompt written for this site; browse or search by agent, topic, or source."
       },
       "metrics": [
         {
