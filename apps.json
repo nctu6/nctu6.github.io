@@ -77,6 +77,74 @@
   },
   "apps": [
     {
+      "id": "connect6",
+      "work": "006",
+      "listed": true,
+      "popularityApi": "https://connect6.0x6.ai/popularity.json",
+      "kind": "web",
+      "visual": "image",
+      "image": "/images/connect6.webp",
+      "imageAlt": {
+        "zh-Hant": "交大六號 六子棋首頁截圖：19 路木紋棋盤",
+        "en": "Screenshot of the Connect6 home page: a 19×19 wooden game board"
+      },
+      "url": "https://connect6.0x6.ai/",
+      "domain": "connect6.0x6.ai",
+      "name": {
+        "zh-Hant": "交大六號 六子棋",
+        "en": "Connect6"
+      },
+      "tags": {
+        "zh-Hant": [
+          "六子棋",
+          "遊戲",
+          "AI 對弈"
+        ],
+        "en": [
+          "Connect6",
+          "Game",
+          "Play vs AI"
+        ]
+      },
+      "description": {
+        "zh-Hant": "在瀏覽器裡和六子棋 AI「交大六號」對弈，或兩人在同一台裝置上對戰。19 路棋盤，黑方第一手只下一子，之後每手兩子，先連成六子者勝。",
+        "en": "Play Connect6 in your browser against the Connect6 AI 交大六號, or against a friend on the same device. On a 19×19 board, Black opens with one stone and every move after that is two stones; the first to connect six wins."
+      },
+      "metrics": [
+        {
+          "value": "19×19",
+          "label": {
+            "zh-Hant": "棋盤",
+            "en": "Board"
+          }
+        },
+        {
+          "value": "↗",
+          "label": {
+            "zh-Hant": "外部連結",
+            "en": "External link"
+          }
+        }
+      ],
+      "open": {
+        "zh-Hant": "打開 connect6.0x6.ai",
+        "en": "Open connect6.0x6.ai"
+      },
+      "data": {
+        "zh-Hant": [
+          "不需要登入，沒有帳號。",
+          "網頁沒有廣告，也沒有載入第三方追蹤分析程式碼。"
+        ],
+        "en": [
+          "No sign-in and no accounts.",
+          "No ads, and no third-party tracking or analytics scripts on the page."
+        ]
+      },
+      "services": [
+        "cloudflare"
+      ]
+    },
+    {
       "id": "agentusecases",
       "work": "005",
       "listed": true,
