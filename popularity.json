@@ -1,30 +1,30 @@
 {
-  "updated": "2026-10-31T23:40:53.816Z",
+  "updated": "2026-11-01T23:52:01.501Z",
   "apps": {
     "connect6": {
-      "score": 104,
+      "score": 111,
       "metric": "pageviews_30d",
-      "updated": "2026-10-31T18:55:09Z"
+      "updated": "2026-11-01T23:52:01Z"
     },
     "agentusecases": {
-      "score": 730,
+      "score": 785,
       "metric": "pageviews_30d",
-      "updated": "2026-10-31T00:59:07Z"
+      "updated": "2026-11-01T00:59:07Z"
     },
     "taiwan-last-train": {
-      "score": 96,
+      "score": 104,
       "metric": "pageviews_30d",
-      "updated": "2026-10-31T00:01:47Z"
+      "updated": "2026-11-01T05:32:36Z"
     },
     "amex-web": {
-      "score": 57,
+      "score": 59,
       "metric": "pageviews_30d",
-      "updated": "2026-10-31T18:01:17Z"
+      "updated": "2026-11-01T23:52:01Z"
     },
     "x-feed": {
-      "score": 232,
+      "score": 244,
       "metric": "pageviews_30d",
-      "updated": "2026-10-31T18:57:35Z"
+      "updated": "2026-11-01T23:52:01Z"
     }
   }
 }
