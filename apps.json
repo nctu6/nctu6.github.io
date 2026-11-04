@@ -77,6 +77,80 @@
   },
   "apps": [
     {
+      "id": "history-map",
+      "work": "007",
+      "listed": true,
+      "popularityApi": "https://history.0x6.ai/popularity.json",
+      "kind": "web",
+      "visual": "image",
+      "image": "/images/history-map.webp",
+      "imageAlt": {
+        "zh-Hant": "紀年地圖首頁截圖：古地圖風格的臺灣地圖，標出 1884 年的行政區與事件位置，右側是事件清單，下方是年份時間軸",
+        "en": "Screenshot of the Chronicle Map of Taiwan home page: an antique-style map of Taiwan showing the 1884 administrative divisions and event locations, with an event list on the right and a year timeline along the bottom"
+      },
+      "url": "https://history.0x6.ai/",
+      "domain": "history.0x6.ai",
+      "name": {
+        "zh-Hant": "紀年地圖",
+        "en": "Chronicle Map of Taiwan"
+      },
+      "tags": {
+        "zh-Hant": [
+          "臺灣歷史",
+          "地圖",
+          "時間軸"
+        ],
+        "en": [
+          "Taiwan history",
+          "Map",
+          "Timeline"
+        ]
+      },
+      "description": {
+        "zh-Hant": "古地圖風格的臺灣歷史互動地圖，收錄從史前到今天的一萬多筆事件。沿著年份時間軸移動，地圖換成那個時代的行政區，清單列出當時發生的事，每一筆都附說明與出處；還可以疊上原住民族部落位置、村里名、聚落與鐵路等參考圖層。非商業網站，程式以 GPL-3.0 授權。",
+        "en": "An antique-style interactive map of Taiwan's history, with more than 10,000 events from prehistory to today. Move along the year timeline and the map switches to that era's administrative divisions while the list shows what happened then, each event with a description and its sources; reference layers such as Indigenous community locations, village names, and settlements and railways can be laid on top. Non-commercial; the code is licensed under GPL-3.0."
+      },
+      "metrics": [
+        {
+          "value": "10,000+",
+          "label": {
+            "zh-Hant": "事件",
+            "en": "Events"
+          }
+        },
+        {
+          "value": "↗",
+          "label": {
+            "zh-Hant": "外部連結",
+            "en": "External link"
+          }
+        }
+      ],
+      "open": {
+        "zh-Hant": "打開 history.0x6.ai",
+        "en": "Open history.0x6.ai"
+      },
+      "data": {
+        "zh-Hant": [
+          "不需要登入，沒有帳號。",
+          "配色主題與圖層、顯示設定只用 localStorage 存在你的瀏覽器裡，不會傳到伺服器。",
+          "不做廣告，也不做追蹤分析；地圖底圖、字型與事件資料都由本站提供。除了 Cloudflare 有時顯示的連線驗證，網頁不向第三方載入資源。"
+        ],
+        "en": [
+          "No sign-in and no accounts.",
+          "The color theme and your layer and display settings are kept only in your browser's localStorage and are never sent to the server.",
+          "No ads and no tracking analytics; the base map, fonts, and event data are all served by this site. Apart from the connection check Cloudflare sometimes shows, the page loads nothing from third parties."
+        ]
+      },
+      "services": [
+        "cloudflare"
+      ],
+      "disclaimer": {
+        "zh-Hant": "事件說明抄自各來源，授權跟著來源走，請以原文為準；行政區界線是依文獻畫的示意，不是實測的舊界。",
+        "en": "Event descriptions are quoted from their sources and keep those sources' licenses; rely on the originals. Administrative boundaries are sketches based on historical records, not surveyed historical borders."
+      }
+    },
+    {
       "id": "connect6",
       "work": "006",
       "listed": true,
