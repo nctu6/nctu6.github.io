@@ -1,15 +1,15 @@
 {
-  "updated": "2026-11-06T01:06:16.060Z",
+  "updated": "2026-11-07T00:17:36.195Z",
   "apps": {
     "history-map": {
-      "score": 19,
+      "score": 26,
       "metric": "pageviews_30d",
-      "updated": "2026-11-05T13:51:38Z"
+      "updated": "2026-11-06T13:51:38Z"
     },
     "connect6": {
-      "score": 134,
+      "score": 136,
       "metric": "pageviews_30d",
-      "updated": "2026-11-06T00:07:53Z"
+      "updated": "2026-11-07T00:17:35Z"
     },
     "agentusecases": {
       "score": 1163,
@@ -24,12 +24,12 @@
     "amex-web": {
       "score": 65,
       "metric": "pageviews_30d",
-      "updated": "2026-11-06T00:07:19Z"
+      "updated": "2026-11-07T00:17:36Z"
     },
     "x-feed": {
-      "score": 299,
+      "score": 322,
       "metric": "pageviews_30d",
-      "updated": "2026-11-06T01:06:15Z"
+      "updated": "2026-11-07T00:17:35Z"
     }
   }
 }
