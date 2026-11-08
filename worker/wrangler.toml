@@ -1,0 +1,12 @@
+name = "portaly-bridge"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+# 非機密設定放這裡；金鑰一律用 `wrangler secret put`，不要寫進此檔。
+[vars]
+PORTALY_API_HOST = "https://portaly.ai"
+ALLOWED_ORIGIN = "https://0x6.ai"
+# 付款完成後跳轉回的網址（請改成你的網站實際路徑）
+SUCCESS_REDIRECT_URL = "https://0x6.ai/"
+# Portaly 回呼要打的 HTTPS 網址，部署後會是 https://<worker>/portaly/callback
+CALLBACK_URL = "https://REPLACE_WITH_WORKER_URL/portaly/callback"

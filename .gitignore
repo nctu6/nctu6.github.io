@@ -1,0 +1,5 @@
+
+# Worker local secrets / build output
+worker/.dev.vars
+worker/.wrangler/
+worker/node_modules/
