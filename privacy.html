@@ -443,5 +443,24 @@
     buildToc();
     I18n.onApply(buildToc);
   </script>
+  <script>
+    // 贊助按鈕：向 Portaly 串接 Worker 建立結帳，再導向 checkoutUrl
+    document.querySelectorAll("[data-donate]").forEach(function (el) {
+      el.addEventListener("click", async function (e) {
+        e.preventDefault();
+        try {
+          const res = await fetch("https://portaly-bridge.nctu6-tw.workers.dev/api/checkout", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: "{}",
+          });
+          const data = await res.json();
+          if (data.checkoutUrl) window.location.href = data.checkoutUrl;
+        } catch (err) {
+          // 失敗時保持頁面不動
+        }
+      });
+    });
+  </script>
 </body>
 </html>
