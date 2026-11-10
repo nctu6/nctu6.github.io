@@ -54,6 +54,8 @@ async function handleCheckout(request, env) {
     callbackUrl: env.CALLBACK_URL,
     successRedirectUrl: env.SUCCESS_REDIRECT_URL,
   };
+  // 結帳逾時或無法完成時，Portaly 會連回這裡；舊的 session 不能重用，所以要指向能重新發起贊助的頁面
+  if (env.CANCEL_REDIRECT_URL) payload.cancelRedirectUrl = env.CANCEL_REDIRECT_URL;
   if (Number.isFinite(body.amount)) payload.amount = body.amount; // 動態金額方案才需要
 
   let res;
@@ -103,8 +105,56 @@ async function handleCallback(request, env) {
   }
 
   // 簽章驗證通過後才能產生任何副作用。
-  // TODO：依事件類型處理（例如記錄、寄感謝信），並用事件專屬的 key 做去重複。
+  // 目前只把最少的稽核欄位寫進 Workers 日誌（不含 email、姓名、電話等個資，也不含簽章或密鑰）。
+  // 正式的訂單帳本在 Portaly 後台；若之後要寄感謝信或寫資料庫，需依下面的 idempotencyKey 去重複。
+  const body = JSON.parse(rawBody);
+  console.log(JSON.stringify(auditRecord(event, body)));
   return new Response("ok", { status: 200 });
+}
+
+/**
+ * 依 Portaly 規格挑出最少的稽核欄位，並算出事件專屬的去重複 key：
+ * - checkout.completed / checkout.failed：event + sessionId
+ * - payment.succeeded：event + subscriptionId + chargedAt
+ * - payment.failed：event + subscriptionId + failedAt
+ * - payment.refunded / refund_failed：event + orderId
+ */
+export function auditRecord(event, body) {
+  const subscriptionId = body.subscriptionId || body.sessionId || null;
+  let idempotencyKey;
+  switch (event) {
+    case "creator_subscription.checkout.completed":
+    case "creator_subscription.checkout.failed":
+      idempotencyKey = `${event}:${body.sessionId}`;
+      break;
+    case "creator_subscription.payment.succeeded":
+      idempotencyKey = `${event}:${subscriptionId}:${body.chargedAt}`;
+      break;
+    case "creator_subscription.payment.failed":
+      idempotencyKey = `${event}:${subscriptionId}:${body.failedAt}`;
+      break;
+    case "creator_subscription.payment.refunded":
+    case "creator_subscription.payment.refund_failed":
+      idempotencyKey = `${event}:${body.orderId}`;
+      break;
+    default:
+      idempotencyKey = null; // 生命週期事件沒有文件記載的投遞識別碼
+  }
+  return {
+    type: "portaly_callback",
+    event,
+    mode: body.mode || "live",
+    status: body.status ?? null,
+    sessionId: body.sessionId ?? null,
+    subscriptionId,
+    orderId: body.orderId ?? null,
+    merchantOrderNumber: body.merchantOrderNumber ?? null,
+    planId: body.planId ?? null,
+    amount: body.amount ?? null,
+    currency: body.currency ?? null,
+    failureReason: body.failureReason ?? null,
+    idempotencyKey,
+  };
 }
 
 /**

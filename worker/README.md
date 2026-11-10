@@ -61,9 +61,9 @@ location.href = checkoutUrl; // 直接導向，不要自己拼接網址
 
 Worker 只允許 `ALLOWED_ORIGIN`（預設 `https://0x6.ai`）的跨網域請求。
 
-## 目前尚未完成的部分
+## 回呼處理
 
-- **回呼的事件處理**：目前只驗證簽章並回傳 200，還沒有記錄或寄信等動作。
-- **去重複**：Portaly 可能重送同一事件，正式處理前需要依事件專屬的 key 去重。
-- **以官方測試向量驗證簽章**：目前的驗證邏輯是依規格文件實作，並以自製的測試驗證過；上線前建議用 Portaly skill 內的 `callback-signature-v1-vectors.json` 再確認一次。
-- **前端按鈕**：還沒有把「請我喝杯咖啡」按鈕改成呼叫這個 Worker。
+- 簽章驗證通過後，會把最少的稽核欄位（事件、mode、sessionId、subscriptionId、orderId、金額、狀態、去重複 key）寫進 Workers Logs，不記錄 email、姓名、電話、簽章或密鑰。
+- 正式的訂單帳本以 Portaly 後台為準。
+- 若之後要寄感謝信或寫資料庫，請依 `auditRecord()` 算出的 `idempotencyKey` 去重複（Portaly 可能重送同一事件）。
+- 簽章邏輯已通過 Portaly `portaly-payment` skill 的官方測試向量（7/7）。

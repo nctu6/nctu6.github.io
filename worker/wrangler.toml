@@ -8,5 +8,11 @@ PORTALY_API_HOST = "https://portaly.ai"
 ALLOWED_ORIGIN = "https://0x6.ai"
 # 付款完成後跳轉回的網址（請改成你的網站實際路徑）
 SUCCESS_REDIRECT_URL = "https://0x6.ai/"
+# 結帳逾時或無法完成時，Portaly 連回的頁面（要能重新發起贊助）
+CANCEL_REDIRECT_URL = "https://0x6.ai/about.html"
 # Portaly 回呼要打的 HTTPS 網址，部署後會是 https://<worker>/portaly/callback
 CALLBACK_URL = "https://portaly-bridge.nctu6-tw.workers.dev/portaly/callback"
+
+# 保留 console.log 的回呼稽核紀錄（Workers Logs）
+[observability]
+enabled = true
