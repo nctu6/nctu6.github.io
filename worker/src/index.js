@@ -25,6 +25,11 @@ export default {
       return withCors(await handleCheckout(request, env), env);
     }
 
+    // 給其他網站與 App 用的固定贊助連結：建立結帳後直接 302 轉到 Portaly
+    if (url.pathname === "/donate" && request.method === "GET") {
+      return handleDonateRedirect(env);
+    }
+
     if (url.pathname === "/portaly/callback" && request.method === "POST") {
       return handleCallback(request, env);
     }
@@ -79,6 +84,26 @@ async function handleCheckout(request, env) {
 
   // 只回傳前端需要的欄位
   return json({ checkoutUrl: data.data.checkoutUrl, expiresAt: data.data.expiresAt });
+}
+
+async function handleDonateRedirect(env) {
+  const res = await handleCheckout(new Request("https://internal/", { method: "POST" }), env);
+  const data = await res.json().catch(() => null);
+  if (res.ok && data?.checkoutUrl) {
+    return new Response(null, {
+      status: 302,
+      headers: {
+        Location: data.checkoutUrl,
+        "Cache-Control": "no-store",
+        "X-Robots-Tag": "noindex, nofollow",
+      },
+    });
+  }
+  // 建立失敗時退回贊助說明頁，避免使用者看到空白錯誤
+  return new Response(null, {
+    status: 302,
+    headers: { Location: env.CANCEL_REDIRECT_URL || "https://0x6.ai/about.html", "Cache-Control": "no-store" },
+  });
 }
 
 // ---------- 回呼 ----------
