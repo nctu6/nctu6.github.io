@@ -47,6 +47,16 @@
       "name": "Google Fonts",
       "category": "fonts",
       "privacy": "https://developers.google.com/fonts/faq/privacy"
+    },
+    "google-signin": {
+      "name": "Sign in with Google",
+      "category": "auth",
+      "privacy": "https://policies.google.com/privacy"
+    },
+    "portaly": {
+      "name": "Portaly",
+      "category": "payment",
+      "privacy": "https://portaly.cc/privacy"
     }
   },
   "categories": {
@@ -73,9 +83,258 @@
     "fonts": {
       "zh-Hant": "字型",
       "en": "Fonts"
+    },
+    "auth": {
+      "zh-Hant": "帳號登入",
+      "en": "Sign-in"
+    },
+    "payment": {
+      "zh-Hant": "金流",
+      "en": "Payments"
     }
   },
   "apps": [
+    {
+      "id": "game",
+      "work": "010",
+      "listed": true,
+      "popularityApi": "https://game.0x6.ai/popularity.json",
+      "kind": "web",
+      "visual": "image",
+      "image": "/images/game.webp",
+      "imageAlt": {
+        "zh-Hant": "白洞彼岸首頁截圖：紫色星空裡的遊戲動態牆，中間是今日的每日挑戰「月引」與「正式挑戰」按鈕，右側是喜歡、分享、全螢幕等按鈕",
+        "en": "Screenshot of the Beyond the White Hole home page: a game feed in a purple starfield showing today's daily challenge, Moon Magnet, with its play button, and like, share and fullscreen buttons on the right"
+      },
+      "url": "https://game.0x6.ai/",
+      "domain": "game.0x6.ai",
+      "name": {
+        "zh-Hant": "白洞彼岸",
+        "en": "Beyond the White Hole"
+      },
+      "tags": {
+        "zh-Hant": [
+          "小遊戲",
+          "瀏覽器遊戲",
+          "每日挑戰"
+        ],
+        "en": [
+          "Mini-games",
+          "Browser games",
+          "Daily challenge"
+        ]
+      },
+      "description": {
+        "zh-Hant": "書海城的小遊戲場：在書海城走進黑洞，就會從這裡的白洞出來。一個畫面一個遊戲，往上滑換下一個，點一下就在原地開始玩；每天還有一款大家一起玩的每日挑戰。不用下載安裝，手機觸控與鍵盤都能玩，遊戲與畫面都是為本站手寫的。",
+        "en": "The mini-game corner of Shuhai City: step into its black hole and you come out of the white hole here. One game per screen: swipe up for the next and tap to play right where it is, plus a daily challenge that everyone plays. Nothing to install, it works with touch screens and keyboards, and every game and its artwork is hand-made for the site."
+      },
+      "metrics": [
+        {
+          "value": "1–2",
+          "label": {
+            "zh-Hant": "分鐘一局",
+            "en": "Minutes a game"
+          }
+        },
+        {
+          "value": "↗",
+          "label": {
+            "zh-Hant": "外部連結",
+            "en": "External link"
+          }
+        }
+      ],
+      "open": {
+        "zh-Hant": "打開 game.0x6.ai",
+        "en": "Open game.0x6.ai"
+      },
+      "data": {
+        "zh-Hant": [
+          "不登入也能玩：未登入時不設定 cookie，最高分只存在你的瀏覽器裡；伺服器只記每日總瀏覽數和每個遊戲的遊玩次數，不記錄誰玩了哪個遊戲。",
+          "每日挑戰只送出分數和這台裝置當天隨機產生的代號；伺服器只保存代號的雜湊值和當天最高分，不記錄 IP 位址或帳號，隔天就只留下排序好的分數。",
+          "按 ❤ 和把最高分存到雲端需要 0x6 帳號（邀請制，經 Google 登入，由書海城保存）；可以在「我的」頁面下載資料、刪除本站資料或刪除帳號。",
+          "登入後按「請我喝杯咖啡」，由書海城在 Portaly 建立結帳；本站不經手付款資料，只保存你的贊助次數，用來道謝。",
+          "沒有廣告和第三方分析，網頁只載入本站自己的檔案。"
+        ],
+        "en": [
+          "Play without signing in: no cookies are set while you are signed out and best scores stay in your browser; the server keeps only daily page-view totals and play counts per game, never who played what.",
+          "The daily challenge sends only a score and a random code for this device that changes every day; the server keeps a hash of the code and that day's best score, never an IP address or account, and the next day keeps only the sorted scores.",
+          "Likes (❤) and cloud best scores need a 0x6 account (invite-only, signed in with Google, kept by Shuhai City); on the 我的 page you can download your data, delete this site's data, or delete the account.",
+          "When you are signed in, 請我喝杯咖啡 (buy me a coffee) has Shuhai City create the checkout on Portaly; this site never handles payment details and keeps only how many times you donated, to say thanks.",
+          "No ads and no third-party analytics; pages load only this site's own files."
+        ]
+      },
+      "services": [
+        "cloudflare",
+        "google-signin",
+        "portaly"
+      ],
+      "disclaimer": {
+        "zh-Hant": "小遊戲純屬娛樂，沒有付費內容、獎品或抽獎；紙鶴穿雲使用 Three.js（MIT 授權）。",
+        "en": "The mini-games are just for fun, with nothing to buy and no prizes or draws; Paper Crane uses Three.js (MIT licence)."
+      }
+    },
+    {
+      "id": "x-galaxy",
+      "work": "009",
+      "listed": true,
+      "popularityApi": "https://galaxy.0x6.ai/popularity.json",
+      "kind": "web",
+      "visual": "image",
+      "image": "/images/x-galaxy.webp",
+      "imageAlt": {
+        "zh-Hant": "白月光首頁截圖：深色星空背景的 X 博主精選畫布，上方是收錄帳號數與今日精選，下方是搜尋框、贊助置頂按鈕與藝人帳號卡片",
+        "en": "Screenshot of the GalaXy home page: an X creators gallery on a dark starry background, with archive counts and today's spotlight at the top, then a search box, the Sponsor a pin button and cards for artists' accounts"
+      },
+      "url": "https://galaxy.0x6.ai/",
+      "domain": "galaxy.0x6.ai",
+      "name": {
+        "zh-Hant": "白月光：X 博主精選畫布",
+        "en": "GalaXy: X Creators Gallery"
+      },
+      "tags": {
+        "zh-Hant": [
+          "X",
+          "藝人",
+          "公開典藏"
+        ],
+        "en": [
+          "X",
+          "Celebrities",
+          "Public archive"
+        ]
+      },
+      "description": {
+        "zh-Hant": "收錄 X 上女星、藝人與女子團體的官方帳號，整理成一座可搜尋的星系：每個帳號有個人檔案快照和近期最熱門的公開貼文，資料來自 X 官方 API。帳號在 X 上停權、設為私密或刪除後就會撤下，本人或經紀公司也可以要求移除。想讓喜歡的博主排在最前面，可以用「贊助置頂」。",
+        "en": "The official X accounts of female stars, entertainers and girl groups, gathered into a searchable galaxy: each account has a profile snapshot and its most popular recent public posts, all from the official X API. Accounts leave once they are suspended, made private or deleted on X, and the account holder or agency can ask for removal. Sponsor a pin to put a favorite creator at the front of the gallery."
+      },
+      "metrics": [
+        {
+          "value": "X API",
+          "label": {
+            "zh-Hant": "資料來源",
+            "en": "Data source"
+          }
+        },
+        {
+          "value": "↗",
+          "label": {
+            "zh-Hant": "外部連結",
+            "en": "External link"
+          }
+        }
+      ],
+      "open": {
+        "zh-Hant": "打開 galaxy.0x6.ai",
+        "en": "Open galaxy.0x6.ai"
+      },
+      "data": {
+        "zh-Hant": [
+          "未登入時不設定 cookie，沒有廣告或第三方分析；只記每日總瀏覽數，不記錄誰看了哪個帳號。",
+          "介面語言與主題只存在你瀏覽器的 localStorage。",
+          "用 0x6 帳號登入（經 Google，由書海城驗證）後，本站只保存工作階段的雜湊值、帳號編號、顯示名稱、頭像縮圖和頭像特效，不保存 email；可以隨時從頭像選單刪除。",
+          "贊助置頂由書海城在 Portaly 建立結帳，付款資料由 Portaly 直接收集；公開的只有被置頂的帳號、金額、特效和月份，贊助者預設匿名。",
+          "頭像與橫幅直接從 X 的圖片伺服器載入，X 會收到你的 IP 位址和瀏覽器資訊。"
+        ],
+        "en": [
+          "No cookies while signed out, and no ads or third-party analytics; only a daily page-view total is kept, never who viewed which account.",
+          "Your interface language and theme are kept only in your browser's localStorage.",
+          "After you sign in with a 0x6 account (through Google, verified by Shuhai City), the site keeps only a hash of the session, your account number, display name, a small avatar copy and your avatar effect, never an email; you can delete it any time from the avatar menu.",
+          "Sponsor a pin has Shuhai City create the checkout on Portaly, which collects the payment details itself; only the pinned account, amount, effect and month are public, and sponsors are anonymous by default.",
+          "Avatars and banners load straight from X's image servers, so X receives your IP address and browser details."
+        ]
+      },
+      "services": [
+        "cloudflare",
+        "x",
+        "google-signin",
+        "portaly"
+      ],
+      "disclaimer": {
+        "zh-Hant": "本站與 X Corp. 及收錄的帳號本人沒有關係；內容是 X 公開資料的典藏，重新使用前請在 X 上驗證。更正或移除請寄信到 support@0x6.ai，收到後 24 小時內撤下。",
+        "en": "Not affiliated with X Corp. or with the people archived; this is an archive of public X data, so verify on X before reusing anything. Email support@0x6.ai for corrections or removal; it comes down within 24 hours of the request."
+      }
+    },
+    {
+      "id": "shuhai",
+      "work": "008",
+      "listed": true,
+      "popularityApi": "https://shuhai.0x6.ai/popularity.json",
+      "kind": "web",
+      "visual": "image",
+      "image": "/images/shuhai.webp",
+      "imageAlt": {
+        "zh-Hant": "書海首頁截圖：像素風格的 3D 書海城，一座漂浮在星空中的島嶼，建築上標著科幻奇幻、浪漫言情、歷史軍事、都市高能等分類與書本數量",
+        "en": "Screenshot of the Shuhai home page: the pixel-art 3D book city, an island floating among the stars, with category labels and book counts such as sci-fi and fantasy, romance, history and military, and urban action on its buildings"
+      },
+      "url": "https://shuhai.0x6.ai/",
+      "domain": "shuhai.0x6.ai",
+      "name": {
+        "zh-Hant": "書海城",
+        "en": "Shuhai City"
+      },
+      "tags": {
+        "zh-Hant": [
+          "網路小說",
+          "書庫",
+          "3D"
+        ],
+        "en": [
+          "Web novels",
+          "Library",
+          "3D"
+        ]
+      },
+      "description": {
+        "zh-Hant": "把網路上連載的中文小說整理成一座安靜、可搜尋的書庫，免登入就能閱讀，一律以臺灣繁體中文顯示。首頁是漂浮在星空中的 3D 書海城，每棟建築是一個分類；點主塔回答三個問題就能問路找書，也可以改用 2D 清單。黑洞通往小遊戲白洞彼岸，銀河通往白月光。",
+        "en": "Chinese web novels serialized online, gathered into a quiet, searchable library you can read without signing in, always shown in Taiwan Traditional Chinese. The home page is a 3D book city floating among the stars, one building per category; answer three questions at the main tower to be pointed to a book, or switch to a 2D list. Its black hole leads to the Beyond the White Hole mini-games and its galaxy to GalaXy."
+      },
+      "metrics": [
+        {
+          "value": "3D",
+          "label": {
+            "zh-Hant": "書海城",
+            "en": "Book city"
+          }
+        },
+        {
+          "value": "↗",
+          "label": {
+            "zh-Hant": "外部連結",
+            "en": "External link"
+          }
+        }
+      ],
+      "open": {
+        "zh-Hant": "打開 shuhai.0x6.ai",
+        "en": "Open shuhai.0x6.ai"
+      },
+      "data": {
+        "zh-Hant": [
+          "不登入也能閱讀：未登入時不設定 cookie，沒有廣告或第三方分析；只記每日總瀏覽數，不記錄誰讀了哪本書或搜尋了什麼。",
+          "閱讀進度、書架和每日漂流瓶只存在你瀏覽器的 localStorage，不會傳到伺服器。",
+          "0x6 帳號（邀請制，經 Google 登入）由書海城保存：Google 帳號編號、名稱、大頭貼副本和 email（只有站長看得到）；可以在「我的帳號」下載資料或刪除帳號。",
+          "特效贊助在 Portaly 付款，付款資料由 Portaly 直接收集；本站只在付款確認後記錄金額、被贊助的帳號、日期和狀態，結帳編號只保存雜湊值。",
+          "為了防止濫用，依每天更換金鑰的 IP 雜湊值限制頻率，只存在記憶體；伺服器不寫存取日誌。"
+        ],
+        "en": [
+          "Read without signing in: no cookies while signed out, and no ads or third-party analytics; only a daily page-view total is kept, never who read which book or searched for what.",
+          "Reading progress, your bookshelf and the daily bottles stay in your browser's localStorage and are never sent to the server.",
+          "The 0x6 account (invite-only, signed in with Google) is kept by Shuhai City: your Google account ID, name, a copy of your picture and your email (visible to the site owner only); on your account page you can download your data or delete the account.",
+          "Effect sponsorships are paid on Portaly, which collects the payment details itself; the site records only the amount, the sponsored account, the date and the status once a payment is confirmed, and keeps checkout ids only as hashes.",
+          "To prevent abuse, requests are rate-limited by IP hashes whose key changes every day, kept only in memory; the server writes no access log."
+        ]
+      },
+      "services": [
+        "cloudflare",
+        "google-signin",
+        "portaly"
+      ],
+      "disclaimer": {
+        "zh-Hant": "書庫收錄網路上公開連載的文字，著作權屬於原作者，本站與作者沒有關係；引用請以原作為準，更正或移除請寄信到 support@0x6.ai。",
+        "en": "The library holds texts published openly online; copyright belongs to their authors, and the site is not affiliated with them. Rely on the originals when quoting, and email support@0x6.ai for corrections or removal."
+      }
+    },
     {
       "id": "history-map",
       "work": "007",
@@ -695,14 +954,18 @@
       },
       "data": {
         "zh-Hant": [
-          "不設定 Cookie；只用 localStorage 記住你選擇的介面語言。"
+          "不設定 Cookie；只用 localStorage 記住你選擇的介面語言。",
+          "「請我喝杯咖啡」連到 0x6.ai/donate/，由 Cloudflare Worker 在 Portaly 建立結帳；姓名、email、卡號與發票資料由 Portaly 直接收集，本站不保存，只記錄不含個資的付款事件（金額、狀態、訂單編號）。"
         ],
         "en": [
-          "Sets no cookies; localStorage only remembers your interface language."
+          "Sets no cookies; localStorage only remembers your interface language.",
+          "請我喝杯咖啡 (buy me a coffee) links to 0x6.ai/donate/, where a Cloudflare Worker creates a Portaly checkout; your name, email, card and invoice details are collected by Portaly directly and not kept here. Only payment events without personal data (amount, status, order number) are logged."
         ]
       },
       "services": [
         "github-pages",
+        "cloudflare",
+        "portaly",
         "line"
       ]
     }
