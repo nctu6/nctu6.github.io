@@ -1109,7 +1109,7 @@
 
     <footer class="footer">
       <span>Copyright © 0x6.ai</span>
-      <span class="footer-links"><a href="/about.html" data-i18n="navAbout">關於</a> · <a href="/terms.html" data-i18n="navTerms">服務條款</a> · <a href="/privacy.html" data-i18n="navPrivacy">隱私權政策</a> · <a href="/refund.html">退款政策</a> · <a href="mailto:0x6@mail.grokbot.com">0x6@mail.grokbot.com</a> · <a href="#donate" data-donate data-i18n="coffee">☕ 請我喝杯咖啡</a></span>
+      <span class="footer-links"><a href="/about.html" data-i18n="navAbout">關於</a> · <a href="/terms.html" data-i18n="navTerms">服務條款</a> · <a href="/privacy.html" data-i18n="navPrivacy">隱私權政策</a> · <a href="/refund.html">退款政策</a> · <a href="mailto:0x6@mail.grokbot.com">0x6@mail.grokbot.com</a> · <a href="/donate/" data-i18n="coffee">☕ 請我喝杯咖啡</a></span>
     </footer>
   </main>
 
@@ -1265,25 +1265,6 @@
     });
     attachWorkLinkEvents();
     loadLineStoreWorks();
-  </script>
-  <script>
-    // 贊助按鈕：向 Portaly 串接 Worker 建立結帳，再導向 checkoutUrl
-    document.querySelectorAll("[data-donate]").forEach(function (el) {
-      el.addEventListener("click", async function (e) {
-        e.preventDefault();
-        try {
-          const res = await fetch("https://portaly-bridge.nctu6-tw.workers.dev/api/checkout", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: "{}",
-          });
-          const data = await res.json();
-          if (data.checkoutUrl) window.location.href = data.checkoutUrl;
-        } catch (err) {
-          // 失敗時保持頁面不動
-        }
-      });
-    });
   </script>
 </body>
 </html>
