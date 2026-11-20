@@ -1,5 +1,5 @@
 {
-  "_comment": "Single source of truth for 0x6.ai works and apps. Add one entry to `apps` to publish a new work: it appears on the works page (when listed is true), the about page, the privacy policy's per-app section, and the terms' list. Order = newest first. `pinned: true` keeps a work first in every sort while it matches the filter. Optional `popularityApi` is a public URL returning { \"score\", \"metric\", \"updated\" }; a daily GitHub Action (scripts/update-popularity.mjs) collects the scores into /popularity.json, which drives the Popular sort (higher score first; apps without a score follow, newest first). Text fields are { \"zh-Hant\": ..., \"en\": ... }. Optional `statsApi` is a public URL returning live counts as non-negative integers (e.g. { \"entries\", \"agents\" }); when set, `descriptionStats` holds per-language templates with {placeholders} filled from it on page load. `description` must stay number-free: it is shown first and whenever the stats fetch fails, times out, or is invalid.",
+  "_comment": "Single source of truth for 0x6.ai works and apps. Add one entry to `apps` to publish a new work: it appears on the works page (when listed is true), the about page, the privacy policy's per-app section, and the terms' list. Order = newest first. `pinned: true` keeps a work first in every sort while it matches the filter. Optional `popularityApi` is a public URL returning { \"score\", \"metric\", \"updated\" }; a daily GitHub Action (scripts/update-popularity.mjs) collects the scores into /popularity.json, which drives the Popular sort (higher score first; apps without a score follow, newest first). Text fields are { \"zh-Hant\": ..., \"en\": ... }, with an optional \"ja\" shown on the pages that offer 日本語 (privacy.html, external-transmission.html); without \"ja\" those pages show \"en\". Optional `statsApi` is a public URL returning live counts as non-negative integers (e.g. { \"entries\", \"agents\" }); when set, `descriptionStats` holds per-language templates with {placeholders} filled from it on page load. `description` must stay number-free: it is shown first and whenever the stats fetch fails, times out, or is invalid.",
   "services": {
     "github-pages": {
       "name": "GitHub Pages",
@@ -62,35 +62,43 @@
   "categories": {
     "hosting": {
       "zh-Hant": "主機",
-      "en": "Hosting"
+      "en": "Hosting",
+      "ja": "ホスティング"
     },
     "network": {
       "zh-Hant": "網路與安全",
-      "en": "Network & security"
+      "en": "Network & security",
+      "ja": "ネットワークとセキュリティ"
     },
     "maps": {
       "zh-Hant": "地圖",
-      "en": "Maps"
+      "en": "Maps",
+      "ja": "地図"
     },
     "platform": {
       "zh-Hant": "內容與販售平台",
-      "en": "Content & store platform"
+      "en": "Content & store platform",
+      "ja": "コンテンツ・販売プラットフォーム"
     },
     "distribution": {
       "zh-Hant": "App 發行",
-      "en": "App distribution"
+      "en": "App distribution",
+      "ja": "アプリ配信"
     },
     "fonts": {
       "zh-Hant": "字型",
-      "en": "Fonts"
+      "en": "Fonts",
+      "ja": "フォント"
     },
     "auth": {
       "zh-Hant": "帳號登入",
-      "en": "Sign-in"
+      "en": "Sign-in",
+      "ja": "ログイン"
     },
     "payment": {
       "zh-Hant": "金流",
-      "en": "Payments"
+      "en": "Payments",
+      "ja": "決済"
     }
   },
   "apps": [
@@ -651,7 +659,8 @@
       "domain": "amex.0x6.ai",
       "name": {
         "zh-Hant": "美國運通台灣優惠地圖",
-        "en": "AMEX Taiwan Offers Map"
+        "en": "AMEX Taiwan Offers Map",
+        "ja": "美運優惠（ウェブ版）"
       },
       "tags": {
         "zh-Hant": [
@@ -709,16 +718,22 @@
       ],
       "data": {
         "zh-Hant": [
-          "只有在你允許瀏覽器定位後才會取得位置；座標只會傳到 amex.0x6.ai 的伺服器用來計算附近優惠，不會保存。",
-          "使用 localStorage 記住介面偏好設定，只存在你的裝置上。",
+          "只有在你允許瀏覽器定位後才會取得位置。搜尋中心的座標（你的位置，或地圖中心）會傳到 amex.0x6.ai 的伺服器來計算附近的優惠，不會寫入資料庫或記錄檔。",
+          "瀏覽器的 localStorage 會記住篩選與版面設定、最近一次的附近搜尋結果與卡片清單，只存在你的裝置上；頁面工作階段權杖存在 sessionStorage，到期即失效。",
           "為防止濫用，網站使用 Cloudflare 的機器人防護（Bot Fight Mode）與 Turnstile 驗證，並以短時效的頁面工作階段權杖保護請求；這些只用於安全防護，不用來追蹤你。",
-          "不需要登入，沒有廣告，也不做追蹤分析。"
+          "不需要登入，沒有廣告，也不做追蹤分析；伺服器只統計每天的瀏覽總次數。"
         ],
         "en": [
-          "Your location is read only after you allow browser geolocation. The coordinates are sent to the amex.0x6.ai server only to compute nearby offers and are not stored.",
-          "localStorage remembers your interface preferences, on your device only.",
+          "Your location is read only after you allow browser geolocation. The coordinates of the search center (your location, or the map center) are sent to the amex.0x6.ai server to compute nearby offers and are never written to a database or log.",
+          "Your browser's localStorage remembers your filter and layout settings, the last nearby result, and the card list, on your device only. The page session token is kept in sessionStorage until it expires.",
           "To prevent abuse, the site uses Cloudflare Bot Fight Mode and Turnstile, plus a short-lived page session token to protect requests; these are used only for security, not to track you.",
-          "No sign-in, no ads, and no tracking analytics."
+          "No sign-in, no ads, and no tracking analytics; the server only counts total page views per day."
+        ],
+        "ja": [
+          "位置情報は、ブラウザで位置情報の利用を許可した場合にだけ取得します。検索の中心の座標（現在地、または地図の中心）は、近くの優待を計算するために amex.0x6.ai のサーバーへ送りますが、データベースやログには保存しません。",
+          "ブラウザの localStorage に、絞り込みと表示の設定、直近の検索結果、カードの一覧を保存します。これらは端末の中だけにあります。ページのセッション用トークンは sessionStorage に保存し、期限が切れると無効になります。",
+          "不正利用を防ぐため、Cloudflare のボット対策（Bot Fight Mode）と Turnstile による確認を使い、短時間だけ有効なセッション用トークンでリクエストを保護しています。これらはセキュリティのためだけに使い、あなたを追跡するためには使いません。",
+          "ログインは不要で、広告もトラッキング目的の解析もありません。サーバーが集計するのは、1日ごとのページ閲覧の合計数だけです。"
         ]
       },
       "services": [
@@ -741,7 +756,8 @@
       "domain": "iPhone · ai.0x6.amexbenefits",
       "name": {
         "zh-Hant": "美運優惠：附近刷卡優惠地圖",
-        "en": "MeiYun AE Perks: Offers Map"
+        "en": "MeiYun AE Perks: Offers Map",
+        "ja": "美運優惠（iPhone アプリ）"
       },
       "tags": {
         "zh-Hant": [
@@ -761,16 +777,25 @@
       },
       "data": {
         "zh-Hant": [
-          "只有在你允許後才會使用裝置位置，而且只在裝置上用來顯示附近的優惠，絕不上傳。",
-          "優惠資料以加密形式內建在 App 中。App 會向 amex.0x6.ai 檢查加密的資料更新（約每天一次，或在你點「更新資料」時）；這個請求只帶有 App 簽章與時間戳記，不含任何個人資料或位置。",
-          "意見回饋與錯誤回報會透過你自己的「郵件」App 寄到 0x6@mail.grokbot.com。",
-          "沒有帳號，也不做追蹤。"
+          "只有在你允許後才會使用裝置位置，而且只在裝置上用來顯示附近的優惠，絕不上傳，也不會交給 Google 地圖。",
+          "優惠與貴賓室資料以加密形式內建在 App 中。開啟或回到 App 時，以及你點「立即檢查更新」時，App 會向 amex.0x6.ai 檢查是否有新版本，有新版本才下載加密的資料；請求只帶 App 簽章、時間戳記與資料版本，不含位置、裝置 ID 或任何個人資料，伺服器也不記錄請求者。",
+          "App 內建的 Google Maps SDK for iOS 會直接把裝置識別碼、使用狀況、當機與效能資料傳給 Google，用於地圖功能與 Google 的分析；這些資料不會傳到我們這裡，依 Google 的申報也不用於追蹤。",
+          "意見回饋與錯誤回報會用你自己的「郵件」App 開啟寄給 support@0x6.ai 的草稿，附上 App 版本、iOS 版本、裝置型號與資料版本（不含位置），寄不寄由你決定。",
+          "沒有帳號、沒有廣告，也不做追蹤。"
         ],
         "en": [
-          "Uses your device location only with your permission, on the device only, to show nearby offers; it is never uploaded.",
-          "Offer data ships inside the app in encrypted form. The app checks amex.0x6.ai for an encrypted data update (about once a day, or when you tap 更新資料 / Update data); that request carries only an app signature and a timestamp, with no personal data or location.",
-          "Feedback and error reports are sent through your own Mail app to 0x6@mail.grokbot.com.",
-          "No accounts and no tracking."
+          "Uses your device location only with your permission, on the device only, to show nearby offers; it is never uploaded and never given to Google Maps.",
+          "Offer and lounge data ships inside the app in encrypted form. When you open or return to the app, or tap 立即檢查更新 (Check for updates now), the app asks amex.0x6.ai whether there is a newer version and downloads the encrypted data only if there is. The request carries only an app signature, a timestamp, and the data version, with no location, device ID, or personal data, and the server does not log who sent it.",
+          "The Google Maps SDK for iOS inside the app sends a device identifier, usage data, and crash and performance data directly to Google for the map features and Google's analytics. This data never reaches us, and Google declares that it is not used for tracking.",
+          "Feedback and error reports open a draft to support@0x6.ai in your own Mail app, with the app version, iOS version, device model, and data version (never your location); you decide whether to send it.",
+          "No accounts, no ads, and no tracking."
+        ],
+        "ja": [
+          "端末の位置情報は、許可された場合にだけ、近くの優待を表示するために端末の中で使います。アップロードすることはなく、Google マップにも渡しません。",
+          "優待とラウンジのデータは、暗号化してアプリに内蔵しています。アプリを開いたときや戻ったとき、または手動で更新を確認したときに、amex.0x6.ai に新しいバージョンがあるかを確認し、あるときだけ暗号化されたデータをダウンロードします。このリクエストに含まれるのはアプリの署名、時刻、データのバージョンだけで、位置情報、端末の識別子、個人情報は含まず、サーバーも送信元を記録しません。",
+          "アプリに組み込まれた Google Maps SDK for iOS は、端末の識別子、利用状況、クラッシュやパフォーマンスのデータを、地図機能と Google の分析のために Google へ直接送ります。これらの情報は当方には届きません。また、Google の申告によれば、トラッキングには使われないとされています。",
+          "フィードバックや不具合の報告をするときは、お使いの「メール」アプリで support@0x6.ai 宛ての下書きが開きます。下書きにはアプリのバージョン、iOS のバージョン、端末の機種、データのバージョンが入ります（位置情報は入りません）。送信するかどうかは、あなたが決められます。",
+          "アカウント、広告、トラッキングはありません。"
         ]
       },
       "services": [
@@ -946,7 +971,8 @@
       "domain": "0x6.ai",
       "name": {
         "zh-Hant": "0x6.ai 作品網站",
-        "en": "0x6.ai works website"
+        "en": "0x6.ai works website",
+        "ja": "0x6.ai 作品サイト"
       },
       "description": {
         "zh-Hant": "本站。",
@@ -960,6 +986,10 @@
         "en": [
           "Sets no cookies; localStorage only remembers your interface language.",
           "請我喝杯咖啡 (buy me a coffee) links to 0x6.ai/donate/, where a Cloudflare Worker creates a Portaly checkout; your name, email, card and invoice details are collected by Portaly directly and not kept here. Only payment events without personal data (amount, status, order number) are logged."
+        ],
+        "ja": [
+          "Cookie は設定しません。localStorage には、選んだ表示言語だけを保存します。",
+          "「☕ コーヒーをおごる」は 0x6.ai/donate/ につながり、Cloudflare Worker が Portaly で決済ページを作成します。氏名、メールアドレス、カード番号、領収書（発票）の情報は Portaly が直接受け取り、本サイトには保存しません。記録するのは、個人情報を含まない支払いごとの情報（金額、状態、注文番号）だけです。"
         ]
       },
       "services": [

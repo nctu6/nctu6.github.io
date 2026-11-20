@@ -17,7 +17,12 @@
   </url>
   <url>
     <loc>https://0x6.ai/privacy.html</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://0x6.ai/external-transmission.html</loc>
+    <lastmod>2026-11-20</lastmod>
     <priority>0.5</priority>
   </url>
   <url>

@@ -9,8 +9,14 @@
     en: {
       coming: "Coming soon", work: "WORK", dataUse: "Data use", services: "Third-party services",
       privacy: "privacy policy", terms: "terms", noServices: "None", open: "Open", aria: "Open"
+    },
+    ja: {
+      coming: "近日公開", work: "WORK", dataUse: "データの取り扱い", services: "外部サービス",
+      privacy: "プライバシーポリシー", terms: "利用規約", noServices: "なし", open: "開く", aria: "開く"
     }
   };
+  /* apps.json text fields are { "zh-Hant", "en" } with an optional "ja"; a missing "ja" falls back to "en". */
+  const FALLBACK = { ja: ["en"] };
   const METRO_SVG = `<svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 40 H140 L200 100 V210" stroke="#e3002c"/><path d="M20 120 H380" stroke="#0070bd"/><path d="M260 20 V80 L200 140 V170 L150 220" stroke="#008659"/><path d="M80 200 L140 140 H300 L360 80" stroke="#f8b61c"/><path d="M300 140 L360 200 H390" stroke="#c48c31" stroke-dasharray="2 12" opacity="0.45"/><path d="M300 140 V180" stroke="#c48c31" opacity="0.45"/></g><g fill="#fff" stroke="#1f2a24" stroke-width="2.5"><circle cx="60" cy="40" r="4.5"/><circle cx="100" cy="40" r="4.5"/><circle cx="170" cy="70" r="4.5"/><circle cx="60" cy="120" r="4.5"/><circle cx="120" cy="120" r="4.5"/><circle cx="330" cy="120" r="4.5"/><circle cx="260" cy="45" r="4.5"/><circle cx="175" cy="195" r="4.5"/><circle cx="110" cy="170" r="4.5"/><circle cx="340" cy="100" r="4.5"/><circle cx="200" cy="190" r="4.5"/></g><g fill="#fff" stroke="#1f2a24" stroke-width="3"><circle cx="200" cy="120" r="9"/><circle cx="240" cy="120" r="8"/><circle cx="200" cy="140" r="8"/><circle cx="140" cy="40" r="8"/><circle cx="300" cy="140" r="8"/></g><g font-family="ui-monospace, Menlo, monospace" font-size="11" font-weight="700"><rect x="282" y="196" width="104" height="24" rx="5" fill="#1f2a24"/><text x="292" y="212" fill="#85e8be">LAST 24:49</text></g></svg>`;
   let data = null;
   const hooks = [];
@@ -18,9 +24,14 @@
   const ready = new Promise((r) => { resolveReady = r; });
 
   const lang = () => (window.I18n ? I18n.lang : "zh-Hant");
-  const L = (v) => (v && typeof v === "object" && !Array.isArray(v) ? (v[lang()] ?? v["zh-Hant"]) : v);
-  const ui = (k) => UI[lang()][k] ?? UI["zh-Hant"][k];
-  const lineUrl = () => LINE_STORE_BASE + (lang() === "en" ? "en" : "zh-Hant");
+  const pickLang = (v, lng) => {
+    if (!v || typeof v !== "object" || Array.isArray(v)) return v;
+    for (const code of [lng, ...(FALLBACK[lng] || [])]) if (v[code] !== undefined) return v[code];
+    return v["zh-Hant"];
+  };
+  const L = (v) => pickLang(v, lang());
+  const ui = (k) => (UI[lang()] || UI["zh-Hant"])[k] ?? UI["zh-Hant"][k];
+  const lineUrl = () => LINE_STORE_BASE + (lang() === "zh-Hant" ? "zh-Hant" : "en");
   const urlOf = (app) => (app.url === "{LINE}" ? lineUrl() : app.url);
 
   function el(tag, attrs = {}, ...children) {
@@ -90,10 +101,9 @@
   const isCount = (v) => Number.isSafeInteger(v) && v >= 0;
 
   function descText(app, lng = lang()) {
-    const pick = (v) => (v && typeof v === "object" && !Array.isArray(v) ? (v[lng] ?? v["zh-Hant"]) : v);
-    const fallback = pick(app.description) || "";
+    const fallback = pickLang(app.description, lng) || "";
     const vars = stats[app.id];
-    const tpl = pick(app.descriptionStats);
+    const tpl = pickLang(app.descriptionStats, lng);
     if (!vars || typeof tpl !== "string") return fallback;
     let ok = true;
     const out = tpl.replace(/\{(\w+)\}/g, (_, k) => (isCount(vars[k]) ? String(vars[k]) : ((ok = false), "")));
