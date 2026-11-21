@@ -323,6 +323,7 @@
 
     .apps-grid { display: grid; gap: 12px; margin-top: 12px; }
     .app-entry { padding: 16px 18px; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; background: rgba(255, 255, 255, 0.03); }
+    #tallybud { margin-top: 14px; scroll-margin-top: 72px; }
     .app-entry h3 { font-size: 18px; line-height: 1.4; }
     .app-meta { color: var(--quiet); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; }
     .card .app-label { margin-top: 10px; color: var(--ink); font-size: 14px; font-weight: 700; }
@@ -347,8 +348,8 @@
   <main class="page">
     <div class="eyebrow" data-i18n="eyebrow">法律條款 / privacy</div>
     <h1 data-i18n="title">隱私權政策</h1>
-    <p class="lead" data-i18n="lead">說明 0x6.ai 的網站、App 與各項作品如何處理你的資料。簡單說：不要求登入、不放廣告、不做追蹤，位置只在你同意後使用，也不販售任何資料。地圖由 Google 提供，Google 會依自己的政策收到部分資料。</p>
-    <p class="updated" data-i18n="updated">最後更新：2026 年 11 月 20 日</p>
+    <p class="lead" data-i18n="lead">說明 0x6.ai 的網站、App 與各項作品如何處理你的資料。大多數作品可免登入使用。我們不販售個人資料。各作品使用的位置資料與第三方服務，請見下方說明。</p>
+    <p class="updated" data-i18n="updated">最後更新：2026 年 11 月 22 日</p>
 
     <div class="summary">
       <div><strong data-i18n="s1t">免登入</strong><span data-i18n="s1d">大多數作品不需要帳號，也不會要求你填寫個人資料。</span></div>
@@ -370,7 +371,7 @@
         <section class="card" id="personal">
           <div class="num">02</div>
           <h2 data-i18n="h2">個人資料的蒐集</h2>
-          <p data-i18n-html="p2_0">大多數作品都可以匿名使用，不需要註冊或登入，也沒有留言或表單功能。部分作品（書海城、白月光、白洞彼岸）可以用邀請制的「0x6 帳號」經 Google 登入，這時處理的資料列在下方<a href="#apps">各作品說明</a>。除此之外，我們不會主動蒐集你的姓名、Email、電話等個人資料。</p>
+          <p data-i18n-html="p2_0">大多數作品可免登入使用。書海城、白月光與白洞彼岸提供獨立的 0x6 帳號。<a href="#tallybud">小帳苗</a>可離線記帳，使用者也可選擇以 Apple 或 Google 建立小帳苗帳號。每項功能處理的資料見<a href="#apps">各作品說明</a>。</p>
           <p data-i18n-html="p2_1">你主動寫信聯絡我們時，我們會收到你的 Email 地址、寄件人名稱、信件內容與附件。如果你從 App 內的按鈕寫意見回饋或錯誤回報，草稿會附上 App 版本、作業系統版本、裝置型號與資料版本（不含位置），寄不寄由你決定。</p>
         </section>
 
@@ -406,7 +407,7 @@
           <h2 data-i18n="h6">第三方服務</h2>
           <p data-i18n-html="p6_0">為了提供服務，你的瀏覽器或裝置可能會直接連線到以下類別的第三方服務，它們會依各自的隱私權政策處理資料：</p>
           <ul id="services-list"></ul>
-          <p data-i18n-html="p6_2">地圖由 Google 提供，適用 Google 的隱私權政策與服務條款。顯示地圖時，Google 會收到你的 IP 位址、瀏覽器或裝置資訊，以及顯示中的地圖範圍。iPhone App 內建的 Google Maps SDK for iOS 還會把裝置識別碼、使用狀況、當機與效能資料直接傳給 Google，用於 Google 的分析與地圖功能；這些資料不會傳到我們這裡，依 Google 的申報也不用於追蹤。</p>
+          <p data-i18n-html="p6_2">使用 Google Maps 的作品，其地圖由 Google 提供，適用 Google 的隱私權政策與服務條款。顯示地圖時，Google 會收到你的 IP 位址、瀏覽器或裝置資訊，以及顯示中的地圖範圍。iPhone App 內建的 Google Maps SDK for iOS 還會把裝置識別碼、使用狀況、當機與效能資料直接傳給 Google，用於 Google 的分析與地圖功能；這些資料不會傳到我們這裡，依 Google 的申報也不用於追蹤。</p>
           <p data-i18n-html="p6_3">離開本站前往第三方網站，或在第三方平台（例如 LINE STORE、App Store）購買或下載時，付款與帳號資料由該平台處理，我們不會取得，並以該平台的政策為準。</p>
         </section>
 
@@ -420,6 +421,22 @@
           <div class="num">09</div>
           <h2 data-i18n="h7">各作品說明</h2>
           <p data-i18n-html="p7_0">以下列出本政策目前涵蓋的作品，以及各自使用的資料與第三方服務：</p>
+          <article class="app-entry" id="tallybud" aria-labelledby="tallybud-title">
+            <h3 id="tallybud-title" data-i18n="tallybudTitle">小帳苗（Tallybud）</h3>
+            <p data-i18n-html="tallybudIntro">你可以免登入記帳與照顧植物。帳本、收據、收藏、預算與設定先存於裝置。收據辨識在裝置端完成。授權定位時，App 在裝置上用當前位置判定領種地區，保存的是植物的種植點。小帳苗的收藏地圖使用內建底圖。</p>
+            <h4 class="app-label" data-i18n="tallybudLoginTitle">Apple／Google 登入</h4>
+            <p data-i18n-html="tallybudLogin">登入、連結帳號或重新驗證時，Apple 或 Google 處理登入並提供授權資料。小帳苗帳號服務驗證授權，保存小帳苗帳號 ID、建立時間、已連結的服務商及其帳號識別碼、加密的授權憑證（如有）和工作階段的雜湊與到期時間。登入服務不保存 Apple／Google 密碼、姓名或電子郵件。登入憑證存於裝置的 Keychain，登出後會撤銷此裝置的小帳苗工作階段。離線登出時，復線後重試撤銷。</p>
+            <h4 class="app-label" data-i18n="tallybudSyncTitle">跨裝置同步（Apple CloudKit）</h4>
+            <p data-i18n-html="tallybudSync">同步預設關閉，可在「帳本 → 設定 → 跨裝置同步」免費開啟。帳本、附上的收據、植物收藏與種植點，以及隨帳本同步的預算、款項規則和設定，會直接寫入你的 iCloud 私有 CloudKit 資料庫。App 使用 Apple 提供的 CloudKit 使用者識別碼確認連結的是同一個 iCloud 帳號。同步資料不經過小帳苗帳號伺服器。關閉同步後，既有 iCloud 副本會保留，直到你另外刪除。</p>
+            <h4 class="app-label" data-i18n="tallybudFilesTitle">iCloud Drive 與其他「檔案」位置</h4>
+            <p data-i18n-html="tallybudFiles">你選擇備份時，App 會在裝置上將帳本、縮小後的收據照片、植物收藏與設定製成密碼加密的備份，存到你在 iOS「檔案」選取的位置。若選擇 iCloud Drive，檔案由 Apple 存在你的 iCloud。檔案備份與還原透過你選擇的檔案服務處理，備份密碼不會傳到小帳苗帳號伺服器。啟用自動備份時，密碼存於此裝置的 Keychain。</p>
+            <h4 class="app-label" data-i18n="tallybudDriveTitle">Google Drive 備份</h4>
+            <p data-i18n-html="tallybudDrive">連結 Google Drive 是獨立的選用授權，與登入小帳苗分開。App 使用 Google 帳號識別碼和電子郵件辨識並顯示你選取的帳號，並使用 <code>drive.appdata</code> 權限，只讀寫小帳苗在該 Drive 帳號的專用應用程式資料空間。密碼加密的備份由裝置直接傳送到 Google Drive，並直接從該處還原。Google Drive 授權憑證、備份密碼與檔案不經過小帳苗帳號伺服器。Google API 取得的資料只用於連結、備份、還原與管理小帳苗備份，遵守 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API 服務使用者資料政策</a>（含有限使用規定）。</p>
+            <h4 class="app-label" data-i18n="tallybudRetentionTitle">保存期限及撤回權限</h4>
+            <p data-i18n-html="tallybudRetention">帳號資料與過去版本留下的加密帳號備份保留到刪帳為止。登入工作階段最長 30 天，短效授權資料到期後清除。為處理撤銷或確認重送的刪帳請求，服務可能暫存雜湊後的安全紀錄，最長約 31 天。自動檔案備份會輪替保留最近七份，同一裝置的 Google Drive 自動備份也會清理超過七份的舊備份。你可在「備份與還原」取消連結，並在 Google 帳號的第三方連線設定撤回 Drive 授權。取消連結本身會保留已寫入的雲端副本。</p>
+            <h4 class="app-label" data-i18n="tallybudDeleteTitle">刪除帳號與雲端副本</h4>
+            <p data-i18n-html="tallybudDelete">在「帳本 → 設定」選「刪除小帳苗帳號」，以現有連結的 Apple 或 Google 登入方式重新驗證。刪除會撤銷服務端保存的登入授權，刪除小帳苗帳號、登入綁定、工作階段及舊版帳號備份，並移除這台裝置中該帳號的本機帳本等資料。若要一併移除 CloudKit 副本，請在刪帳前到「跨裝置同步」選「刪除 iCloud 同步副本」。另到「檔案」刪除 iCloud Drive 備份，或在 Google Drive 的「管理應用程式」移除小帳苗隱藏的應用程式資料。其他裝置上的本機副本、已匯出的檔案與 App Store 付費訂閱需要另外管理。</p>
+          </article>
           <div class="apps-grid" id="apps-coverage"></div>
         </section>
 
@@ -432,7 +449,7 @@
         <section class="card" id="security">
           <div class="num">11</div>
           <h2 data-i18n="h9">資料保護與存放地點</h2>
-          <p data-i18n-html="p9_0">我們的網站與 App 全程使用 HTTPS 加密連線。我們保存的個人資料，只有你的來信與 0x6 帳號的資料。</p>
+          <p data-i18n-html="p9_0">我們的網站與 App 使用 HTTPS。開發者保存的資料包括你寄來的信件、0x6 帳號及小帳苗帳號服務所需資料。裝置資料及雲端副本的存放位置，請見<a href="#tallybud">小帳苗說明</a>。</p>
           <div class="rich" data-i18n-html="p9_list"><ul><li><b>組織與人員：</b>由個人經營，只有經營者本人處理這些資料，不用於上述目的以外的用途。</li><li><b>技術措施：</b>信箱帳號以強密碼與兩步驟驗證保護；保存 0x6 帳號資料的伺服器只有經營者本人能登入。</li><li><b>實體措施：</b>用來處理這些資料的裝置都設有螢幕鎖定。</li><li><b>存放地點：</b>經營者在台灣處理個人資料。來信經 Cloudflare, Inc.（美國）的郵件轉寄服務，存放在 Google LLC（美國）的郵件服務。0x6 帳號的資料存放在經營者管理的伺服器，伺服器所在的國家，來信詢問即會告知。台灣有《個人資料保護法》；美國沒有聯邦層級的綜合性個人資料保護法，主要由各州法律等保護。我們了解這些國家，以及 0x6 帳號伺服器所在國的制度後，採取上述措施。</li></ul></div>
           <p data-i18n-html="p9_1">萬一發生個人資料外洩等事故，我們會依法通知受影響的人，並向主管機關通報。</p>
         </section>
