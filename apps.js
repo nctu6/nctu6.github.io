@@ -399,7 +399,7 @@
   const popularity = document.getElementById("works-list")
     ? fetch("/popularity.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null)
     : Promise.resolve(null);
-  fetch("/apps.json")
+  fetch(document.body.dataset.appsSrc || "/apps.json")
     .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
     .then((json) => popularity.then((pop) => [json, pop]))
     .then(([json, pop]) => {

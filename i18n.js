@@ -119,7 +119,7 @@
   };
 
   apply(lang);
-  fetch("/language.json")
+  fetch(document.body.dataset.i18nSrc || "/language.json")
     .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
     .then((data) => { dict = data; apply(lang); })
     .catch(() => {});

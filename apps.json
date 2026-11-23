@@ -179,7 +179,8 @@
       ],
       "disclaimer": {
         "zh-Hant": "小遊戲純屬娛樂，沒有付費內容、獎品或抽獎；紙鶴穿雲使用 Three.js（MIT 授權）。",
-        "en": "The mini-games are just for fun, with nothing to buy and no prizes or draws; Paper Crane uses Three.js (MIT licence)."
+        "en": "The mini-games are just for fun, with nothing to buy and no prizes or draws; Paper Crane uses Three.js (MIT licence).",
+        "ja": "ミニゲームは娯楽を目的としています。有料コンテンツ、賞品、抽選はありません。「紙鶴穿雲」は MIT ライセンスの Three.js を使用しています。"
       }
     },
     {
@@ -260,7 +261,8 @@
       ],
       "disclaimer": {
         "zh-Hant": "本站與 X Corp. 及收錄的帳號本人沒有關係；內容是 X 公開資料的典藏，重新使用前請在 X 上驗證。更正或移除請寄信到 support@0x6.ai，收到後 24 小時內撤下。",
-        "en": "Not affiliated with X Corp. or with the people archived; this is an archive of public X data, so verify on X before reusing anything. Email support@0x6.ai for corrections or removal; it comes down within 24 hours of the request."
+        "en": "Not affiliated with X Corp. or with the people archived; this is an archive of public X data, so verify on X before reusing anything. Email support@0x6.ai for corrections or removal; it comes down within 24 hours of the request.",
+        "ja": "当サイトは X Corp. および掲載されたアカウントの本人とは関係ありません。X の公開データを収録しています。再利用する前に X で原文をご確認ください。訂正・削除は support@0x6.ai までご連絡ください。連絡を受けてから24時間以内に取り下げます。"
       }
     },
     {
@@ -340,7 +342,8 @@
       ],
       "disclaimer": {
         "zh-Hant": "書庫收錄網路上公開連載的文字，著作權屬於原作者，本站與作者沒有關係；引用請以原作為準，更正或移除請寄信到 support@0x6.ai。",
-        "en": "The library holds texts published openly online; copyright belongs to their authors, and the site is not affiliated with them. Rely on the originals when quoting, and email support@0x6.ai for corrections or removal."
+        "en": "The library holds texts published openly online; copyright belongs to their authors, and the site is not affiliated with them. Rely on the originals when quoting, and email support@0x6.ai for corrections or removal.",
+        "ja": "書庫にはインターネットで公開された連載作品を収録しています。著作権は各著作者に帰属し、当サイトは著作者と関係ありません。引用するときは原文をご確認ください。訂正・削除は support@0x6.ai までご連絡ください。"
       }
     },
     {
@@ -414,7 +417,8 @@
       ],
       "disclaimer": {
         "zh-Hant": "事件說明抄自各來源，授權跟著來源走，請以原文為準；行政區界線是依文獻畫的示意，不是實測的舊界。",
-        "en": "Event descriptions are quoted from their sources and keep those sources' licenses; rely on the originals. Administrative boundaries are sketches based on historical records, not surveyed historical borders."
+        "en": "Event descriptions are quoted from their sources and keep those sources' licenses; rely on the originals. Administrative boundaries are sketches based on historical records, not surveyed historical borders.",
+        "ja": "出来事の説明は各資料から引用し、それぞれの資料のライセンスに従います。詳細は原文をご確認ください。行政区域の境界は史料をもとに描いた概略図で、当時の境界を実測したものではありません。"
       }
     },
     {
@@ -568,7 +572,8 @@
       ],
       "disclaimer": {
         "zh-Hant": "案例內容的權利屬於原作者與原始來源，請以原文為準；摘要與提示詞由本站撰寫，不代表原作者立場。",
-        "en": "Rights in each use case belong to its author and original source; rely on the original. Summaries and prompts are written for this site and do not represent the original authors."
+        "en": "Rights in each use case belong to its author and original source; rely on the original. Summaries and prompts are written for this site and do not represent the original authors.",
+        "ja": "事例の権利は原著者と出典に帰属します。詳細は原文をご確認ください。要約とプロンプトは当サイトが作成しており、原著者の見解を示すものではありません。"
       }
     },
     {
@@ -645,7 +650,8 @@
       ],
       "disclaimer": {
         "zh-Hant": "時刻依交通部 TDX、臺灣鐵路公司、阿里山林業鐵路等公開資料整理，車站與線形部分來自 OpenStreetMap（ODbL）；可能與實際營運不同，搭車請以各營運單位公告為準。",
-        "en": "Times are compiled from open data by MOTC TDX, Taiwan Railway, the Alishan Forest Railway, and others, with some stations and lines from OpenStreetMap (ODbL). They may differ from actual service; follow each operator's announcements when you travel."
+        "en": "Times are compiled from open data by MOTC TDX, Taiwan Railway, the Alishan Forest Railway, and others, with some stations and lines from OpenStreetMap (ODbL). They may differ from actual service; follow each operator's announcements when you travel.",
+        "ja": "時刻は台湾交通部の TDX、台湾鉄路公司、阿里山林業鉄路などの公開データからまとめています。一部の駅・線路のデータは OpenStreetMap（ODbL）を使用しています。実際の運行と異なる場合があるため、乗車時は各事業者の案内をご確認ください。"
       }
     },
     {
@@ -743,7 +749,8 @@
       ],
       "disclaimer": {
         "zh-Hant": "本服務為非官方作品，與美國運通（American Express）無關，也未獲其認可或贊助。優惠內容以美國運通及商家公告為準。",
-        "en": "This is an unofficial work, not affiliated with, endorsed, or sponsored by American Express. Offer details follow American Express and merchant announcements."
+        "en": "This is an unofficial work, not affiliated with, endorsed, or sponsored by American Express. Offer details follow American Express and merchant announcements.",
+        "ja": "本サービスは非公式の作品です。アメリカン・エキスプレスとは関係がなく、同社による承認や支援もありません。優待の詳細はアメリカン・エキスプレスや加盟店の公式案内をご確認ください。"
       }
     },
     {
@@ -805,7 +812,8 @@
       ],
       "disclaimer": {
         "zh-Hant": "本 App 為非官方作品，與美國運通（American Express）無關，也未獲其認可或贊助。優惠內容以美國運通及商家公告為準。",
-        "en": "This app is an unofficial work, not affiliated with, endorsed, or sponsored by American Express. Offer details follow American Express and merchant announcements."
+        "en": "This app is an unofficial work, not affiliated with, endorsed, or sponsored by American Express. Offer details follow American Express and merchant announcements.",
+        "ja": "本アプリは非公式の作品です。アメリカン・エキスプレスとは関係がなく、同社による承認や支援もありません。優待の詳細はアメリカン・エキスプレスや加盟店の公式案内をご確認ください。"
       }
     },
     {
@@ -878,7 +886,8 @@
       ],
       "disclaimer": {
         "zh-Hant": "貼文內容、圖片與帳號名稱的權利屬於原作者與 X，不代表 0x6.ai 的立場；內容會延遲更新，請以 X 上的原文為準。",
-        "en": "Rights in posts, images, and account names belong to their authors and X, and do not reflect the views of 0x6.ai. Content is updated with a delay, so rely on the original post on X."
+        "en": "Rights in posts, images, and account names belong to their authors and X, and do not reflect the views of 0x6.ai. Content is updated with a delay, so rely on the original post on X.",
+        "ja": "投稿、画像、アカウント名に関する権利は投稿者および X に帰属し、内容は 0x6.ai の見解を示すものではありません。更新に遅れがあるため、X の元の投稿をご確認ください。"
       }
     },
     {
@@ -959,7 +968,8 @@
       ],
       "disclaimer": {
         "zh-Hant": "購買、付款、退款與使用方式依 LINE 的服務條款辦理；購買取得的是在 LINE 內使用的權利，不含著作權或商業授權。",
-        "en": "Purchases, payments, refunds, and use follow LINE's terms. A purchase grants use within LINE only, not copyright or a commercial license."
+        "en": "Purchases, payments, refunds, and use follow LINE's terms. A purchase grants use within LINE only, not copyright or a commercial license.",
+        "ja": "購入、支払い、返金、利用には LINE の利用規約が適用されます。購入により LINE 内で利用する権利を得られます。著作権の移転や商用利用の許諾は含まれません。"
       }
     },
     {
