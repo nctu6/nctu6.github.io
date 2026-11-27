@@ -103,6 +103,64 @@
   },
   "apps": [
     {
+      "id": "tallybud",
+      "work": "011",
+      "listed": true,
+      "kind": "ios",
+      "visual": "image",
+      "image": "/images/tallybud.png",
+      "imageAlt": {
+        "zh-Hant": "小帳苗圖示，像素小苗從打開的帳本長出",
+        "en": "Tallybud icon showing a pixel-art seedling growing from an open ledger",
+        "ja": "開いた帳簿から芽が伸びるタリーバッドのドット絵アイコン"
+      },
+      "url": "https://tallybud.0x6.ai/",
+      "localizedUrl": {
+        "en": "https://tallybud.0x6.ai/en/",
+        "ja": "https://tallybud.0x6.ai/ja/"
+      },
+      "domain": "tallybud.0x6.ai",
+      "name": {
+        "zh-Hant": "小帳苗",
+        "en": "Tallybud",
+        "ja": "タリーバッド"
+      },
+      "tags": {
+        "zh-Hant": ["雙幣記帳", "像素植物", "iPhone"],
+        "en": ["Dual-currency tracking", "Pixel plants", "iPhone"],
+        "ja": ["外貨対応の家計簿", "ドット絵の植物", "iPhone"]
+      },
+      "description": {
+        "zh-Hant": "離線記下台幣、日圓等支出，等信用卡入帳再補實扣。天天記帳，培育像素小苗。",
+        "en": "Log expenses offline and add the final card charge later. Grow a pixel-art seedling as you track spending.",
+        "ja": "外貨での支出をオフラインで記録し、カードの確定額をあとから追加。家計簿をつけながらドット絵の苗を育てられます。"
+      },
+      "extra": [
+        {
+          "url": "https://apps.apple.com/tw/app/id6837826202",
+          "label": {
+            "zh-Hant": "iPhone 下載・台灣",
+            "en": "iPhone · Taiwan",
+            "ja": "iPhone・台湾"
+          }
+        },
+        {
+          "url": "https://apps.apple.com/jp/app/id6837826202",
+          "label": {
+            "zh-Hant": "iPhone 下載・日本",
+            "en": "iPhone · Japan",
+            "ja": "iPhone・日本"
+          }
+        }
+      ],
+      "data": {
+        "zh-Hant": ["基本記帳可免登入離線使用，帳本與植物收藏先存於裝置。選用的帳號、同步與備份詳見本頁小帳苗專節。"],
+        "en": ["Basic expense tracking works offline without signing in. The ledger and plant collection are stored on the device first. See the Tallybud section on this page for optional accounts, sync, and backups."],
+        "ja": ["基本の記帳はサインイン不要で、オフラインでも利用できます。帳簿と植物のコレクションはまず端末に保存されます。任意のアカウント、同期、バックアップは本ページのタリーバッドの項をご覧ください。"]
+      },
+      "services": ["app-store", "google-signin", "cloudflare"]
+    },
+    {
       "id": "game",
       "work": "010",
       "listed": true,

@@ -32,7 +32,7 @@
   const L = (v) => pickLang(v, lang());
   const ui = (k) => (UI[lang()] || UI["zh-Hant"])[k] ?? UI["zh-Hant"][k];
   const lineUrl = () => LINE_STORE_BASE + (lang() === "zh-Hant" ? "zh-Hant" : "en");
-  const urlOf = (app) => (app.url === "{LINE}" ? lineUrl() : app.url);
+  const urlOf = (app) => (app.url === "{LINE}" ? lineUrl() : L(app.localizedUrl) || app.url);
 
   function el(tag, attrs = {}, ...children) {
     const node = document.createElement(tag);
