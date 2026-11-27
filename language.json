@@ -189,7 +189,7 @@
       "amexAdsPrivacy": "美運優惠 1.3 的 iPhone App 可能透過 Google AdMob 顯示非個人化廣告。Google 的廣告與同意管理 SDK 可處理 IP 位址及由此推算的大略位置、裝置識別碼、廣告資料、App 互動及診斷資料，用於提供和衡量廣告、防止無效流量及管理隱私選項。App 不會將選卡、搜尋字詞或精確座標交給 AdMob。系統要求時，可在「設定 → 關於 → 廣告隱私選項」管理同意。這個版本未要求 iOS 的 App 追蹤透明度（ATT）授權，因此不會在廣告請求中傳送 IDFA。Google 可能將用戶端資訊、截短後的 IP 位址等部分訊號交給參與競價的廣告合作夥伴，用於放送、衡量廣告與防止無效流量。詳見 <a href=\"https://policies.google.com/privacy?hl=zh-TW\">Google 隱私權政策</a>。",
       "p6_3": "離開本站前往第三方網站，或在第三方平台（例如 LINE STORE、App Store）購買或下載時，付款與帳號資料由該平台處理，我們不會取得，並以該平台的政策為準。",
       "hExternal": "外部傳送資訊（給日本的使用者）",
-      "pExternal_0": "依日本《電氣通信事業法》的外部傳送規定，「美運優惠」iPhone App 與網頁版 amex.0x6.ai 從你的裝置傳到外部的資訊（接收者、資訊內容、利用目的），整理在<a href=\"/external-transmission.html?lang=zh-Hant\">外部傳送資訊公布事項</a>。",
+      "pExternal_0": "依日本《電氣通信事業法》的外部傳送規定，「美運優惠」iPhone App 與網頁版 amex.0x6.ai 從你的裝置傳到外部的資訊（接收者、資訊內容、利用目的），整理在<a href=\"/external-transmission.html?lang=zh-Hant\">外部傳送資訊公布事項</a>。 「小帳苗」的獲勵廣告揭露見 <a href=\"/external-transmission.html?lang=zh-Hant#tallybud\">小帳苗外部傳送揭露</a>。",
       "h7": "各作品說明",
       "p7_0": "以下列出本政策目前涵蓋的作品，以及各自使用的資料與第三方服務：",
       "h8": "資料的使用與分享",
@@ -223,7 +223,9 @@
       "tallybudRetentionTitle": "保存期限及撤回權限",
       "tallybudRetention": "帳號資料與過去版本留下的加密帳號備份保留到刪帳為止。登入工作階段最長 30 天，短效授權資料到期後清除。為處理撤銷或確認重送的刪帳請求，服務可能暫存雜湊後的安全紀錄，最長約 31 天。自動檔案備份會輪替保留最近七份，同一裝置的 Google Drive 自動備份也會清理超過七份的舊備份。你可在「備份與還原」取消連結，並在 Google 帳號的第三方連線設定撤回 Drive 授權。取消連結本身會保留已寫入的雲端副本。",
       "tallybudDeleteTitle": "刪除帳號與雲端副本",
-      "tallybudDelete": "在「帳本 → 設定」選「刪除小帳苗帳號」，以現有連結的 Apple 或 Google 登入方式重新驗證。刪除會撤銷服務端保存的登入授權，刪除小帳苗帳號、登入綁定、工作階段及舊版帳號備份，並移除這台裝置中該帳號的本機帳本等資料。若要一併移除 CloudKit 副本，請在刪帳前到「跨裝置同步」選「刪除 iCloud 同步副本」。另到「檔案」刪除 iCloud Drive 備份，或在 Google Drive 的「管理應用程式」移除小帳苗隱藏的應用程式資料。其他裝置上的本機副本、已匯出的檔案與 App Store 付費訂閱需要另外管理。"
+      "tallybudDelete": "在「帳本 → 設定」選「刪除小帳苗帳號」，以現有連結的 Apple 或 Google 登入方式重新驗證。刪除會撤銷服務端保存的登入授權，刪除小帳苗帳號、登入綁定、工作階段及舊版帳號備份，並移除這台裝置中該帳號的本機帳本等資料。若要一併移除 CloudKit 副本，請在刪帳前到「跨裝置同步」選「刪除 iCloud 同步副本」。另到「檔案」刪除 iCloud Drive 備份，或在 Google Drive 的「管理應用程式」移除小帳苗隱藏的應用程式資料。其他裝置上的本機副本、已匯出的檔案與 App Store 付費訂閱需要另外管理。",
+      "tallybudAdsTitle": "選用的獎勵廣告",
+      "tallybudAds": "從 1.1 起，在 iPhone 的進階收支回顧選擇有交易的月份，可主動觀看一則 Google AdMob 廣告來解鎖該月。App 在你選擇看廣告時，透過 Google User Messaging Platform（UMP）確認適用的廣告隱私選擇，再請求廣告。已解鎖的月份存於這台裝置，可離線回看。收支回顧月訂閱期間可免廣告開啟進階回顧。 小帳苗不要求 Apple 的 App 追蹤透明度（ATT）授權，因此無法取得 Apple 廣告識別碼（IDFA）。App 要求放送非個人化廣告，並關閉發布商第一方 ID 和廣告 SDK 的裝置定位功能。Google 仍可能處理其他裝置或 App 識別碼，並從 IP 位址推估大致區域。帳本、收據、選定月份和登入資料不會由小帳苗放入廣告請求。 <a href=\"https://tallybud.0x6.ai/privacy#rewarded-ads\">完整廣告隱私權說明</a> · <a href=\"/external-transmission.html?lang=zh-Hant#tallybud\">小帳苗外部傳送揭露</a>"
     },
     "external": {
       "docTitle": "外部傳送資訊公布事項 | 0x6.ai",
@@ -270,7 +272,15 @@
       "hChoices": "不想傳送時",
       "pChoices_0": "傳給 Google 與 Cloudflare 的資訊是顯示地圖與保護連線所必需，App 與網頁版裡沒有個別關閉的設定。不希望傳送時，請停止使用 App 或網頁版。定位權限可以隨時在裝置或瀏覽器設定中撤回。",
       "hContact": "聯絡我們",
-      "pContact_0": "對本頁有任何問題，請寄信至 <a href=\"mailto:support@0x6.ai\">support@0x6.ai</a>。個人資料的整體處理方式，請見<a href=\"/privacy.html?lang=zh-Hant\">隱私權政策</a>。"
+      "pContact_0": "對本頁有任何問題，請寄信至 <a href=\"mailto:support@0x6.ai\">support@0x6.ai</a>。個人資料的整體處理方式，請見<a href=\"/privacy.html?lang=zh-Hant\">隱私權政策</a>。",
+      "tallybudJump": "「小帳苗」的獲勵廣告揭露見 <a href=\"#tallybud\">小帳苗外部傳送揭露</a>。",
+      "tallybudExternalTitle": "小帳苗 · 選用的獎勵廣告",
+      "tallybudExternalDate": "更新於 2026 年 11 月 28 日",
+      "tallybudRecipient": "Google LLC 及其關係企業。小帳苗使用 Google Mobile Ads SDK 放送獎勵廣告，使用 UMP 處理廣告隱私與同意選擇。",
+      "tallybudData": "IP 位址及據此推估的大致區域、裝置或 App 識別碼、App 或系統資訊、廣告與曝光資料、點按與影片觀看等互動、隱私設定與同意狀態、效能與崩潰等診斷資料。",
+      "tallybudPurpose": "小帳苗用這些服務提供選用的廣告解鎖及處理適用的隱私選擇。Google 使用相關資訊放送廣告、限制廣告播放頻率、彙總衡量成效、防範無效流量、維護與改善服務，以及套用廣告隱私設定。",
+      "tallybudChoice": "不選擇觀看廣告即可略過此廣告流程。適用地區可從進階收支回顧開啟「廣告隱私選項」。Apple／Google 登入與選用的雲端同步和備份另見本頁各節。",
+      "tallybudLinks": "<a href=\"https://tallybud.0x6.ai/privacy#external-transmission\">完整廣告隱私權說明</a> · <a href=\"https://business.safety.google/intl/ja/tba-jp/\">Google 的日本外部傳送參考資訊</a>"
     }
   },
   "en": {
@@ -463,7 +473,7 @@
       "amexAdsPrivacy": "MeiYun 1.3 for iPhone may show non-personalized ads from Google AdMob. Google’s ads and consent SDKs may process IP addresses and IP-derived coarse location, device identifiers, advertising data, app interactions, and diagnostics to serve and measure ads, prevent invalid traffic, and manage privacy choices. The app does not send selected cards, search terms, or precise coordinates to AdMob. Where required, manage consent in Settings → About → Ad Privacy Choices. This version does not request iOS App Tracking Transparency (ATT) permission, so ad requests do not contain the IDFA. Google may send some signals, such as client information and a truncated IP address, to bidding partners for ad delivery, measurement, and invalid-traffic prevention. See <a href=\"https://policies.google.com/privacy?hl=en\">Google’s Privacy Policy</a>.",
       "p6_3": "Once you leave for a third-party site, or buy or download on a third-party platform (such as the LINE STORE or App Store), that platform handles your payment and account details, we never receive them, and its policies apply.",
       "hExternal": "External transmission (for users in Japan)",
-      "pExternal_0": "Under the external transmission rules of Japan's Telecommunications Business Act, the information that the 美運優惠 (MeiYun) iPhone app and amex.0x6.ai send from your device to others (recipient, content, and purpose) is listed on the <a href=\"/external-transmission.html?lang=en\">external transmission disclosure</a> page.",
+      "pExternal_0": "Under the external transmission rules of Japan's Telecommunications Business Act, the information that the 美運優惠 (MeiYun) iPhone app and amex.0x6.ai send from your device to others (recipient, content, and purpose) is listed on the <a href=\"/external-transmission.html?lang=en\">external transmission disclosure</a> page. For Tallybud rewarded ads, see <a href=\"/external-transmission.html?lang=en#tallybud\">Tallybud external transmission disclosure</a>.",
       "h7": "Apps and works covered",
       "p7_0": "These are the works this policy currently covers, with the data and third-party services each one uses:",
       "h8": "How data is used and shared",
@@ -497,7 +507,9 @@
       "tallybudRetentionTitle": "Retention and revoking access",
       "tallybudRetention": "Account data and encrypted account backups from earlier versions are kept until account deletion. A sign-in session lasts up to 30 days. Short-lived authorization records are cleared after expiration. The service may keep hashed security records for up to about 31 days to process revocations or confirm a retried deletion. Automatic Files backups rotate through the seven most recent copies. Google Drive automatic backups also clean up older copies for the same device beyond the most recent seven. You can disconnect a provider in Backup and restore and revoke the Drive grant in your Google Account’s third-party connections settings. Disconnecting leaves cloud copies that were already saved.",
       "tallybudDeleteTitle": "Deleting your account and cloud copies",
-      "tallybudDelete": "In Ledger → Settings, choose Delete Tallybud account and verify using an Apple or Google sign-in already linked to your account. Deletion revokes sign-in grants held on the server and removes your Tallybud account, linked identities, sessions, and legacy account backup. It also removes that account’s local ledger and associated data on this device. To remove the CloudKit copy, go to Sync across devices and choose Delete the iCloud sync copy before deleting your account. Remove iCloud Drive backup files in Files, or remove Tallybud’s hidden app data using Google Drive’s Manage Apps settings. Manage local copies on other devices, exported files, and App Store subscriptions separately."
+      "tallybudDelete": "In Ledger → Settings, choose Delete Tallybud account and verify using an Apple or Google sign-in already linked to your account. Deletion revokes sign-in grants held on the server and removes your Tallybud account, linked identities, sessions, and legacy account backup. It also removes that account’s local ledger and associated data on this device. To remove the CloudKit copy, go to Sync across devices and choose Delete the iCloud sync copy before deleting your account. Remove iCloud Drive backup files in Files, or remove Tallybud’s hidden app data using Google Drive’s Manage Apps settings. Manage local copies on other devices, exported files, and App Store subscriptions separately.",
+      "tallybudAdsTitle": "Optional rewarded ads",
+      "tallybudAds": "Starting in version 1.1, you can choose to watch one Google AdMob ad on your iPhone to unlock Advanced Spending Review for a month with transactions. If you choose to watch, the app checks applicable ad privacy choices through Google User Messaging Platform (UMP) before requesting the ad. Unlocked months are saved on this device and can be reopened offline. The monthly Spending Review subscription gives you ad-free access to advanced reviews. Tallybud does not request Apple’s App Tracking Transparency (ATT) permission, so it cannot obtain Apple’s advertising identifier (IDFA). The app requests non-personalized ads and disables publisher first-party IDs and device location collection by the ads SDK. Google may still process other device or app identifiers and infer an approximate area from the IP address. Tallybud does not include ledger entries, receipts, the selected month, or sign-in information in its ad requests. <a href=\"https://tallybud.0x6.ai/en/privacy#rewarded-ads\">Tallybud’s full ad privacy policy</a> · <a href=\"/external-transmission.html?lang=en#tallybud\">Tallybud external transmission disclosure</a>"
     },
     "external": {
       "docTitle": "External Transmission Disclosure | 0x6.ai",
@@ -544,7 +556,15 @@
       "hChoices": "If you don't want this sent",
       "pChoices_0": "What goes to Google and Cloudflare is needed to show maps and protect the connection, so the app and website have no setting to turn it off. If you don't want it sent, please stop using the app or website. You can revoke location permission at any time in your device or browser settings.",
       "hContact": "Contact",
-      "pContact_0": "For questions about this page, email <a href=\"mailto:support@0x6.ai\">support@0x6.ai</a>. For how we handle personal data in general, see the <a href=\"/privacy.html?lang=en\">privacy policy</a>."
+      "pContact_0": "For questions about this page, email <a href=\"mailto:support@0x6.ai\">support@0x6.ai</a>. For how we handle personal data in general, see the <a href=\"/privacy.html?lang=en\">privacy policy</a>.",
+      "tallybudJump": "For Tallybud rewarded ads, see <a href=\"#tallybud\">Tallybud external transmission disclosure</a>.",
+      "tallybudExternalTitle": "Tallybud · Optional rewarded ads",
+      "tallybudExternalDate": "Updated November 28, 2026",
+      "tallybudRecipient": "Google LLC and its affiliates. Tallybud uses the Google Mobile Ads SDK for rewarded ads and UMP for ad privacy and consent choices.",
+      "tallybudData": "IP address and the approximate area inferred from it, device or app identifiers, app or operating system information, ad and impression data, interactions such as taps and video views, privacy and consent choices, and performance, crash, and other diagnostic data.",
+      "tallybudPurpose": "Tallybud uses these services to offer optional ad unlocks and apply relevant privacy choices. Google uses the information to deliver ads, limit their frequency, measure results in aggregate, prevent invalid traffic, maintain and improve its services, and apply ad privacy settings.",
+      "tallybudChoice": "You can skip this ad flow by choosing not to watch an ad. In applicable regions, Ad privacy options are available in Advanced Spending Review. See the separate sections on this page for Apple or Google sign-in and optional cloud sync or backups.",
+      "tallybudLinks": "<a href=\"https://tallybud.0x6.ai/en/privacy#external-transmission\">Tallybud’s full ad privacy policy</a> · <a href=\"https://business.safety.google/intl/ja/tba-jp/\">Google’s external transmission information for Japan</a>"
     }
   },
   "ja": {
@@ -597,7 +617,7 @@
       "amexAdsPrivacy": "美運優惠 1.3 の iPhone アプリでは、Google AdMob の非パーソナライズ広告が表示される場合があります。Google の広告・同意管理 SDK は、広告配信と効果測定、無効なトラフィックの防止、プライバシー設定の管理のため、IP アドレスとそこから推定されるおおまかな地域、端末識別子、広告データ、アプリの操作状況、診断データを処理する場合があります。選択したカード、検索語句、正確な位置情報は AdMob に送信しません。必要に応じて、設定の「このアプリについて」から広告のプライバシー設定を変更できます。このバージョンは iOS の App Tracking Transparency（ATT）の許可を求めないため、広告リクエストに IDFA は含まれません。Google は広告配信や効果測定、無効なトラフィックの防止のため、クライアント情報や一部を切り詰めた IP アドレスなどを入札に参加する広告パートナーに提供する場合があります。詳しくは <a href=\"https://policies.google.com/privacy?hl=ja\">Google プライバシーポリシー</a>をご確認ください。",
       "p6_3": "サイトを離れて外部のサイトへ移動したときや、外部のプラットフォーム（LINE STORE、App Store など）で購入やダウンロードをするときは、支払いやアカウントの情報はそのプラットフォームが扱い、当方は受け取りません。そのプラットフォームのポリシーが適用されます。",
       "hExternal": "外部送信について（日本の利用者の方へ）",
-      "pExternal_0": "電気通信事業法の外部送信規律にもとづき、「美運優惠」の iPhone アプリとウェブ版 amex.0x6.ai が、あなたの端末から外部へ送信する情報（送信先、情報の内容、利用目的）を、<a href=\"/external-transmission.html?lang=ja\">外部送信に関する公表事項</a>にまとめています。",
+      "pExternal_0": "電気通信事業法の外部送信規律にもとづき、「美運優惠」の iPhone アプリとウェブ版 amex.0x6.ai が、あなたの端末から外部へ送信する情報（送信先、情報の内容、利用目的）を、<a href=\"/external-transmission.html?lang=ja\">外部送信に関する公表事項</a>にまとめています。 タリーバッドのリワード広告については <a href=\"/external-transmission.html?lang=ja#tallybud\">タリーバッドの外部送信に関する公表事項</a> をご覧ください。",
       "h7": "各作品の説明",
       "p7_0": "このポリシーが現在対象としている作品と、それぞれが扱う情報・外部サービスは次のとおりです。日本語訳がない作品は英語で表示しています。",
       "h8": "情報の利用と共有",
@@ -631,7 +651,9 @@
       "tallybudRetentionTitle": "保存期間と権限の取り消し",
       "tallybudRetention": "アカウント情報と旧バージョンの暗号化済みアカウントバックアップは、アカウントを削除するまで保存します。ログインセッションの有効期間は最長30日です。短期の認証情報は期限後に消去します。認可の取り消しや削除リクエストの再送確認に必要なハッシュ化済みの安全管理記録は、最長約31日間保存することがあります。「ファイル」への自動バックアップは最新7件を残して入れ替えます。Google ドライブへの自動バックアップでも、同じ端末の8件目以降の古いコピーを整理します。「バックアップと復元」から連携を解除し、Google アカウントのサードパーティ接続設定からドライブの権限を取り消せます。連携解除後も、保存済みのクラウド上のコピーは残ります。",
       "tallybudDeleteTitle": "アカウントとクラウド上のコピーの削除",
-      "tallybudDelete": "「帳簿 → 設定」から「タリーバッドのアカウントを削除」を選び、連携済みの Apple または Google で再認証します。サーバーに保存されているサインインの認可を取り消し、アカウント、連携情報、セッション、旧アカウントバックアップを削除します。この端末にある該当アカウントの家計簿なども消去します。CloudKit のコピーを消すには、アカウントを削除する前に「デバイス間の同期」で「iCloud の同期コピーを削除」を選びます。iCloud Drive のバックアップは「ファイル」から、Google ドライブのバックアップは「アプリの管理」からタリーバッドの非表示アプリデータを削除してください。他の端末内のデータ、書き出したファイル、App Store の有料サブスクリプションは個別に管理してください。"
+      "tallybudDelete": "「帳簿 → 設定」から「タリーバッドのアカウントを削除」を選び、連携済みの Apple または Google で再認証します。サーバーに保存されているサインインの認可を取り消し、アカウント、連携情報、セッション、旧アカウントバックアップを削除します。この端末にある該当アカウントの家計簿なども消去します。CloudKit のコピーを消すには、アカウントを削除する前に「デバイス間の同期」で「iCloud の同期コピーを削除」を選びます。iCloud Drive のバックアップは「ファイル」から、Google ドライブのバックアップは「アプリの管理」からタリーバッドの非表示アプリデータを削除してください。他の端末内のデータ、書き出したファイル、App Store の有料サブスクリプションは個別に管理してください。",
+      "tallybudAdsTitle": "任意のリワード広告",
+      "tallybudAds": "バージョン1.1から、iPhoneの詳細な収支レビューで取引のある月を選び、Google AdMobの広告を1本最後まで視聴すると、その月を解放できます。視聴を選ぶと、Google User Messaging Platform（UMP）で適用される広告のプライバシー設定を確認してから、広告をリクエストします。解放した月は端末に保存され、オフラインでも確認できます。月額の収支レビューでは、広告なしで詳細レビューを利用できます。 タリーバッドはAppleのApp Tracking Transparency（ATT）による許可を求めないため、Appleの広告識別子（IDFA）を取得できません。パーソナライズされていない広告をリクエストし、パブリッシャー ファーストパーティIDと広告SDKによる端末の位置情報取得を無効にしています。Googleは、その他の端末やアプリの識別子を取り扱い、IPアドレスからおおまかな地域を推定する場合があります。広告のリクエストに、家計簿、レシート、選択した月、サインイン情報を含めることはありません。 <a href=\"https://tallybud.0x6.ai/ja/privacy#rewarded-ads\">広告のプライバシーに関する詳細</a> · <a href=\"/external-transmission.html?lang=ja#tallybud\">タリーバッドの外部送信に関する公表事項</a>"
     },
     "external": {
       "docTitle": "外部送信に関する公表事項 | 0x6.ai",
@@ -678,7 +700,15 @@
       "hChoices": "送信を止めたいとき",
       "pChoices_0": "Google と Cloudflare への送信は、地図の表示と通信の保護に欠かせないため、アプリやウェブ版の中で個別に止める設定はありません。送信を望まない場合は、アプリやウェブ版のご利用をお控えください。位置情報の許可は、端末やブラウザの設定からいつでも取り消せます。",
       "hContact": "お問い合わせ",
-      "pContact_0": "この公表事項についてのご質問は、<a href=\"mailto:support@0x6.ai\">support@0x6.ai</a> へお送りください。個人情報の取り扱い全般については、<a href=\"/privacy.html?lang=ja\">プライバシーポリシー</a>をご覧ください。"
+      "pContact_0": "この公表事項についてのご質問は、<a href=\"mailto:support@0x6.ai\">support@0x6.ai</a> へお送りください。個人情報の取り扱い全般については、<a href=\"/privacy.html?lang=ja\">プライバシーポリシー</a>をご覧ください。",
+      "tallybudJump": "タリーバッドのリワード広告については <a href=\"#tallybud\">タリーバッドの外部送信に関する公表事項</a> をご覧ください。",
+      "tallybudExternalTitle": "タリーバッド · 任意のリワード広告",
+      "tallybudExternalDate": "最終更新 2026年11月28日",
+      "tallybudRecipient": "Google LLCおよびその関係会社。リワード広告にはGoogle Mobile Ads SDKを、広告のプライバシー設定と同意の管理にはUMPを使います。",
+      "tallybudData": "IPアドレスとそれから推定されるおおまかな地域、端末やアプリの識別子、アプリやOSに関する情報、広告や表示回数に関するデータ、タップや動画視聴などの操作、プライバシー設定や同意の状態、パフォーマンスやクラッシュなどの診断情報。",
+      "tallybudPurpose": "当方は、任意の広告視聴によるレビューの解放と、適用されるプライバシー設定の確認に利用します。Googleは広告の配信、表示頻度の制御、広告効果の集計、不正なトラフィックの防止、サービスの維持・改善、広告のプライバシー設定の適用に利用します。",
+      "tallybudChoice": "広告による解放を選ばなければ、この広告の手順を利用する必要はありません。対象地域では詳細レビューの「広告のプライバシー設定」を利用できます。Apple／Googleのサインインや、任意の同期・バックアップに伴う送信は、このページの各項目をご覧ください。",
+      "tallybudLinks": "<a href=\"https://tallybud.0x6.ai/ja/privacy#external-transmission\">広告のプライバシーに関する詳細</a> · <a href=\"https://business.safety.google/intl/ja/tba-jp/\">Googleの外部送信に関する参考情報</a>"
     },
     "terms": {
       "docTitle": "利用規約 | 0x6.ai",
