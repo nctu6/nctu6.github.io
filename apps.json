@@ -846,21 +846,21 @@
           "優惠與貴賓室資料以加密形式內建在 App 中。開啟或回到 App 時，以及你點「立即檢查更新」時，App 會向 amex.0x6.ai 檢查是否有新版本，有新版本才下載加密的資料；請求只帶 App 簽章、時間戳記與資料版本，不含位置、裝置 ID 或任何個人資料，伺服器也不記錄請求者。",
           "App 內建的 Google Maps SDK for iOS 會直接把裝置識別碼、使用狀況、當機與效能資料傳給 Google，用於地圖功能與 Google 的分析；這些資料不會傳到我們這裡，依 Google 的申報也不用於追蹤。",
           "意見回饋與錯誤回報會用你自己的「郵件」App 開啟寄給 support@0x6.ai 的草稿，附上 App 版本、iOS 版本、裝置型號與資料版本（不含位置），寄不寄由你決定。",
-          "沒有帳號、沒有廣告，也不做追蹤。"
+          "不需要帳號。從 iPhone 1.3 起，只有允許 iOS 追蹤授權後，才可能顯示 AdMob 非個人化廣告。"
         ],
         "en": [
           "Uses your device location only with your permission, on the device only, to show nearby offers; it is never uploaded and never given to Google Maps.",
           "Offer and lounge data ships inside the app in encrypted form. When you open or return to the app, or tap 立即檢查更新 (Check for updates now), the app asks amex.0x6.ai whether there is a newer version and downloads the encrypted data only if there is. The request carries only an app signature, a timestamp, and the data version, with no location, device ID, or personal data, and the server does not log who sent it.",
           "The Google Maps SDK for iOS inside the app sends a device identifier, usage data, and crash and performance data directly to Google for the map features and Google's analytics. This data never reaches us, and Google declares that it is not used for tracking.",
           "Feedback and error reports open a draft to support@0x6.ai in your own Mail app, with the app version, iOS version, device model, and data version (never your location); you decide whether to send it.",
-          "No accounts, no ads, and no tracking."
+          "No account is required. Starting with iPhone version 1.3, non-personalized AdMob ads may appear only after you allow tracking in iOS."
         ],
         "ja": [
           "端末の位置情報は、許可された場合にだけ、近くの優待を表示するために端末の中で使います。アップロードすることはなく、Google マップにも渡しません。",
           "優待とラウンジのデータは、暗号化してアプリに内蔵しています。アプリを開いたときや戻ったとき、または手動で更新を確認したときに、amex.0x6.ai に新しいバージョンがあるかを確認し、あるときだけ暗号化されたデータをダウンロードします。このリクエストに含まれるのはアプリの署名、時刻、データのバージョンだけで、位置情報、端末の識別子、個人情報は含まず、サーバーも送信元を記録しません。",
           "アプリに組み込まれた Google Maps SDK for iOS は、端末の識別子、利用状況、クラッシュやパフォーマンスのデータを、地図機能と Google の分析のために Google へ直接送ります。これらの情報は当方には届きません。また、Google の申告によれば、トラッキングには使われないとされています。",
           "フィードバックや不具合の報告をするときは、お使いの「メール」アプリで support@0x6.ai 宛ての下書きが開きます。下書きにはアプリのバージョン、iOS のバージョン、端末の機種、データのバージョンが入ります（位置情報は入りません）。送信するかどうかは、あなたが決められます。",
-          "アカウント、広告、トラッキングはありません。"
+          "アカウントは不要です。iPhone 版 1.3 以降は、iOS でトラッキングを許可した場合にのみ、AdMob の非パーソナライズ広告が表示されることがあります。"
         ]
       },
       "services": [
