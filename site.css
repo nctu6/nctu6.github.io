@@ -332,6 +332,9 @@ a.tile-link:focus-visible { outline: none; }
 .summary strong, .summary span { display: block; }
 .summary span, .app-meta { color: var(--quiet); }
 .app-entry > * + * { margin-top: 8px; }
+.app-platform { display: grid; gap: 8px; }
+.app-platform + .app-platform { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 12px; }
+.app-platform h4 { margin: 0; }
 .app-meta { font: 500 12px/20px var(--mono); }
 .app-label, .facts dt { font-weight: 700; }
 .facts { display: grid; grid-template-columns: minmax(0, 160px) minmax(0, 1fr); gap: 7px 16px; }

@@ -393,18 +393,27 @@
     });
   }
 
+  function privacyDetails({ data: uses, services = [] }) {
+    return [
+      el("p", { class: "app-label", text: ui("dataUse") }),
+      el("ul", {}, (L(uses) || []).map((text) => el("li", { text }))),
+      el("p", { class: "app-label", text: ui("services") }),
+      services.length ? el("ul", {}, services.map((id) => el("li", {}, serviceLink(id)))) : el("p", { text: ui("noServices") })
+    ];
+  }
+
   function renderCoverage(root) {
-    root.innerHTML = "";
-    data.apps.forEach((app) => {
-      const services = (app.services || []);
-      root.append(el("div", { class: "app-entry" },
+    const entries = data.apps.map((app) => {
+      const details = app.privacyPlatforms
+        ? app.privacyPlatforms.map((platform) => el("section", { class: "app-platform" },
+          el("h4", { text: L(platform.name) }), privacyDetails(platform)))
+        : privacyDetails(app);
+      return el("div", { class: "app-entry" },
         el("h3", {}, appTitle(app)),
         el("div", { class: "app-meta", text: app.domain || "" }),
-        el("p", { class: "app-label", text: ui("dataUse") }),
-        el("ul", {}, (L(app.data) || []).map((d) => el("li", { text: d }))),
-        el("p", { class: "app-label", text: ui("services") }),
-        services.length ? el("ul", {}, services.map((id) => el("li", {}, serviceLink(id)))) : el("p", { text: ui("noServices") })));
+        details);
     });
+    root.replaceChildren(...entries);
   }
 
   function renderTerms(root) {
