@@ -775,8 +775,17 @@
         {
           "url": "https://apps.apple.com/tw/app/6821340794",
           "label": {
-            "zh-Hant": "下載 iPhone App",
-            "en": "Get the iPhone app"
+            "zh-Hant": "iPhone 下載（台灣）",
+            "en": "iPhone download (Taiwan)",
+            "ja": "iPhone版をダウンロード（台湾）"
+          }
+        },
+        {
+          "url": "https://apps.apple.com/jp/app/6821340794",
+          "label": {
+            "zh-Hant": "iPhone 下載（日本）",
+            "en": "iPhone download (Japan)",
+            "ja": "iPhone版をダウンロード（日本）"
           }
         }
       ],
