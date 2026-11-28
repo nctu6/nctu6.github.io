@@ -1,30 +1,30 @@
 {
-  "updated": "2026-11-27T03:14:13.605Z",
+  "updated": "2026-11-28T02:56:16.625Z",
   "apps": {
     "game": {
-      "score": 262,
+      "score": 268,
       "metric": "pageviews_30d",
-      "updated": "2026-11-27T00:10:01Z"
+      "updated": "2026-11-28T00:10:01Z"
     },
     "x-galaxy": {
-      "score": 329,
+      "score": 331,
       "metric": "pageviews_30d",
-      "updated": "2026-11-26T16:05:00Z"
+      "updated": "2026-11-27T16:05:00Z"
     },
     "shuhai": {
-      "score": 341,
+      "score": 318,
       "metric": "pageviews_30d",
-      "updated": "2026-11-27T03:14:13Z"
+      "updated": "2026-11-28T02:56:16Z"
     },
     "history-map": {
-      "score": 204,
+      "score": 206,
       "metric": "pageviews_30d",
-      "updated": "2026-11-26T05:18:36Z"
+      "updated": "2026-11-27T05:18:36Z"
     },
     "connect6": {
       "score": 184,
       "metric": "pageviews_30d",
-      "updated": "2026-11-27T03:14:13Z"
+      "updated": "2026-11-28T02:56:16Z"
     },
     "agentusecases": {
       "score": 12756,
@@ -37,14 +37,14 @@
       "updated": "2026-11-27T03:14:13Z"
     },
     "amex-web": {
-      "score": 87,
+      "score": 89,
       "metric": "pageviews_30d",
-      "updated": "2026-11-27T03:14:13Z"
+      "updated": "2026-11-28T02:56:16Z"
     },
     "x-feed": {
-      "score": 377,
+      "score": 390,
       "metric": "pageviews_30d",
-      "updated": "2026-11-27T03:14:13Z"
+      "updated": "2026-11-28T02:56:16Z"
     }
   }
 }
