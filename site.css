@@ -385,7 +385,6 @@ a.tile-link:focus-visible { outline: none; }
   .popular-grid, .works-grid:not(.is-list) { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .popular-grid { margin-top: 24px; }
   .works { margin-top: 43px; }
-  .works-view { display: none; }
   .works-grid.is-list .works-caption, .works-grid.is-list :is(.tile-domain, .tile-summary) { display: none; }
   .works-grid.is-list .work-tile { grid-template-columns: minmax(0, 1fr) 16px; min-height: 64px; }
   .works-grid.is-list .work-tile > .icon { grid-column: 2; }
@@ -407,6 +406,10 @@ a.tile-link:focus-visible { outline: none; }
   .document-page .summary { grid-template-columns: minmax(0, 1fr); }
   .facts { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .facts dd + dt { margin-top: 8px; }
+}
+@media (max-width: 480px) {
+  .works-toolbar { flex-wrap: wrap; }
+  .works-search { flex-basis: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

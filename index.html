@@ -57,7 +57,7 @@
   ]
 }
   </script>
-  <link rel="stylesheet" href="/site.css?v=239c5d993d69">
+  <link rel="stylesheet" href="/site.css?v=works-cards">
 </head>
 <body data-page="index" data-apps-src="/apps.json?v=meiyun-name">
   <a class="skip-link" href="#main" data-i18n="skipContent">跳至主要內容</a>
@@ -147,13 +147,13 @@
             <img class="icon" src="/assets/portfolio/chevron-down.svg" width="16" height="16" alt="">
           </label>
           <div class="works-view" role="group" aria-label="檢視方式" data-i18n-attr="aria-label:worksViewLabel">
-            <button type="button" data-view="grid" aria-pressed="false" aria-label="格狀檢視" data-i18n-attr="aria-label:worksViewGrid;title:worksViewGrid"><img class="icon" src="/assets/portfolio/grid.svg" width="16" height="16" alt=""></button>
-            <button type="button" data-view="list" aria-pressed="true" aria-label="清單檢視" data-i18n-attr="aria-label:worksViewList;title:worksViewList"><img class="icon" src="/assets/portfolio/list.svg" width="16" height="16" alt=""></button>
+            <button type="button" data-view="grid" aria-pressed="true" aria-label="格狀檢視" data-i18n-attr="aria-label:worksViewGrid;title:worksViewGrid"><img class="icon" src="/assets/portfolio/grid.svg" width="16" height="16" alt=""></button>
+            <button type="button" data-view="list" aria-pressed="false" aria-label="清單檢視" data-i18n-attr="aria-label:worksViewList;title:worksViewList"><img class="icon" src="/assets/portfolio/list.svg" width="16" height="16" alt=""></button>
           </div>
         </div>
         <div class="works-chips" id="works-chips" role="group" aria-label="依分類篩選" data-i18n-attr="aria-label:worksCategoryLabel"></div>
       </div>
-      <div id="works-list" class="works-grid is-list" aria-busy="true"></div>
+      <div id="works-list" class="works-grid" aria-busy="true"></div>
       <p id="works-unavailable" data-i18n="worksUnavailable" hidden>暫時無法載入作品。</p>
       <div id="works-empty" class="works-empty" hidden>
         <p data-i18n="worksEmpty">沒有符合條件的作品。</p>
@@ -188,7 +188,7 @@
   </footer>
 
   <script src="/i18n.js"></script>
-  <script src="/apps.js"></script>
+  <script src="/apps.js?v=works-cards"></script>
   <script src="/site.js"></script>
 </body>
 </html>

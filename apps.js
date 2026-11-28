@@ -87,10 +87,8 @@
   const VIEW_KEY = "0x6-works-view";
   const SORTS = ["popular", "newest", "oldest"];
   const CATEGORIES = ["ai", "ios", "web", "line"];
-  const state = { q: "", category: "", tag: "", sort: "popular", limit: PAGE_SIZE, view: "list", bound: false };
-  const mobileView = homeList ? matchMedia("(max-width: 740px)") : null;
+  const state = { q: "", category: "", tag: "", sort: "popular", limit: PAGE_SIZE, view: "grid", bound: false };
   const categoryOf = (app) => app.category || (app.kind === "store" ? "line" : app.kind);
-  const viewMode = () => mobileView?.matches ? "list" : state.view;
   let scores = {}; /* from /popularity.json, collected daily by scripts/update-popularity.mjs */
   let hay = new WeakMap();
 
@@ -293,7 +291,7 @@
     state.category = CATEGORIES.includes(p.get("category")) ? p.get("category") : "";
     state.tag = slug(p.get("tag") || "");
     state.sort = SORTS.includes(p.get("sort")) ? p.get("sort") : "popular";
-    try { if (localStorage.getItem(VIEW_KEY) === "grid") state.view = "grid"; } catch {}
+    try { if (localStorage.getItem(VIEW_KEY) === "list") state.view = "list"; } catch {}
     const q = document.getElementById("works-q");
     const sort = document.getElementById("works-sort");
     const rerender = (resetPage = true) => { if (resetPage) state.limit = PAGE_SIZE; syncUrl(); renderWorks(root); hooks.forEach((fn) => fn(data)); };
@@ -320,7 +318,6 @@
       try { localStorage.setItem(VIEW_KEY, state.view); } catch {}
       rerender(false);
     }));
-    mobileView?.addEventListener("change", () => renderWorks(root));
     document.getElementById("works-more")?.addEventListener("click", () => { state.limit += PAGE_SIZE; rerender(false); });
     document.getElementById("works-clear")?.addEventListener("click", () => {
       state.q = ""; state.tag = ""; state.category = "";
@@ -336,8 +333,7 @@
     const hits = sortApps(filtered(all));
     const popular = new Set(topPopular(all).map((app) => app.id));
     const page = hits.slice(0, state.limit);
-    const view = viewMode();
-    root.classList.toggle("is-list", view === "list");
+    root.classList.toggle("is-list", state.view === "list");
     root.hidden = !page.length;
     root.removeAttribute("aria-busy");
     const caption = el("div", { class: "works-caption", "aria-hidden": "true" },
@@ -346,7 +342,7 @@
       el("span", { text: T("worksDomainColumn", "Domain") }));
     root.replaceChildren(caption, ...page.map((app) => tile(app, popular.has(app.id))));
     renderChips(all);
-    document.querySelectorAll(".works-view button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.view === view)));
+    document.querySelectorAll(".works-view button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.view === state.view)));
     const count = document.getElementById("works-count");
     if (count) {
       const active = state.q.trim() || state.tag || state.category;
