@@ -1,18 +1,18 @@
-/* 0x6.ai apps: renders works, about, privacy and terms lists from apps.json. */
+/* 0x6.ai apps: renders the portfolio and policy lists from apps.json. */
 (function () {
   const LINE_STORE_BASE = "https://store.line.me/stickershop/author/5344394/";
   const UI = {
     "zh-Hant": {
-      coming: "即將推出", work: "WORK", dataUse: "資料使用", services: "第三方服務",
-      privacy: "隱私權政策", terms: "條款", noServices: "無", open: "打開", aria: "開啟"
+      coming: "即將推出", dataUse: "資料使用", services: "第三方服務",
+      privacy: "隱私權政策", terms: "條款", noServices: "無", aria: "開啟"
     },
     en: {
-      coming: "Coming soon", work: "WORK", dataUse: "Data use", services: "Third-party services",
-      privacy: "privacy policy", terms: "terms", noServices: "None", open: "Open", aria: "Open"
+      coming: "Coming soon", dataUse: "Data use", services: "Third-party services",
+      privacy: "privacy policy", terms: "terms", noServices: "None", aria: "Open"
     },
     ja: {
-      coming: "近日公開", work: "WORK", dataUse: "データの取り扱い", services: "外部サービス",
-      privacy: "プライバシーポリシー", terms: "利用規約", noServices: "なし", open: "開く", aria: "開く"
+      coming: "近日公開", dataUse: "データの取り扱い", services: "外部サービス",
+      privacy: "プライバシーポリシー", terms: "利用規約", noServices: "なし", aria: "開く"
     }
   };
   /* apps.json text fields are { "zh-Hant", "en" } with an optional "ja"; a missing "ja" falls back to "en". */
@@ -46,6 +46,13 @@
     return node;
   }
   const extLink = (href, text) => el("a", { href, target: "_blank", rel: "noopener", text });
+  const externalIcon = () => el("img", { class: "icon", src: "/assets/portfolio/external.svg", width: 16, height: 16, alt: "" });
+  const homeList = document.getElementById("works-list");
+  let lineStickers = [];
+
+  function stickerImages() {
+    return lineStickers.map((item) => el("img", { src: item.image, alt: "", loading: "lazy", decoding: "async" }));
+  }
 
   function visual(app) {
     if (app.visual === "x") {
@@ -55,7 +62,7 @@
         post(false), post(true), post(false));
     }
     if (app.visual === "line") {
-      return el("div", { class: "work-visual", id: "featuredVisual", "aria-hidden": "true" });
+      return el("div", { class: "line-visual", "aria-hidden": "true" }, stickerImages());
     }
     if (app.visual === "metro") {
       const box = el("div", { class: "map-visual metro-visual", "aria-hidden": "true" });
@@ -69,26 +76,21 @@
         el("span", { class: "map-me" }));
     }
     if (app.visual === "image" && app.image) {
-      return el("div", { class: "cover-visual" },
-        el("img", { src: app.image, alt: L(app.imageAlt) || L(app.name), width: "1200", height: "1200", loading: "lazy", decoding: "async" }));
+      return el("div", { class: app.kind === "ios" ? "cover-visual is-app-icon" : "cover-visual" },
+        el("img", { src: app.image, alt: "", loading: "lazy", decoding: "async" }));
     }
     return el("div", { class: "generic-visual", "aria-hidden": "true" }, el("span", { text: app.domain || "0x6.ai" }));
   }
 
-  function actions(app, href) {
-    const main = href ? (L(app.open) || `${ui("open")} ${app.domain}`) : ui("coming");
-    if (!app.extra || !app.extra.length) return el("span", { class: "button primary", text: main });
-    return el("div", { class: "work-actions" },
-      href ? el("a", { class: "button primary", href, target: "_blank", rel: "noopener", text: main }) : el("span", { class: "button primary", text: main }),
-      app.extra.map((e) => el("a", { class: "button", href: e.url, target: "_blank", rel: "noopener", text: L(e.label) })));
-  }
-
-  /* ---- Works browser: compact tiles + search, tag chips, sort, view, paging, shareable URL ---- */
+  /* Works browser with shared popularity ranking and URL filters. */
   const PAGE_SIZE = 24;
-  const CHIP_LIMIT = 10;
   const VIEW_KEY = "0x6-works-view";
   const SORTS = ["popular", "newest", "oldest"];
-  const state = { q: "", tag: "", sort: "popular", limit: PAGE_SIZE, view: "grid", allTags: false, bound: false };
+  const CATEGORIES = ["ai", "ios", "web", "line"];
+  const state = { q: "", category: "", tag: "", sort: "popular", limit: PAGE_SIZE, view: "list", bound: false };
+  const mobileView = homeList ? matchMedia("(max-width: 740px)") : null;
+  const categoryOf = (app) => app.category || (app.kind === "store" ? "line" : app.kind);
+  const viewMode = () => mobileView?.matches ? "list" : state.view;
   let scores = {}; /* from /popularity.json, collected daily by scripts/update-popularity.mjs */
   let hay = new WeakMap();
 
@@ -115,9 +117,10 @@
     return d && typeof d === "object" && !Array.isArray(d) ? Object.keys(d).map((k) => descText(app, k)) : descText(app);
   }
 
+  const summaryText = (app) => L(app.summary) || descText(app);
+
   function refreshDesc(app) {
-    const list = document.getElementById("works-list");
-    if (list && state.q.trim()) renderWorks(list); /* search results may change with the new text */
+    if (homeList && state.q.trim()) renderWorks(homeList); /* search results may change with the new text */
     document.querySelectorAll("[data-desc-for]").forEach((n) => {
       if (n.getAttribute("data-desc-for") === app.id) n.textContent = descText(app);
     });
@@ -163,7 +166,7 @@
       else if (typeof v === "object") Object.values(v).forEach(add);
       else parts.push(String(v));
     };
-    [app.name, app.heading, allDescTexts(app), app.tags, app.domain, app.work].forEach(add);
+    [app.name, app.heading, app.summary, allDescTexts(app), app.tags, app.domain, app.work].forEach(add);
     (app.extra || []).forEach((e) => add(e.label));
     const s = parts.join("\n").toLowerCase();
     hay.set(app, s);
@@ -175,13 +178,13 @@
     return typeof s === "number" && Number.isFinite(s) ? s : null;
   };
 
-  function sortApps(list) {
+  function sortApps(list, sort = state.sort) {
     const order = new Map(list.map((a, i) => [a, i])); /* apps.json order = newest first */
-    const byAge = (a, b) => (state.sort === "oldest" ? order.get(b) - order.get(a) : order.get(a) - order.get(b));
+    const byAge = (a, b) => (sort === "oldest" ? order.get(b) - order.get(a) : order.get(a) - order.get(b));
     return list.slice().sort((a, b) => {
       const pin = (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0);
       if (pin) return pin;
-      if (state.sort === "popular") {
+      if (sort === "popular") {
         const sa = score(a), sb = score(b);
         if (sa !== null || sb !== null) {
           if (sa === null) return 1;
@@ -194,69 +197,92 @@
   }
 
   function topPopular(list) {
-    return new Set(list.filter((a) => !a.pinned && score(a) !== null)
-      .sort((a, b) => score(b) - score(a)).slice(0, 3).map((a) => a.id));
+    return sortApps(list.filter((a) => !a.pinned && score(a) !== null), "popular").slice(0, 3);
   }
 
   function filtered(list) {
     const terms = state.q.toLowerCase().split(/\s+/).filter(Boolean);
-    return list.filter((a) => (!state.tag || tagKeys(a).includes(state.tag)) && terms.every((t) => haystack(a).includes(t)));
+    return list.filter((a) => {
+      const category = categoryOf(a);
+      const matchesCategory = !state.category || category === state.category || (state.category === "web" && category === "game");
+      return matchesCategory && (!state.tag || tagKeys(a).includes(state.tag)) && terms.every((t) => haystack(a).includes(t));
+    });
+  }
+
+  function popularCard(app) {
+    const href = urlOf(app);
+    return el(href ? "a" : "article", {
+      class: "popular-card", href, target: href ? "_blank" : null, rel: href ? "noopener" : null, "data-app-id": app.id
+    },
+      el("div", { class: "tile-thumb", "aria-hidden": "true" }, visual(app)),
+      el("div", { class: "popular-copy" },
+        el("div", { class: "popular-meta" },
+          el("span", { text: app.popularLabel || T("popularCategory-" + categoryOf(app), "PROJECT") }),
+          href ? externalIcon() : null),
+        el("h3", { text: L(app.shortName) || L(app.name) }),
+        el("p", { text: summaryText(app) })));
+  }
+
+  function renderPopular(root) {
+    const ranked = topPopular(listedApps());
+    root.replaceChildren(...ranked.map(popularCard));
+    root.closest("section").hidden = !ranked.length;
   }
 
   function tile(app, popular) {
     const href = urlOf(app);
     const name = L(app.name);
-    const linkAttrs = { class: "tile-link", href, target: "_blank", rel: "noopener", "data-destination": app.domain, "aria-label": `${ui("aria")} ${name}` };
-    if (app.url === "{LINE}") linkAttrs["data-line-store"] = "";
-    const title = href ? el("a", linkAttrs, name) : el("span", { class: "tile-link" }, `${name} (${ui("coming")})`);
-    return el("article", { class: href ? "work-tile" : "work-tile is-coming", id: app.id },
+    const keys = tagKeys(app);
+    const title = href
+      ? el("a", { class: "tile-link", href, target: "_blank", rel: "noopener", "aria-label": ui("aria") + " " + name }, L(app.shortName) || name)
+      : el("span", { class: "tile-link" }, name + " (" + ui("coming") + ")");
+    return el("article", { class: "work-tile", id: app.id, "data-app-id": app.id },
       el("div", { class: "tile-thumb", "aria-hidden": "true" }, visual(app)),
-      el("div", { class: "tile-body" },
-        el("div", { class: "tile-meta" },
-          el("span", { class: "tile-no", text: `${ui("work")} ${app.work}` }),
-          app.pinned ? el("span", { class: "tile-badge pin", text: T("worksPinnedBadge", "Pinned") }) : null,
-          popular ? el("span", { class: "tile-badge", text: T("worksPopularBadge", "Popular") }) : null),
+      el("div", { class: "tile-meta" },
+        app.pinned ? el("span", { class: "chip", text: T("worksPinnedBadge", "Pinned") }) : null,
+        popular ? el("span", { class: "chip", text: T("worksPopularBadge", "Popular") }) : null),
+      el("div", { class: "tile-info" },
         el("h3", { class: "tile-title" }, title),
-        el("div", { class: "tile-domain", text: app.domain || "" }),
-        el("p", Object.assign({ class: "tile-desc", text: descText(app), "data-desc-for": app.statsApi ? app.id : null }, app.visual === "line" ? { id: "workSummary" } : {})),
-        el("div", { class: "tile-foot" },
-          el("div", { class: "tile-tags", "aria-hidden": "true" }, (L(app.tags) || []).slice(0, 3).map((t) => el("span", { class: "tag", text: t }))),
-          (app.extra || []).map((e) => el("a", { class: "tile-extra", href: e.url, target: "_blank", rel: "noopener", text: `${L(e.label)} ↗` })))));
+        el("p", { class: "tile-category", text: T("worksCategory-" + categoryOf(app), app.kind) })),
+      el("p", { class: "tile-summary", text: summaryText(app) }),
+      el("span", { class: "tile-domain", text: app.domain || "" }),
+      href ? externalIcon() : null,
+      el("p", { class: "tile-desc", text: descText(app), "data-desc-for": app.statsApi ? app.id : null }),
+      el("div", { class: "tile-foot" },
+        el("div", { class: "tile-tags" }, (L(app.tags) || []).map((label, i) => el("button", {
+          class: "chip", type: "button", text: label, "data-tag": keys[i], "aria-pressed": String(state.tag === keys[i])
+        }))),
+        (app.extra || []).map((e) => el("a", { class: "tile-extra", href: e.url, target: "_blank", rel: "noopener", text: L(e.label) + " ↗" }))));
   }
 
   function renderChips(list) {
     const root = document.getElementById("works-chips");
-    if (!root) return;
-    const tags = new Map();
-    list.forEach((app) => {
-      const labels = L(app.tags) || [];
-      tagKeys(app).forEach((k, i) => {
-        const t = tags.get(k) || { key: k, label: labels[i] || k, n: 0 };
-        t.n += 1;
-        tags.set(k, t);
-      });
+    const controls = ["", ...CATEGORIES].map((key) => {
+      const label = key ? T("worksCategory-" + key, key) : T("worksTagAll", "All");
+      const short = key && T("worksCategoryShort-" + key, "");
+      return el("button", { type: "button", class: "chip", "data-category": key, "aria-pressed": String(state.category === key) },
+        el("span", { class: "chip-full", text: label }), short ? el("span", { class: "chip-short", text: short }) : null);
     });
-    const all = [...tags.values()].sort((a, b) => b.n - a.n || a.label.localeCompare(b.label));
-    let shown = state.allTags ? all : all.slice(0, CHIP_LIMIT);
-    if (state.tag && !shown.some((t) => t.key === state.tag)) shown = shown.concat(all.filter((t) => t.key === state.tag));
-    const chip = (key, label, n) => el("button", { type: "button", class: "chip", "data-tag": key, "aria-pressed": String(state.tag === key) },
-      label, n ? el("span", { class: "chip-n", text: String(n) }) : null);
-    root.innerHTML = "";
-    root.append(chip("", T("worksTagAll", "All"), list.length), ...shown.map((t) => chip(t.key, t.label, t.n)));
-    if (all.length > CHIP_LIMIT) {
-      root.append(el("button", { type: "button", class: "chip chip-more", "data-more": "" },
-        state.allTags ? T("worksTagsLess", "Fewer") : fmt(T("worksTagsMore", "+{n} more"), { n: all.length - CHIP_LIMIT })));
+    if (state.tag) {
+      const match = list.find((app) => tagKeys(app).includes(state.tag));
+      const label = match ? L(match.tags)?.[tagKeys(match).indexOf(state.tag)] || state.tag : state.tag;
+      controls.push(el("button", {
+        type: "button", class: "chip", "data-tag": state.tag, "aria-pressed": "true",
+        "aria-label": fmt(T("worksRemoveTag", "Remove tag {tag}"), { tag: label }), text: label + " ×"
+      }));
     }
+    root.replaceChildren(...controls);
   }
 
   function syncUrl() {
     const p = new URLSearchParams(location.search);
     const set = (k, v) => (v ? p.set(k, v) : p.delete(k));
     set("q", state.q.trim());
+    set("category", state.category);
     set("tag", state.tag);
     set("sort", state.sort === "popular" ? "" : state.sort);
     const qs = p.toString();
-    history.replaceState(null, "", `${location.pathname}${qs ? `?${qs}` : ""}${location.hash}`);
+    history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash);
   }
 
   function bindToolbar(root) {
@@ -264,9 +290,10 @@
     state.bound = true;
     const p = new URLSearchParams(location.search);
     state.q = p.get("q") || "";
+    state.category = CATEGORIES.includes(p.get("category")) ? p.get("category") : "";
     state.tag = slug(p.get("tag") || "");
     state.sort = SORTS.includes(p.get("sort")) ? p.get("sort") : "popular";
-    try { if (localStorage.getItem(VIEW_KEY) === "list") state.view = "list"; } catch {}
+    try { if (localStorage.getItem(VIEW_KEY) === "grid") state.view = "grid"; } catch {}
     const q = document.getElementById("works-q");
     const sort = document.getElementById("works-sort");
     const rerender = (resetPage = true) => { if (resetPage) state.limit = PAGE_SIZE; syncUrl(); renderWorks(root); hooks.forEach((fn) => fn(data)); };
@@ -276,23 +303,30 @@
       q.addEventListener("keydown", (e) => { if (e.key === "Escape" && q.value) { q.value = ""; state.q = ""; rerender(); } });
     }
     if (sort) { sort.value = state.sort; sort.addEventListener("change", () => { state.sort = sort.value; rerender(); }); }
-    document.getElementById("works-chips")?.addEventListener("click", (e) => {
-      const b = e.target.closest("button");
-      if (!b) return;
-      if (b.hasAttribute("data-more")) { state.allTags = !state.allTags; rerender(false); return; }
-      state.tag = state.tag === b.dataset.tag ? "" : b.dataset.tag;
+    document.getElementById("works")?.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-category], button[data-tag]");
+      if (!button) return;
+      const { category, tag } = button.dataset;
+      if (category !== undefined) state.category = category === state.category ? "" : category;
+      else state.tag = state.tag === tag ? "" : tag;
       rerender();
+      const group = document.getElementById("works-chips");
+      const next = Array.from(group.children).find((item) => category === undefined
+        ? item.dataset.tag === state.tag && state.tag : item.dataset.category === state.category);
+      (next || group.firstElementChild)?.focus({ preventScroll: true });
     });
     document.querySelectorAll(".works-view button").forEach((b) => b.addEventListener("click", () => {
       state.view = b.dataset.view;
       try { localStorage.setItem(VIEW_KEY, state.view); } catch {}
       rerender(false);
     }));
+    mobileView?.addEventListener("change", () => renderWorks(root));
     document.getElementById("works-more")?.addEventListener("click", () => { state.limit += PAGE_SIZE; rerender(false); });
     document.getElementById("works-clear")?.addEventListener("click", () => {
-      state.q = ""; state.tag = "";
+      state.q = ""; state.tag = ""; state.category = "";
       if (q) q.value = "";
       rerender();
+      q?.focus();
     });
   }
 
@@ -300,16 +334,22 @@
     bindToolbar(root);
     const all = listedApps();
     const hits = sortApps(filtered(all));
-    const popular = topPopular(all);
+    const popular = new Set(topPopular(all).map((app) => app.id));
     const page = hits.slice(0, state.limit);
-    root.classList.toggle("is-list", state.view === "list");
-    root.innerHTML = "";
-    root.append(...page.map((app) => tile(app, popular.has(app.id))));
+    const view = viewMode();
+    root.classList.toggle("is-list", view === "list");
+    root.hidden = !page.length;
+    root.removeAttribute("aria-busy");
+    const caption = el("div", { class: "works-caption", "aria-hidden": "true" },
+      el("span", { text: T("navWorks", "Works") }),
+      el("span", { text: T("worksDescriptionColumn", "Description") }),
+      el("span", { text: T("worksDomainColumn", "Domain") }));
+    root.replaceChildren(caption, ...page.map((app) => tile(app, popular.has(app.id))));
     renderChips(all);
-    document.querySelectorAll(".works-view button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.view === state.view)));
+    document.querySelectorAll(".works-view button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.view === view)));
     const count = document.getElementById("works-count");
     if (count) {
-      const active = state.q.trim() || state.tag;
+      const active = state.q.trim() || state.tag || state.category;
       count.textContent = active
         ? fmt(T("worksCountFiltered", "{n} of {total} works"), { n: hits.length, total: all.length })
         : (all.length === 1 ? T("worksCountOne", "1 work") : fmt(T("worksCount", "{n} works"), { n: all.length }));
@@ -329,15 +369,6 @@
     const name = L(app.name);
     if (href) return extLink(href, name);
     return el("span", { text: lang() === "en" ? `${name} (${ui("coming")})` : `${name}（${ui("coming")}）` });
-  }
-
-  function renderAbout(root) {
-    root.innerHTML = "";
-    data.apps.filter((a) => a.listed).forEach((app) => {
-      root.append(el("li", {}, appTitle(app), document.createTextNode(lang() === "en" ? ": " : "："),
-        el("span", { text: descText(app), "data-desc-for": app.statsApi ? app.id : null }),
-        (app.extra || []).flatMap((e) => [document.createTextNode(" "), extLink(e.url, L(e.label))])));
-    });
   }
 
   function serviceLink(id) {
@@ -385,7 +416,7 @@
 
   function render() {
     if (!data) return;
-    const map = { "works-list": renderWorks, "about-works": renderAbout, "apps-coverage": renderCoverage, "services-list": renderServices, "terms-apps": renderTerms };
+    const map = { "popular-list": renderPopular, "works-list": renderWorks, "apps-coverage": renderCoverage, "services-list": renderServices, "terms-apps": renderTerms };
     Object.entries(map).forEach(([id, fn]) => { const root = document.getElementById(id); if (root) fn(root); });
     hooks.forEach((fn) => fn(data));
   }
@@ -396,7 +427,18 @@
     onRender(fn) { hooks.push(fn); if (data) fn(data); }
   };
 
-  const popularity = document.getElementById("works-list")
+  if (homeList) {
+    fetch("/stickers.json", { cache: "no-cache" })
+      .then((response) => response.ok ? response.json() : null)
+      .then((json) => {
+        if (!Array.isArray(json?.items)) return;
+        lineStickers = json.items.filter((item) => typeof item?.image === "string").slice(0, 3);
+        document.querySelectorAll(".line-visual").forEach((node) => node.replaceChildren(...stickerImages()));
+      })
+      .catch(() => {});
+  }
+
+  const popularity = homeList
     ? fetch("/popularity.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null)
     : Promise.resolve(null);
   fetch(document.body.dataset.appsSrc || "/apps.json")
@@ -408,7 +450,14 @@
       render();
       if (window.I18n) I18n.onApply(render);
       resolveReady(data);
-      loadStats();
+      if (homeList) loadStats();
     })
-    .catch(() => resolveReady(null));
+    .catch(() => {
+      if (homeList) {
+        homeList.removeAttribute("aria-busy");
+        homeList.hidden = true;
+        document.getElementById("works-unavailable").hidden = false;
+      }
+      resolveReady(null);
+    });
 })();

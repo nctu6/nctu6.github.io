@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>0x6.ai | 作品集</title>
-  <meta name="description" data-i18n-attr="content:metaDesc" content="0x6.ai 的作品展示：美國運通台灣優惠地圖、X 動態新聞，以及 LINE 貼圖與表情貼。">
+  <meta name="description" data-i18n-attr="content:metaDesc" content="0x6.ai 是獨立 AI 工作室，分享 AI Agent 實驗、iOS App 與網路工具。">
   <link rel="canonical" href="https://0x6.ai/">
   <meta property="og:site_name" content="0x6.ai">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://0x6.ai/">
   <meta property="og:title" content="0x6.ai | Works">
-  <meta property="og:description" data-i18n-attr="content:ogDesc" content="0x6.ai 的作品展示：美國運通台灣優惠地圖、X 動態新聞，以及 LINE 貼圖與表情貼。">
+  <meta property="og:description" data-i18n-attr="content:ogDesc" content="0x6.ai 是獨立 AI 工作室，分享 AI Agent 實驗、iOS App 與網路工具。">
   <meta property="og:image" content="https://0x6.ai/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -19,9 +19,9 @@
   <meta property="og:locale:alternate" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="0x6.ai | Works">
-  <meta name="twitter:description" content="0x6.ai 的作品展示：美國運通台灣優惠地圖、X 動態新聞，以及 LINE 貼圖與表情貼。">
+  <meta name="twitter:description" content="0x6.ai 是獨立 AI 工作室，分享 AI Agent 實驗、iOS App 與網路工具。">
   <meta name="twitter:image" content="https://0x6.ai/og-image.png">
-  <meta name="theme-color" content="#08090f">
+  <meta name="theme-color" content="#0b0e16">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -57,1216 +57,138 @@
   ]
 }
   </script>
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg: #08090f;
-      --bg-soft: #11131e;
-      --panel: rgba(21, 24, 36, 0.86);
-      --panel-strong: rgba(15, 17, 26, 0.94);
-      --line: rgba(133, 232, 190, 0.25);
-      --line-strong: rgba(133, 232, 190, 0.58);
-      --mint: #85e8be;
-      --mint-deep: #17b978;
-      --ink: #f4f7ee;
-      --muted: #a9b4aa;
-      --quiet: #66726c;
-      --warm: #f0b15a;
-      --pink: #f082ac;
-      --blue: #80b8ff;
-      --shadow: rgba(0, 0, 0, 0.32);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-height: 100vh;
-      color: var(--ink);
-      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-      background:
-        radial-gradient(circle at 16% 18%, rgba(23, 185, 120, 0.18), transparent 26%),
-        radial-gradient(circle at 78% 10%, rgba(128, 184, 255, 0.16), transparent 28%),
-        linear-gradient(145deg, #08090f 0%, #11131e 52%, #071411 100%);
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(133, 232, 190, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(133, 232, 190, 0.035) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 78%);
-      z-index: 0;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .particle {
-      position: fixed;
-      width: var(--size);
-      height: var(--size);
-      border-radius: 999px;
-      background: var(--color);
-      box-shadow: 0 0 18px var(--color);
-      pointer-events: none;
-      opacity: 0;
-      z-index: 1;
-      animation: float-up var(--speed) linear infinite;
-      animation-delay: var(--delay);
-    }
-
-    @keyframes float-up {
-      0% {
-        transform: translate3d(var(--x), 104vh, 0) scale(0.65);
-        opacity: 0;
-      }
-      8% {
-        opacity: 0.72;
-      }
-      82% {
-        opacity: 0.36;
-      }
-      100% {
-        transform: translate3d(calc(var(--x) + var(--drift)), -10vh, 0) scale(1);
-        opacity: 0;
-      }
-    }
-
-    .status-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 20;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      min-height: 48px;
-      padding: 10px clamp(16px, 4vw, 42px);
-      border-bottom: 1px solid rgba(133, 232, 190, 0.18);
-      background: rgba(8, 9, 15, 0.82);
-      backdrop-filter: blur(18px);
-    }
-
-    .status-left,
-    .status-right {
-      display: flex;
-      align-items: center;
-      min-width: 0;
-    }
-
-    .status-left {
-      gap: 9px;
-    }
-
-    .pulse {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--mint);
-      box-shadow: 0 0 16px var(--mint);
-      animation: pulse 1.8s ease-in-out infinite;
-      flex: 0 0 auto;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 0.38;
-        transform: scale(0.8);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.26);
-      }
-    }
-
-    .status-text {
-      color: var(--mint);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 12px;
-      letter-spacing: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 30px;
-      padding: 0 12px;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      color: var(--muted);
-      font-size: 13px;
-      transition: 160ms ease;
-    }
-
-    .nav-links a:hover {
-      border-color: rgba(133, 232, 190, 0.28);
-      color: var(--ink);
-      background: rgba(133, 232, 190, 0.07);
-    }
-
-    .lang-switch {
-      display: inline-flex;
-      gap: 2px;
-      padding: 2px;
-      border: 1px solid rgba(133, 232, 190, 0.22);
-      border-radius: 8px;
-    }
-
-    .lang-switch button {
-      min-height: 26px;
-      padding: 0 9px;
-      border: 0;
-      border-radius: 6px;
-      color: var(--muted);
-      background: transparent;
-      font: inherit;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: 160ms ease;
-    }
-
-    .lang-switch button:hover {
-      color: var(--ink);
-    }
-
-    .lang-switch button[aria-pressed="true"] {
-      color: #08090f;
-      background: var(--mint);
-    }
-
-    .page {
-      position: relative;
-      z-index: 2;
-      width: min(1160px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 92px 0 36px;
-    }
-
-    .hero {
-      min-height: calc(100vh - 92px);
-      display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.88fr);
-      align-items: center;
-      gap: clamp(28px, 5vw, 70px);
-      padding-bottom: 42px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      min-height: 34px;
-      padding: 0 13px;
-      border: 1px solid rgba(133, 232, 190, 0.24);
-      border-radius: 999px;
-      background: rgba(133, 232, 190, 0.07);
-      color: var(--mint);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 12px;
-    }
-
-    .eyebrow::before {
-      content: "0x";
-      color: var(--warm);
-    }
-
-    h1 {
-      margin-top: 22px;
-      font-size: clamp(58px, 11vw, 148px);
-      line-height: 0.9;
-      letter-spacing: 0;
-      font-weight: 850;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 32px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 48px;
-      padding: 0 18px;
-      border: 1px solid rgba(133, 232, 190, 0.24);
-      border-radius: 8px;
-      color: var(--ink);
-      background: rgba(255, 255, 255, 0.04);
-      font-size: 15px;
-      font-weight: 700;
-      transition: 180ms ease;
-    }
-
-    .button.primary {
-      border-color: rgba(133, 232, 190, 0.54);
-      background: linear-gradient(135deg, #19bd79, #85e8be);
-      color: #071411;
-      box-shadow: 0 16px 36px rgba(23, 185, 120, 0.28);
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      border-color: var(--line-strong);
-      box-shadow: 0 18px 36px var(--shadow);
-    }
-
-    .button:focus-visible,
-    .work-card:focus-visible {
-      outline: 3px solid rgba(133, 232, 190, 0.38);
-      outline-offset: 4px;
-    }
-
-    .console {
-      display: grid;
-      gap: 14px;
-      padding: 16px;
-      border: 1px solid rgba(133, 232, 190, 0.22);
-      border-radius: 8px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.055), transparent),
-        var(--panel);
-      box-shadow: 0 24px 90px rgba(0, 0, 0, 0.36);
-    }
-
-    .console-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      color: var(--quiet);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 12px;
-    }
-
-    .dots {
-      display: flex;
-      gap: 7px;
-    }
-
-    .dots span {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: var(--quiet);
-    }
-
-    .dots span:nth-child(1) {
-      background: var(--pink);
-    }
-
-    .dots span:nth-child(2) {
-      background: var(--warm);
-    }
-
-    .dots span:nth-child(3) {
-      background: var(--mint);
-    }
-
-    .preview-stage {
-      position: relative;
-      min-height: 410px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 8px;
-      background:
-        radial-gradient(circle at 34% 30%, rgba(133, 232, 190, 0.18), transparent 26%),
-        radial-gradient(circle at 82% 70%, rgba(240, 177, 90, 0.15), transparent 30%),
-        #0d1018;
-    }
-
-    .sticker-stack {
-      position: absolute;
-      inset: 22px;
-    }
-
-    .sticker {
-      position: absolute;
-      width: 154px;
-      min-height: 172px;
-      padding: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 8px;
-      background: rgba(244, 247, 238, 0.92);
-      box-shadow: 0 20px 34px rgba(0, 0, 0, 0.24);
-      transition: transform 220ms ease, box-shadow 220ms ease;
-    }
-
-    .sticker:hover {
-      transform: translateY(-6px) rotate(var(--rotate-hover));
-      box-shadow: 0 28px 48px rgba(0, 0, 0, 0.32);
-    }
-
-    .sticker img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: contain;
-    }
-
-    .sticker span {
-      display: block;
-      margin-top: 8px;
-      color: #171b22;
-      font-size: 13px;
-      font-weight: 800;
-      line-height: 1.35;
-      text-align: center;
-    }
-
-    .sticker:nth-child(1) {
-      top: 18px;
-      left: 16px;
-      transform: rotate(-8deg);
-      --rotate-hover: -3deg;
-    }
-
-    .sticker:nth-child(2) {
-      top: 72px;
-      right: 24px;
-      transform: rotate(7deg);
-      --rotate-hover: 3deg;
-    }
-
-    .sticker:nth-child(3) {
-      left: 104px;
-      bottom: 34px;
-      transform: rotate(4deg);
-      --rotate-hover: 0deg;
-    }
-
-    .signal-card {
-      position: absolute;
-      right: 22px;
-      bottom: 22px;
-      width: min(250px, calc(100% - 44px));
-      padding: 16px;
-      border: 1px solid rgba(133, 232, 190, 0.28);
-      border-radius: 8px;
-      background: rgba(8, 9, 15, 0.82);
-      backdrop-filter: blur(14px);
-    }
-
-    .signal-card b {
-      display: block;
-      margin-bottom: 7px;
-      color: var(--mint);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 12px;
-    }
-
-    .signal-card p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
-    .loading-panel {
-      display: grid;
-      place-items: center;
-      min-height: 100%;
-      padding: 24px;
-      color: var(--mint);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 13px;
-      text-align: center;
-    }
-
-    .loading-panel::before {
-      content: "";
-      width: 36px;
-      height: 36px;
-      margin-bottom: 14px;
-      border: 2px solid rgba(133, 232, 190, 0.18);
-      border-top-color: var(--mint);
-      border-radius: 999px;
-      animation: spin 900ms linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(1turn);
-      }
-    }
-
-    .section {
-      padding: 44px 0 24px;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 20px;
-    }
-
-    .section h2 {
-      font-size: clamp(28px, 4vw, 48px);
-      letter-spacing: 0;
-    }
-
-    .work-card {
-      display: grid;
-      grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
-      gap: clamp(18px, 4vw, 42px);
-      align-items: center;
-      padding: clamp(16px, 3vw, 30px);
-      border: 1px solid rgba(133, 232, 190, 0.22);
-      border-radius: 8px;
-      background:
-        linear-gradient(135deg, rgba(133, 232, 190, 0.1), transparent 42%),
-        var(--panel-strong);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
-      transition: 180ms ease;
-    }
-
-    .work-card:hover {
-      border-color: var(--line-strong);
-      transform: translateY(-3px);
-    }
-
-    .work-visual {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .work-visual img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: contain;
-      padding: 10px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.92);
-    }
-
-    .work-visual img:first-child {
-      grid-row: span 2;
-      align-self: stretch;
-    }
-
-    .works-gap {
-      margin-top: 28px;
-    }
-
-    .x-visual {
-      display: grid;
-      gap: 10px;
-      padding: 14px;
-      border-radius: 8px;
-      background: #f6f4ef;
-      color: #1c1915;
-    }
-
-    .x-tabs {
-      display: flex;
-      gap: 4px;
-      border-bottom: 1px solid #e4dfd6;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .x-tabs span {
-      padding: 6px 10px;
-      color: #6b645b;
-    }
-
-    .x-tabs span:first-child {
-      color: #1c1915;
-      box-shadow: inset 0 -2px 0 #b8421a;
-    }
-
-    .x-post {
-      display: grid;
-      grid-template-columns: 30px 1fr;
-      gap: 4px 10px;
-      padding: 8px 0;
-      border-bottom: 1px solid #e4dfd6;
-    }
-
-    .x-post:last-child {
-      border-bottom: 0;
-    }
-
-    .x-avatar {
-      grid-row: span 2;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: #e4dfd6;
-    }
-
-    .x-line {
-      height: 9px;
-      border-radius: 999px;
-      background: #e4dfd6;
-    }
-
-    .x-line.name {
-      width: 42%;
-      background: #b8421a;
-      opacity: 0.55;
-    }
-
-    .x-line.short {
-      width: 72%;
-    }
-
-    .map-visual {
-      position: relative;
-      min-height: 230px;
-      border-radius: 8px;
-      overflow: hidden;
-      background:
-        linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px) 0 0 / 28px 28px,
-        linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px) 0 0 / 28px 28px,
-        #eef3ea;
-    }
-
-    .metro-visual { background: #f7f7f2; display: grid; place-items: center; }
-    .metro-visual svg { width: 100%; height: 100%; min-height: 230px; display: block; }
-
-    .map-road { position: absolute; background: #fff; box-shadow: 0 0 0 1px #dbe3d6; }
-    .map-road.r1 { left: -10%; right: -10%; top: 38%; height: 14px; transform: rotate(-8deg); }
-    .map-road.r2 { top: -10%; bottom: -10%; left: 58%; width: 12px; transform: rotate(12deg); }
-    .map-road.r3 { left: -10%; right: 30%; top: 74%; height: 9px; transform: rotate(5deg); }
-
-    .map-pin {
-      position: absolute;
-      width: 22px;
-      height: 22px;
-      border-radius: 50% 50% 50% 0;
-      background: #006fcf;
-      transform: rotate(-45deg);
-      box-shadow: 0 4px 10px rgba(0, 111, 207, 0.35);
-    }
-
-    .map-pin::after { content: ""; position: absolute; inset: 7px; border-radius: 50%; background: #fff; }
-    .map-pin.p1 { left: 22%; top: 20%; }
-    .map-pin.p2 { left: 70%; top: 28%; }
-    .map-pin.p3 { left: 40%; top: 58%; background: #f0b15a; }
-
-    .map-me {
-      position: absolute;
-      left: 52%;
-      top: 46%;
-      width: 16px;
-      height: 16px;
-      border: 3px solid #fff;
-      border-radius: 50%;
-      background: #17b978;
-      box-shadow: 0 0 0 10px rgba(23, 185, 120, 0.18);
-    }
-
-    .generic-visual {
-      display: grid;
-      place-items: center;
-      min-height: 200px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--mint);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    }
-
-    .cover-visual {
-      border-radius: 8px;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .cover-visual img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      padding: 0;
-    }
-
-    div.work-card:hover { transform: none; }
-
-    .work-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 0 10px;
-      border: 1px solid rgba(133, 232, 190, 0.22);
-      border-radius: 999px;
-      color: var(--mint);
-      background: rgba(133, 232, 190, 0.07);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .work-content h3 {
-      font-size: clamp(26px, 3.6vw, 42px);
-      line-height: 1.16;
-      letter-spacing: 0;
-      margin-bottom: 14px;
-    }
-
-    .work-content p {
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.8;
-    }
-
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin: 24px 0;
-    }
-
-    .metric {
-      min-height: 78px;
-      padding: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .metric strong {
-      display: block;
-      color: var(--ink);
-      font-size: 24px;
-      line-height: 1;
-    }
-
-    .metric span {
-      display: block;
-      margin-top: 8px;
-      color: var(--quiet);
-      font-size: 12px;
-      line-height: 1.35;
-    }
-
-    .footer {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 18px;
-      margin-top: 52px;
-      padding-top: 22px;
-      border-top: 1px solid rgba(133, 232, 190, 0.14);
-      color: var(--quiet);
-      font-size: 13px;
-    }
-
-    .footer a {
-      color: var(--muted);
-    }
-
-    .footer a:hover {
-      color: var(--mint);
-    }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 22px;
-      z-index: 40;
-      transform: translateX(-50%) translateY(18px);
-      padding: 11px 14px;
-      border: 1px solid rgba(133, 232, 190, 0.4);
-      border-radius: 8px;
-      color: var(--mint);
-      background: rgba(8, 9, 15, 0.9);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
-      opacity: 0;
-      transition: 180ms ease;
-      pointer-events: none;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* ---- Works browser ---- */
-    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-    .works-count { color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13px; }
-    .works-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
-    .works-search { flex: 1 1 280px; position: relative; }
-    .works-search::before { content: ">"; position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--mint); font-family: ui-monospace, Menlo, monospace; font-weight: 700; pointer-events: none; }
-    .works-search input, .works-sort select {
-      width: 100%; min-height: 42px; border: 1px solid rgba(133, 232, 190, 0.24); border-radius: 8px;
-      color: var(--ink); background: rgba(8, 9, 15, 0.7); font: inherit; font-size: 14px;
-    }
-    .works-search input { padding: 0 12px 0 30px; }
-    .works-search input::placeholder { color: var(--quiet); }
-    .works-search input:focus, .works-sort select:focus { outline: none; border-color: var(--line-strong); box-shadow: 0 0 0 3px rgba(133, 232, 190, 0.16); }
-    .works-sort { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; white-space: nowrap; }
-    .works-sort select { width: auto; padding: 0 10px; cursor: pointer; }
-    .works-view { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid rgba(133, 232, 190, 0.22); border-radius: 8px; }
-    .works-view button { min-width: 36px; min-height: 36px; border: 0; border-radius: 6px; color: var(--muted); background: transparent; font-size: 16px; cursor: pointer; }
-    .works-view button[aria-pressed="true"] { color: #08090f; background: var(--mint); }
-    .works-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
-    .chip {
-      display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 11px;
-      border: 1px solid rgba(133, 232, 190, 0.2); border-radius: 999px; color: var(--muted);
-      background: rgba(255, 255, 255, 0.03); font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; transition: 140ms ease;
-    }
-    .chip:hover { color: var(--ink); border-color: var(--line-strong); }
-    .chip[aria-pressed="true"] { color: #08090f; background: var(--mint); border-color: var(--mint); }
-    .chip-n { opacity: 0.6; font-family: ui-monospace, Menlo, monospace; font-weight: 600; }
-    .chip-more { border-style: dashed; }
-
-    .works-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-    .work-tile {
-      position: relative; display: flex; flex-direction: column; min-width: 0; overflow: hidden;
-      border: 1px solid rgba(133, 232, 190, 0.18); border-radius: 8px;
-      background: linear-gradient(135deg, rgba(133, 232, 190, 0.07), transparent 46%), var(--panel-strong);
-      transition: 160ms ease;
-    }
-    .work-tile:hover { border-color: var(--line-strong); transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3); }
-    .work-tile:focus-within { outline: 2px solid rgba(133, 232, 190, 0.45); outline-offset: 2px; }
-    .tile-thumb { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid rgba(133, 232, 190, 0.12); }
-    .tile-thumb > * { position: absolute; inset: 0; min-height: 0; height: 100%; border-radius: 0; }
-    .tile-thumb .x-visual { padding: 8px 10px; gap: 2px; align-content: start; }
-    .tile-thumb .x-tabs { font-size: 10px; }
-    .tile-thumb .x-tabs span { padding: 3px 6px; }
-    .tile-thumb .x-post { grid-template-columns: 20px 1fr; gap: 3px 7px; padding: 5px 0; }
-    .tile-thumb .x-avatar { width: 20px; height: 20px; }
-    .tile-thumb .x-line { height: 6px; }
-    .tile-thumb .map-pin { width: 16px; height: 16px; }
-    .tile-thumb .map-pin::after { inset: 5px; }
-    .tile-thumb .metro-visual svg { min-height: 0; }
-    .tile-thumb .generic-visual { min-height: 0; font-size: 13px; padding: 10px; text-align: center; word-break: break-all; }
-    .tile-thumb .cover-visual img { aspect-ratio: auto; height: 100%; }
-    #tallybud .cover-visual { background: #1b392d; }
-    #tallybud .cover-visual img { object-fit: contain; image-rendering: pixelated; }
-    .tile-thumb .work-visual { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px; background: rgba(255, 255, 255, 0.03); }
-    .tile-thumb .work-visual img { width: auto; height: 82%; max-width: 31%; padding: 6px; }
-    .tile-thumb .work-visual img:only-child { max-width: none; }
-    .tile-body { display: flex; flex-direction: column; gap: 6px; flex: 1; padding: 12px 14px 14px; }
-    .tile-meta { display: flex; align-items: center; gap: 6px; color: var(--warm); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; }
-    .tile-badge { padding: 1px 7px; border-radius: 999px; color: #08090f; background: var(--warm); font-family: inherit; font-size: 10px; font-weight: 800; }
-    .tile-badge.pin { color: var(--warm); background: transparent; border: 1px solid rgba(240, 177, 90, 0.5); }
-    .tile-title { font-size: 16px; line-height: 1.3; letter-spacing: 0; }
-    .tile-link { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    a.tile-link:focus-visible { outline: none; }
-    a.tile-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
-    .tile-domain { color: var(--mint); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .tile-desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: var(--muted); font-size: 13px; line-height: 1.55; }
-    .tile-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 4px; }
-    .tile-tags { display: flex; flex-wrap: wrap; gap: 4px; min-width: 0; }
-    .tile-tags .tag { min-height: 22px; padding: 0 8px; font-size: 11px; }
-    .tile-extra { position: relative; z-index: 2; color: var(--blue); font-size: 12px; font-weight: 700; white-space: nowrap; }
-    .tile-extra:hover { color: var(--ink); text-decoration: underline; }
-    .work-tile.is-coming { opacity: 0.7; }
-
-    .works-grid.is-list { grid-template-columns: 1fr; gap: 8px; }
-    .works-grid.is-list .work-tile { flex-direction: row; }
-    .works-grid.is-list .tile-thumb { flex: 0 0 168px; aspect-ratio: auto; min-height: 104px; border-bottom: 0; border-right: 1px solid rgba(133, 232, 190, 0.12); }
-    .works-grid.is-list .tile-body { padding: 10px 14px; gap: 4px; }
-    .works-grid.is-list .tile-desc { -webkit-line-clamp: 1; }
-
-    .works-empty { display: grid; justify-items: center; gap: 14px; padding: 48px 16px; border: 1px dashed rgba(133, 232, 190, 0.24); border-radius: 8px; color: var(--muted); text-align: center; }
-    .works-empty[hidden], .works-more [hidden] { display: none; }
-    .works-more { display: flex; justify-content: center; margin-top: 20px; }
-
-    @media (max-width: 1020px) { .works-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-    @media (max-width: 760px) { .works-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 480px) {
-      .works-grid { gap: 10px; }
-      .tile-body { padding: 10px; gap: 4px; }
-      .tile-title { font-size: 14px; }
-      .tile-domain { font-size: 11px; }
-      .tile-desc { font-size: 12px; line-height: 1.5; }
-      .tile-tags .tag:nth-child(n + 3) { display: none; }
-      .works-grid.is-list .tile-desc { display: none; }
-      .works-grid.is-list .tile-thumb { flex-basis: 112px; }
-      .works-sort { flex: 1; }
-      .works-sort select { flex: 1; }
-      .works-more .button { width: 100%; }
-    }
-    @media (max-width: 340px) { .works-grid { grid-template-columns: 1fr; } }
-
-    @media (max-width: 860px) {
-      .status-bar {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .page {
-        padding-top: 122px;
-      }
-
-      .hero,
-      .work-card {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .console {
-        order: -1;
-      }
-
-      .section-head {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-    }
-
-    @media (max-width: 560px) {
-      .page {
-        width: min(100% - 24px, 1160px);
-      }
-
-      .nav-links a {
-        padding: 0 8px;
-      }
-
-      h1 {
-        font-size: 64px;
-      }
-
-      .actions,
-      .button {
-        width: 100%;
-      }
-
-      .preview-stage {
-        min-height: 344px;
-      }
-
-      .sticker {
-        width: 126px;
-        min-height: 144px;
-      }
-
-      .sticker:nth-child(2) {
-        right: 4px;
-      }
-
-      .sticker:nth-child(3) {
-        left: 54px;
-        bottom: 68px;
-      }
-
-      .signal-card {
-        right: 12px;
-        bottom: 12px;
-        width: calc(100% - 24px);
-      }
-
-      .work-visual {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .work-visual img:first-child {
-        grid-row: auto;
-      }
-
-      .metrics {
-        grid-template-columns: 1fr;
-      }
-
-      .footer {
-        flex-direction: column;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="/site.css">
 </head>
 <body data-page="index">
-  <div class="status-bar" role="banner">
-    <div class="status-left">
-      <span class="pulse" aria-hidden="true"></span>
-      <span class="status-text" id="statusText">[gallery boot | 0x6.ai | loading works]</span>
+  <a class="skip-link" href="#main" data-i18n="skipContent">跳至主要內容</a>
+  <header class="site-header">
+    <div class="header-inner shell">
+      <a class="brand" href="/"><img class="brand-mark" src="/assets/portfolio/mark.svg" width="32" height="32" alt="">0x6.ai</a>
+      <nav class="site-nav" id="site-nav" aria-label="主要導覽" data-i18n-attr="aria-label:navLabel">
+        <a href="#works" aria-current="location"><span data-i18n="navWorks">作品</span><img class="icon" src="/assets/portfolio/chevron-down.svg" width="16" height="16" alt=""></a>
+        <a href="/about.html"><span data-i18n="navAbout">關於</span><img class="icon" src="/assets/portfolio/chevron-down.svg" width="16" height="16" alt=""></a>
+        <a href="https://store.line.me/stickershop/author/5344394/zh-Hant" data-line-store target="_blank" rel="noopener"><span data-i18n="navLine">LINE 貼圖</span><img class="icon" src="/assets/portfolio/chevron-down.svg" width="16" height="16" alt=""></a>
+        <a class="mobile-contact" href="mailto:support@0x6.ai"><span data-i18n="contactLabel">聯絡</span><img class="icon" src="/assets/portfolio/chevron-down.svg" width="16" height="16" alt=""></a>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" lang="en" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" lang="zh-Hant" data-lang="zh-Hant" aria-pressed="true">繁中</button>
+      </div>
+      <a class="button" href="mailto:support@0x6.ai" data-i18n="contactLabel">聯絡</a>
+      <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="開啟選單">
+        <img class="icon icon-menu" src="/assets/portfolio/menu.svg" width="16" height="16" alt="">
+        <img class="icon icon-close" src="/assets/portfolio/close.svg" width="16" height="16" alt="">
+      </button>
     </div>
-    <nav class="status-right" aria-label="主要導覽" data-i18n-attr="aria-label:navLabel">
-      <ul class="nav-links">
-        <li><a href="#works" data-i18n="navWorks">作品</a></li>
-        <li><a href="/about.html" data-i18n="navAbout">關於</a></li>
-        <li><a href="/refund.html">退款政策</a></li>
-        <li><a href="mailto:support@0x6.ai">聯絡資訊</a></li>
-        <li><a href="https://store.line.me/stickershop/author/5344394/zh-Hant" data-line-store target="_blank" rel="noopener">LINE STORE</a></li>
-        <li><a href="https://x.0x6.ai/" target="_blank" rel="noopener">X</a></li>
-        <li>
-          <div class="lang-switch" role="group" aria-label="Language">
-            <button type="button" data-lang="en" aria-pressed="false">EN</button>
-            <button type="button" data-lang="zh-Hant" aria-pressed="true">繁中</button>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  </header>
 
-  <main class="page">
+  <main id="main" class="shell">
     <section class="hero" aria-labelledby="site-title">
-      <div>
-        <div class="eyebrow" data-i18n="heroEyebrow">作品展示 / playful intelligence</div>
-        <h1 id="site-title">0x6.ai</h1>
-        <div class="actions">
-          <a class="button primary" href="#works" data-i18n="heroWorks">查看作品</a>
-          <a class="button" href="https://store.line.me/stickershop/author/5344394/zh-Hant" data-line-store target="_blank" rel="noopener" data-i18n="heroLine">前往 LINE 貼圖頁</a>
+      <div class="hero-copy">
+        <p class="studio-label" data-i18n="heroEyebrow">獨立 AI 工作室</p>
+        <h1 id="site-title">
+          <span data-i18n="heroTitle">研究語言模型，</span>
+          <span class="headline-accent" data-i18n="heroTitleAccent">打造日常工具。</span>
+        </h1>
+        <p class="hero-description"><span data-i18n="heroLeadOne">從 AI Agent 實驗、iOS App 到網路工具，</span>
+          <span data-i18n="heroLeadTwo">我把工程點子做成自己也想每天用的產品。</span></p>
+        <div class="hero-actions">
+          <a class="button primary" href="#works"><span data-i18n="heroWorks">探索作品</span><img class="icon" src="/assets/portfolio/arrow-right.svg" width="16" height="16" alt=""></a>
+          <a class="button" href="/about.html" data-i18n="heroAbout">關於工作室</a>
         </div>
       </div>
-
-      <aside class="console" aria-label="作品預覽" data-i18n-attr="aria-label:previewLabel">
-        <div class="console-top">
-          <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
-          <span>preview://line-stickers</span>
+      <div class="inference" role="group" aria-labelledby="inference-title">
+        <div class="inference-header">
+          <span class="inference-label">
+            <img class="inference-dot" src="/assets/portfolio/accent.svg" width="6" height="6" alt="">
+            <span id="inference-title" data-i18n="inferenceTitle">推論流程</span>
+          </span>
+          <span class="inference-caption">LLM INFERENCE</span>
         </div>
-        <div class="preview-stage">
-          <div class="sticker-stack" id="heroStickers" aria-hidden="true"></div>
-          <div class="loading-panel" id="heroLoading">loading works...</div>
-          <div class="signal-card">
-            <b id="signalTitle">STATUS: LOADING</b>
-            <p id="signalText" data-i18n="signalLoading">正在整理目前公開的貼圖與表情貼作品。</p>
-          </div>
-        </div>
-      </aside>
+        <picture class="inference-wave">
+          <source media="(max-width: 740px)" srcset="/assets/portfolio/wave-mobile.svg" width="342" height="154">
+          <img src="/assets/portfolio/wave.svg" width="560" height="252" alt="">
+        </picture>
+        <ol class="inference-stages">
+          <li><span data-i18n="inferenceContext">上下文</span><img class="inference-arrow" src="/assets/portfolio/flow.svg" width="12" height="12" alt=""></li>
+          <li><span class="active" data-i18n="inferenceModel">模型推論</span><img class="inference-arrow" src="/assets/portfolio/flow.svg" width="12" height="12" alt=""></li>
+          <li><span data-i18n="inferenceOutput">回覆</span></li>
+        </ol>
+      </div>
     </section>
 
-    <section class="section works-section" id="works" aria-labelledby="works-heading">
+    <section id="popular" class="popular" aria-labelledby="popular-heading" hidden>
       <div class="section-head">
-        <div>
-          <div class="eyebrow">WORKS</div>
-          <h2 id="works-heading" data-i18n="worksTitle">作品</h2>
-        </div>
-        <p class="works-count" id="works-count" aria-live="polite"></p>
+        <h2 id="popular-heading" data-i18n="popularTitle">熱門作品</h2>
+        <a class="text-link" href="#works"><span data-i18n="worksAllLink">全部作品</span><img class="icon" src="/assets/portfolio/arrow-down.svg" width="16" height="16" alt=""></a>
       </div>
-      <div class="works-toolbar" role="search">
-        <label class="works-search">
-          <span class="sr-only" data-i18n="worksSearchLabel">搜尋作品</span>
-          <input id="works-q" type="search" autocomplete="off" spellcheck="false" placeholder="搜尋名稱、標籤、網域…" data-i18n-attr="placeholder:worksSearchPlaceholder">
-        </label>
-        <label class="works-sort">
-          <span data-i18n="worksSortLabel">排序</span>
-          <select id="works-sort">
-            <option value="popular" data-i18n="worksSortPopular">熱門</option>
-            <option value="newest" data-i18n="worksSortNewest">最新</option>
-            <option value="oldest" data-i18n="worksSortOldest">最舊</option>
-          </select>
-        </label>
-        <div class="works-view" role="group" aria-label="檢視方式" data-i18n-attr="aria-label:worksViewLabel">
-          <button type="button" data-view="grid" aria-pressed="true" title="格狀檢視" data-i18n-attr="aria-label:worksViewGrid;title:worksViewGrid">▦</button>
-          <button type="button" data-view="list" aria-pressed="false" title="清單檢視" data-i18n-attr="aria-label:worksViewList;title:worksViewList">☰</button>
-        </div>
+      <div class="popular-grid" id="popular-list"></div>
+    </section>
+
+    <section id="works" class="works" aria-labelledby="works-heading">
+      <div class="section-head">
+        <h2 id="works-heading" data-i18n="worksTitle">所有作品</h2>
+        <p id="works-count" class="works-count" aria-live="polite"></p>
       </div>
-      <div class="works-chips" id="works-chips" role="group" aria-label="依標籤篩選" data-i18n-attr="aria-label:worksTagsLabel"></div>
-      <div class="works-grid" id="works-list"></div>
-      <div class="works-empty" id="works-empty" hidden>
+      <div class="works-controls">
+        <div class="works-toolbar" role="search">
+          <label class="works-search">
+            <span class="sr-only" data-i18n="worksSearchLabel">搜尋作品</span>
+            <img class="icon" src="/assets/portfolio/search.svg" width="16" height="16" alt="">
+            <input id="works-q" type="search" autocomplete="off" spellcheck="false" placeholder="搜尋作品名稱、標籤或網域" data-i18n-attr="placeholder:worksSearchPlaceholder">
+          </label>
+          <label class="works-sort">
+            <span class="sr-only" data-i18n="worksSortLabel">排序</span>
+            <select id="works-sort">
+              <option value="popular" data-i18n="worksSortPopular">熱門</option>
+              <option value="newest" data-i18n="worksSortNewest">最新</option>
+              <option value="oldest" data-i18n="worksSortOldest">最舊</option>
+            </select>
+            <img class="icon" src="/assets/portfolio/chevron-down.svg" width="16" height="16" alt="">
+          </label>
+          <div class="works-view" role="group" aria-label="檢視方式" data-i18n-attr="aria-label:worksViewLabel">
+            <button type="button" data-view="grid" aria-pressed="false" aria-label="格狀檢視" data-i18n-attr="aria-label:worksViewGrid;title:worksViewGrid"><img class="icon" src="/assets/portfolio/grid.svg" width="16" height="16" alt=""></button>
+            <button type="button" data-view="list" aria-pressed="true" aria-label="清單檢視" data-i18n-attr="aria-label:worksViewList;title:worksViewList"><img class="icon" src="/assets/portfolio/list.svg" width="16" height="16" alt=""></button>
+          </div>
+        </div>
+        <div class="works-chips" id="works-chips" role="group" aria-label="依分類篩選" data-i18n-attr="aria-label:worksCategoryLabel"></div>
+      </div>
+      <div id="works-list" class="works-grid is-list" aria-busy="true"></div>
+      <p id="works-unavailable" data-i18n="worksUnavailable" hidden>暫時無法載入作品。</p>
+      <div id="works-empty" class="works-empty" hidden>
         <p data-i18n="worksEmpty">沒有符合條件的作品。</p>
         <button type="button" class="button" id="works-clear" data-i18n="worksClear">清除篩選</button>
       </div>
-      <div class="works-more"><button type="button" class="button" id="works-more" hidden></button></div>
+      <button type="button" class="button works-more" id="works-more" hidden></button>
     </section>
 
-    <footer class="footer">
-      <span>Copyright © 0x6.ai</span>
-      <span class="footer-links"><a href="/about.html" data-i18n="navAbout">關於</a> · <a href="/terms.html" data-i18n="navTerms">服務條款</a> · <a href="/privacy.html" data-i18n="navPrivacy">隱私權政策</a> · <a href="/refund.html">退款政策</a> · <a href="mailto:support@0x6.ai">support@0x6.ai</a> · <a href="/donate/" data-i18n="coffee">☕ 請我喝杯咖啡</a></span>
-    </footer>
+    <section class="home-contact" aria-labelledby="contact-heading">
+      <div class="contact-panel">
+        <h2 id="contact-heading" data-i18n="homeContact">來聊 AI 或產品。</h2>
+        <a class="button" href="mailto:support@0x6.ai">support@0x6.ai</a>
+      </div>
+    </section>
   </main>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <footer class="site-footer">
+    <div class="footer-inner shell">
+      <div class="footer-brand"><a class="brand" href="/"><img class="brand-mark" src="/assets/portfolio/mark.svg" width="32" height="32" alt="">0x6.ai</a><small>© 2026</small></div>
+      <div class="footer-links">
+        <div>
+          <a href="/terms.html" data-i18n="navTerms">服務條款</a>
+          <a href="/privacy.html" data-i18n="navPrivacy">隱私權政策</a>
+          <a href="/refund.html" hreflang="zh-Hant" data-i18n="navRefund">退款政策</a>
+        </div>
+        <div>
+          <a href="/donate/" data-i18n="navSupport">贊助</a>
+          <a href="https://x.0x6.ai/" target="_blank" rel="noopener" data-i18n="navX">X 動態新聞</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script src="/i18n.js"></script>
   <script src="/apps.js"></script>
-  <script>
-    const STICKERS_DATA_URL = "stickers.json";
-    let workState = "loading";
-    const t = (key) => I18n.t(key);
-    const colors = ["#85e8be", "#f0b15a", "#80b8ff", "#f082ac"];
-    const particleCount = window.matchMedia("(max-width: 640px)").matches ? 20 : 34;
-
-    for (let i = 0; i < particleCount; i += 1) {
-      const particle = document.createElement("span");
-      particle.className = "particle";
-      particle.style.setProperty("--x", `${Math.random() * 100}vw`);
-      particle.style.setProperty("--drift", `${(Math.random() - 0.5) * 120}px`);
-      particle.style.setProperty("--size", `${2 + Math.random() * 4}px`);
-      particle.style.setProperty("--speed", `${7 + Math.random() * 10}s`);
-      particle.style.setProperty("--delay", `${-Math.random() * 12}s`);
-      particle.style.setProperty("--color", colors[i % colors.length]);
-      document.body.appendChild(particle);
-    }
-
-    const statusText = document.getElementById("statusText");
-    const toast = document.getElementById("toast");
-    const heroStickers = document.getElementById("heroStickers");
-    const heroLoading = document.getElementById("heroLoading");
-    const signalTitle = document.getElementById("signalTitle");
-    const signalText = document.getElementById("signalText");
-    const $ = (id) => document.getElementById(id) || document.createElement("div");
-    let lineItems = null;
-    let toastTimer = 0;
-
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add("show");
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove("show"), 1900);
-    }
-
-    function applyStateText() {
-      if (!I18n.ready) return;
-      if (workState === "live") {
-        signalText.textContent = t("signalLive");
-        $("workSummary").textContent = t("lineSummary");
-      } else if (workState === "error") {
-        signalText.textContent = t("signalError");
-        $("workSummary").textContent = t("lineSummaryError");
-      } else {
-        signalText.textContent = t("signalLoading");
-        $("workSummary").textContent = t("lineSummary");
-      }
-    }
-
-
-    function attachWorkLinkEvents(root = document) {
-      root.querySelectorAll(".work-card, a.tile-link").forEach((link) => {
-        if (link.dataset.bound === "true") return;
-        link.dataset.bound = "true";
-        const destination = link.dataset.destination || "LINE STORE";
-        link.addEventListener("mouseenter", () => {
-          statusText.textContent = `[gallery hover | destination: ${destination} | target: _blank]`;
-        });
-        link.addEventListener("mouseleave", () => {
-          statusText.textContent = "[gallery ready | 0x6.ai | works loaded]";
-        });
-        link.addEventListener("click", () => {
-          showToast(`${t("opening") || "Opening"} ${destination}`);
-        });
-      });
-    }
-
-    function createImage(src, alt) {
-      const img = document.createElement("img");
-      img.src = src;
-      img.alt = alt;
-      img.loading = "lazy";
-      img.decoding = "async";
-      return img;
-    }
-
-    function renderHero(items) {
-      heroLoading.remove();
-      heroStickers.innerHTML = "";
-
-      items.slice(0, 3).forEach((item) => {
-        const card = document.createElement("div");
-        card.className = "sticker";
-        card.append(createImage(item.image, ""));
-
-        const title = document.createElement("span");
-        title.textContent = item.title;
-        card.append(title);
-
-        heroStickers.append(card);
-      });
-    }
-
-    function renderFeatured(items) {
-      $("featuredVisual").innerHTML = "";
-      items.slice(0, 3).forEach((item) => {
-        $("featuredVisual").append(createImage(item.image, ""));
-      });
-    }
-
-    function renderWorks(items) {
-      lineItems = items;
-      renderHero(items);
-      renderFeatured(items);
-
-      $("workCount").textContent = String(items.length);
-      workState = "live";
-      signalTitle.textContent = "STATUS: LIVE";
-      applyStateText();
-      statusText.textContent = "[gallery ready | 0x6.ai | works loaded]";
-    }
-
-    function renderError() {
-      heroLoading.textContent = "works unavailable";
-      signalTitle.textContent = "STATUS: RETRY LATER";
-      workState = "error";
-      $("workCount").textContent = "-";
-      applyStateText();
-      statusText.textContent = "[gallery error | works unavailable]";
-    }
-
-    async function loadLineStoreWorks() {
-      try {
-        const response = await fetch(`${STICKERS_DATA_URL}?t=${Date.now()}`, { cache: "no-store" });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const data = await response.json();
-        const items = Array.isArray(data.items) ? data.items : [];
-        if (!items.length) throw new Error("No sticker data found");
-        renderWorks(items);
-      } catch {
-        renderError();
-      }
-    }
-
-    I18n.onApply(applyStateText);
-    Apps.onRender(() => {
-      if (lineItems) {
-        renderFeatured(lineItems);
-        $("workCount").textContent = String(lineItems.length);
-      } else if (workState === "error") {
-        $("workCount").textContent = "-";
-      }
-      applyStateText();
-      attachWorkLinkEvents();
-    });
-    attachWorkLinkEvents();
-    loadLineStoreWorks();
-  </script>
+  <script src="/site.js"></script>
 </body>
 </html>

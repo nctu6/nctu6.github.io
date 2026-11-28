@@ -1,5 +1,5 @@
 {
-  "_comment": "Single source of truth for 0x6.ai works and apps. Add one entry to `apps` to publish a new work: it appears on the works page (when listed is true), the about page, the privacy policy's per-app section, and the terms' list. Order = newest first. `pinned: true` keeps a work first in every sort while it matches the filter. Optional `popularityApi` is a public URL returning { \"score\", \"metric\", \"updated\" }; a daily GitHub Action (scripts/update-popularity.mjs) collects the scores into /popularity.json, which drives the Popular sort (higher score first; apps without a score follow, newest first). Text fields are { \"zh-Hant\": ..., \"en\": ... }, with an optional \"ja\" shown on the pages that offer 日本語 (privacy.html, external-transmission.html); without \"ja\" those pages show \"en\". Optional `statsApi` is a public URL returning live counts as non-negative integers (e.g. { \"entries\", \"agents\" }); when set, `descriptionStats` holds per-language templates with {placeholders} filled from it on page load. `description` must stay number-free: it is shown first and whenever the stats fetch fails, times out, or is invalid.",
+  "_comment": "Single source of truth for 0x6.ai works and apps. Add one entry to `apps` to publish a new work: it appears on the works page (when listed is true), the privacy policy's per-app section, and the terms' list. Order = newest first. `pinned: true` keeps a work first in every sort while it matches the filter. Optional `popularityApi` is a public URL returning { \"score\", \"metric\", \"updated\" }; a daily GitHub Action (scripts/update-popularity.mjs) collects the scores into /popularity.json, which drives the Popular sort (higher score first; apps without a score follow, newest first) and the front-page top three scored works, excluding pinned works. Optional summary is short card copy; category can specify ai or game for a web work. Text fields are { \"zh-Hant\": ..., \"en\": ... }, with an optional \"ja\" shown on the pages that offer 日本語 (privacy.html, external-transmission.html); without \"ja\" those pages show \"en\". Optional `statsApi` is a public URL returning live counts as non-negative integers (e.g. { \"entries\", \"agents\" }); when set, `descriptionStats` holds per-language templates with {placeholders} filled from it on page load. `description` must stay number-free: it is shown first and whenever the stats fetch fails, times out, or is invalid.",
   "services": {
     "github-pages": {
       "name": "GitHub Pages",
@@ -126,9 +126,25 @@
         "ja": "タリーバッド"
       },
       "tags": {
-        "zh-Hant": ["雙幣記帳", "像素植物", "iPhone"],
-        "en": ["Dual-currency tracking", "Pixel plants", "iPhone"],
-        "ja": ["外貨対応の家計簿", "ドット絵の植物", "iPhone"]
+        "zh-Hant": [
+          "雙幣記帳",
+          "像素植物",
+          "iPhone"
+        ],
+        "en": [
+          "Dual-currency tracking",
+          "Pixel plants",
+          "iPhone"
+        ],
+        "ja": [
+          "外貨対応の家計簿",
+          "ドット絵の植物",
+          "iPhone"
+        ]
+      },
+      "summary": {
+        "zh-Hant": "離線雙幣記帳與像素小苗",
+        "en": "Offline expense tracking with a pixel-art seedling"
       },
       "description": {
         "zh-Hant": "離線記下台幣、日圓等支出，等信用卡入帳再補實扣。天天記帳，培育像素小苗。",
@@ -154,11 +170,21 @@
         }
       ],
       "data": {
-        "zh-Hant": ["基本記帳可免登入離線使用，帳本與植物收藏先存於裝置。選用的帳號、同步與備份詳見本頁小帳苗專節。"],
-        "en": ["Basic expense tracking works offline without signing in. The ledger and plant collection are stored on the device first. See the Tallybud section on this page for optional accounts, sync, and backups."],
-        "ja": ["基本の記帳はサインイン不要で、オフラインでも利用できます。帳簿と植物のコレクションはまず端末に保存されます。任意のアカウント、同期、バックアップは本ページのタリーバッドの項をご覧ください。"]
+        "zh-Hant": [
+          "基本記帳可免登入離線使用，帳本與植物收藏先存於裝置。選用的帳號、同步與備份詳見本頁小帳苗專節。"
+        ],
+        "en": [
+          "Basic expense tracking works offline without signing in. The ledger and plant collection are stored on the device first. See the Tallybud section on this page for optional accounts, sync, and backups."
+        ],
+        "ja": [
+          "基本の記帳はサインイン不要で、オフラインでも利用できます。帳簿と植物のコレクションはまず端末に保存されます。任意のアカウント、同期、バックアップは本ページのタリーバッドの項をご覧ください。"
+        ]
       },
-      "services": ["app-store", "google-signin", "cloudflare"]
+      "services": [
+        "app-store",
+        "google-signin",
+        "cloudflare"
+      ]
     },
     {
       "id": "game",
@@ -190,6 +216,11 @@
           "Daily challenge"
         ]
       },
+      "summary": {
+        "zh-Hant": "瀏覽器迷你遊戲與每日挑戰",
+        "en": "Browser mini-games and daily challenges"
+      },
+      "category": "game",
       "description": {
         "zh-Hant": "書海城的小遊戲場：在書海城走進黑洞，就會從這裡的白洞出來。一個畫面一個遊戲，往上滑換下一個，點一下就在原地開始玩；每天還有一款大家一起玩的每日挑戰。不用下載安裝，手機觸控與鍵盤都能玩，遊戲與畫面都是為本站手寫的。",
         "en": "The mini-game corner of Shuhai City: step into its black hole and you come out of the white hole here. One game per screen: swipe up for the next and tap to play right where it is, plus a daily challenge that everyone plays. Nothing to install, it works with touch screens and keyboards, and every game and its artwork is hand-made for the site."
@@ -270,6 +301,10 @@
           "Celebrities",
           "Public archive"
         ]
+      },
+      "summary": {
+        "zh-Hant": "可搜尋的 X 創作者典藏",
+        "en": "A searchable archive of creators on X"
       },
       "description": {
         "zh-Hant": "收錄 X 上女星、藝人與女子團體的官方帳號，整理成一座可搜尋的星系：每個帳號有個人檔案快照和近期最熱門的公開貼文，資料來自 X 官方 API。帳號在 X 上停權、設為私密或刪除後就會撤下，本人或經紀公司也可以要求移除。想讓喜歡的博主排在最前面，可以用「贊助置頂」。",
@@ -353,6 +388,10 @@
           "3D"
         ]
       },
+      "summary": {
+        "zh-Hant": "臺灣繁體中文小說書庫",
+        "en": "A library of fiction in Traditional Chinese"
+      },
       "description": {
         "zh-Hant": "把網路上連載的中文小說整理成一座安靜、可搜尋的書庫，免登入就能閱讀，一律以臺灣繁體中文顯示。首頁是漂浮在星空中的 3D 書海城，每棟建築是一個分類；點主塔回答三個問題就能問路找書，也可以改用 2D 清單。黑洞通往小遊戲白洞彼岸，銀河通往白月光。",
         "en": "Chinese web novels serialized online, gathered into a quiet, searchable library you can read without signing in, always shown in Taiwan Traditional Chinese. The home page is a 3D book city floating among the stars, one building per category; answer three questions at the main tower to be pointed to a book, or switch to a 2D list. Its black hole leads to the Beyond the White Hole mini-games and its galaxy to GalaXy."
@@ -434,6 +473,10 @@
           "Timeline"
         ]
       },
+      "summary": {
+        "zh-Hant": "臺灣歷史事件與互動地圖",
+        "en": "Explore Taiwanese history on an interactive map"
+      },
       "description": {
         "zh-Hant": "古地圖風格的臺灣歷史互動地圖，收錄從史前到今天的一萬多筆事件。沿著年份時間軸移動，地圖換成那個時代的行政區，清單列出當時發生的事，每一筆都附說明與出處；還可以疊上原住民族部落位置、村里名、聚落與鐵路等參考圖層。非商業網站，程式以 GPL-3.0 授權。",
         "en": "An antique-style interactive map of Taiwan's history, with more than 10,000 events from prehistory to today. Move along the year timeline and the map switches to that era's administrative divisions while the list shows what happened then, each event with a description and its sources; reference layers such as Indigenous community locations, village names, and settlements and railways can be laid on top. Non-commercial; the code is licensed under GPL-3.0."
@@ -509,6 +552,11 @@
           "Play vs AI"
         ]
       },
+      "summary": {
+        "zh-Hant": "在瀏覽器與六子棋 AI 對弈",
+        "en": "Play Connect6 against an AI in your browser"
+      },
+      "category": "ai",
       "description": {
         "zh-Hant": "在瀏覽器裡和六子棋 AI「交大六號」對弈，或兩人在同一台裝置上對戰。19 路棋盤，黑方第一手只下一子，之後每手兩子，先連成六子者勝。",
         "en": "Play Connect6 in your browser against the Connect6 AI 交大六號, or against a friend on the same device. On a 19×19 board, Black opens with one stone and every move after that is two stones; the first to connect six wins."
@@ -578,6 +626,12 @@
           "Daily"
         ]
       },
+      "summary": {
+        "zh-Hant": "從公開網路整理真實的 AI Agent 應用案例。",
+        "en": "Real-world AI agent use cases gathered from public sources."
+      },
+      "category": "ai",
+      "popularLabel": "AI AGENTS",
       "description": {
         "zh-Hant": "真實 AI agent 使用案例目錄，案例來自公開網路、X、Reddit 與 Hacker News，以彩色 ASCII 終端機風格呈現。每張卡片都連到公開來源，並附上本站撰寫的摘要與可直接使用的提示詞；可依 agent、主題或來源瀏覽與搜尋。",
         "en": "A directory of real AI agent use cases pulled from the open web, X, Reddit, and Hacker News, drawn as a colorful ASCII terminal. Every card links to a public source and comes with a summary and a ready-to-use prompt written for this site; browse or search by agent, topic, or source."
@@ -659,6 +713,10 @@
           "3D"
         ]
       },
+      "summary": {
+        "zh-Hant": "鐵道與捷運末班車路線",
+        "en": "Last-train routes across Taiwan’s rail and metro systems"
+      },
       "description": {
         "zh-Hant": "台灣高鐵、臺鐵、捷運、輕軌、貓空纜車與阿里山林業鐵路的末班車立體路線圖。時間往前走，末班車開過的站間就暗下來。",
         "en": "A 3D route map of the last trains on Taiwan's High Speed Rail, TRA railway, metro, light rail, Maokong Gondola, and Alishan Forest Railway. As time moves on, each segment goes dark once its last train has passed."
@@ -739,6 +797,10 @@
           "iPhone",
           "Unofficial"
         ]
+      },
+      "summary": {
+        "zh-Hant": "在地圖上查詢附近刷卡優惠",
+        "en": "Find nearby Amex Taiwan offers on a map"
       },
       "description": {
         "zh-Hant": "在地圖上找你附近的美國運通台灣卡友優惠。網頁版與 iPhone App 都能使用，允許定位後，會依你的位置列出附近可用的優惠。",
@@ -906,6 +968,14 @@
           "Feed"
         ]
       },
+      "summary": {
+        "zh-Hant": "依主題瀏覽 X 貼文與停班停課通知",
+        "en": "Browse X posts and closure notices by topic"
+      },
+      "shortName": {
+        "zh-Hant": "X 動態新聞",
+        "en": "X News Feed"
+      },
       "description": {
         "zh-Hant": "把關注的 X 帳號依主題分頁（如 News、AI、Space、People），一頁看完最新貼文。打開分頁時才更新，每個帳號每六小時最多抓一次。",
         "en": "Followed X accounts grouped into topic tabs (e.g. News, AI, Space, People), so you can catch up on the latest posts on one page. It updates only when a tab is opened, at most once every six hours per account."
@@ -985,6 +1055,10 @@
           "Stickers",
           "Emoji"
         ]
+      },
+      "summary": {
+        "zh-Hant": "原創角色、日常表情與動畫貼圖",
+        "en": "Original characters, everyday replies, and animated stickers"
       },
       "description": {
         "zh-Hant": "用貼圖把一句話變成一個表情，收錄日常情緒、角色小劇場與可愛生活片段。",
