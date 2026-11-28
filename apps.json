@@ -137,19 +137,19 @@
       },
       "extra": [
         {
-          "url": "https://apps.apple.com/tw/app/id6837826202",
+          "url": "https://apps.apple.com/tw/app/%E5%B0%8F%E5%B8%B3%E8%8B%97/id6837826202",
           "label": {
-            "zh-Hant": "iPhone 下載・台灣",
-            "en": "iPhone · Taiwan",
-            "ja": "iPhone・台湾"
+            "zh-Hant": "iPhone 下載（台灣）",
+            "en": "iPhone download (Taiwan)",
+            "ja": "iPhone版をダウンロード（台湾）"
           }
         },
         {
-          "url": "https://apps.apple.com/jp/app/id6837826202",
+          "url": "https://apps.apple.com/jp/app/%E3%82%BF%E3%83%AA%E3%83%BC%E3%83%90%E3%83%83%E3%83%89/id6837826202",
           "label": {
-            "zh-Hant": "iPhone 下載・日本",
-            "en": "iPhone · Japan",
-            "ja": "iPhone・日本"
+            "zh-Hant": "iPhone 下載（日本）",
+            "en": "iPhone download (Japan)",
+            "ja": "iPhone版をダウンロード（日本）"
           }
         }
       ],
