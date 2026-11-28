@@ -240,9 +240,10 @@ img { display: block; max-width: 100%; }
 .works-grid:not(.is-list) .works-caption { display: none; }
 .work-tile { position: relative; }
 .works-grid.is-list .work-tile { min-height: 58px; border-top: 1px solid var(--line); }
+.works-grid.is-list .work-tile:has(.tile-extra) { row-gap: 4px; padding-block: 8px; }
 .works-grid.is-list .work-tile:hover { background: var(--raised); }
 .works-grid.is-list .work-tile:focus-within { outline: 2px solid var(--accent); outline-offset: -3px; }
-.works-grid.is-list :is(.tile-thumb, .tile-desc, .tile-foot, .tile-meta) { display: none; }
+.works-grid.is-list :is(.tile-thumb, .tile-desc, .tile-meta, .tile-tags, .tile-foot:not(:has(> .tile-extra))) { display: none; }
 .works-grid.is-list .tile-summary { font-size: 13px; line-height: 22px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .tile-summary, .tile-desc { margin: 0; color: var(--body); min-width: 0; }
 .tile-title { font-size: 14px; line-height: 22px; font-weight: 500; letter-spacing: 0; overflow-wrap: anywhere; }
